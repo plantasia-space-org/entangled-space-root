@@ -21,6 +21,18 @@ import { TransportControls } from "./transport-controls"
 // 2 steps per beat → each step is one eighth note
 const STEPS_PER_BEAT = 2
 
+function isEditableTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false
+
+  const tagName = target.tagName
+  return (
+    target.isContentEditable ||
+    tagName === "INPUT" ||
+    tagName === "TEXTAREA" ||
+    tagName === "SELECT"
+  )
+}
+
 function InfoChip({ label, content }: { label: string; content: string }) {
   return (
     <HoverCard openDelay={120} closeDelay={80}>
@@ -137,8 +149,10 @@ export function SnailKeyboardSection({
       setCurrentStep(nearestStep)
     }
 
-    await toneStart()
-    playVoice(currentVoice, noteIndex, period)
+    if (soundEnabled) {
+      await toneStart()
+      playVoice(currentVoice, noteIndex, period)
+    }
   })
 
   const releaseKey = useEffectEvent((keyId: string) => {
@@ -149,6 +163,7 @@ export function SnailKeyboardSection({
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.repeat || event.ctrlKey || event.metaKey || event.altKey) return
+      if (isEditableTarget(event.target)) return
       const mapping = KEY_MAP[event.key.toLowerCase()]
       if (!mapping) return
       const [noteIndex, period] = mapping
@@ -158,6 +173,7 @@ export function SnailKeyboardSection({
     }
 
     function handleKeyUp(event: KeyboardEvent) {
+      if (isEditableTarget(event.target)) return
       const mapping = KEY_MAP[event.key.toLowerCase()]
       if (!mapping) return
       const [noteIndex, period] = mapping

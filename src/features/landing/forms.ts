@@ -10,7 +10,11 @@ export type FormStatus =
   | { type: "error"; message: string }
 
 export function buildFormsApiUrl(path: string) {
-  return formsApiBaseUrl ? `${formsApiBaseUrl}${path}` : path
+  if (!formsApiBaseUrl) {
+    throw new Error("Form submission is not configured.")
+  }
+
+  return `${formsApiBaseUrl}${path}`
 }
 
 export function getStatusMessage(status: FormStatus, fallback: string) {
