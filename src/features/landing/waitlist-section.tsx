@@ -46,11 +46,11 @@ export function WaitlistSection({
                 autoComplete="email"
                 value={email}
                 onChange={(event) => onEmailChange(event.target.value)}
-                className="min-w-0 flex-1 border border-border bg-background px-5 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
+                className="min-w-0 flex-1 border border-border bg-background px-5 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground sm:h-11"
               />
               <Button
                 type="submit"
-                className="px-6"
+                className="px-6 sm:h-11"
                 disabled={status.type === "submitting"}
               >
                 {status.type === "submitting" ? "Submitting..." : "Notify me"}
