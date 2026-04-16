@@ -7,6 +7,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 
 import { KeyboardGrid } from "./keyboard-grid"
 import { playVoice, toneStart } from "./snail-audio"
+import { ensureSilentAudioUnlock } from "./silent-audio-unlock"
 import {
   CENTS_TO_NOTE,
   DEFAULT_BPM,
@@ -161,6 +162,7 @@ export function SnailKeyboardSection({
     }
 
     if (soundEnabled) {
+      await ensureSilentAudioUnlock()
       await toneStart()
       playVoice(currentVoice, noteIndex, period)
     }
@@ -266,7 +268,7 @@ export function SnailKeyboardSection({
                   setSequencerKeyId(null)
                   const next = !soundEnabled
                   setSoundEnabled(next)
-                  if (next) void toneStart()
+                  if (next) void ensureSilentAudioUnlock().then(() => toneStart())
                 }}
               >
                 {soundEnabled ? <Volume2 className="size-3.5" /> : <VolumeX className="size-3.5" />}
@@ -303,7 +305,7 @@ export function SnailKeyboardSection({
                     setSequencerKeyId(null)
                     const next = !soundEnabled
                     setSoundEnabled(next)
-                    if (next) void toneStart()
+                    if (next) void ensureSilentAudioUnlock().then(() => toneStart())
                   }}
                 >
                   {soundEnabled ? <Volume2 className="size-3.5" /> : <VolumeX className="size-3.5" />}
