@@ -44,7 +44,7 @@ export function KeyboardGrid({
               type="button"
               onClick={() => onSelectPeriod(p)}
               className={cn(
-                "inline-flex h-7 items-center border px-2.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] transition-colors sm:h-8 sm:px-3 sm:text-[0.72rem]",
+                "inline-flex h-7 items-center border px-2.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] transition-colors [touch-action:manipulation] sm:h-8 sm:px-3 sm:text-[0.72rem]",
                 period === p
                   ? "border-foreground bg-foreground text-background"
                   : "border-border bg-background text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -89,12 +89,13 @@ export function KeyboardGrid({
                   <button
                     key={keyId}
                     type="button"
+                    data-vaul-no-drag
                     onPointerDown={() => onPressKey(ni, notePeriod, keyId)}
                     onPointerUp={() => onReleaseKey(keyId)}
                     onPointerLeave={() => onReleaseKey(keyId)}
                     onPointerCancel={() => onReleaseKey(keyId)}
                     className={cn(
-                      "flex min-h-32 min-w-0 flex-col justify-between bg-background px-1.5 py-2 text-center transition-colors sm:min-h-40 sm:px-2 sm:py-3",
+                      "flex min-h-32 min-w-0 flex-col justify-between bg-background px-1.5 py-2 text-center [touch-action:manipulation] sm:min-h-40 sm:px-2 sm:py-3",
                       isActive
                         ? "bg-foreground text-background"
                         : "text-foreground hover:bg-muted/55"

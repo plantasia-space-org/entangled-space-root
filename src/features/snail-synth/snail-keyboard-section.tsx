@@ -1,5 +1,5 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react"
-import { ChevronUp, Info, Pause, Play, Volume2, VolumeX, X } from "lucide-react"
+import { ArrowUpRight, ChevronUp, Info, Pause, Play, Volume2, VolumeX, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
@@ -72,6 +72,7 @@ export function SnailKeyboardSection({
 
   const stepRef = useRef(0)
   const heldKeysRef = useRef(new Set<string>())
+  const savedScrollRef = useRef(0)
 
   // ── Sequencer: setInterval clock ────────────────────────────────────────────
   //
@@ -122,6 +123,16 @@ export function SnailKeyboardSection({
   useEffect(() => {
     return () => setSequencerKeyId(null)
   }, [])
+
+  // Restore scroll position after drawer closes (iOS body-unlock jump fix)
+  useEffect(() => {
+    if (!open) {
+      const raf = requestAnimationFrame(() => {
+        window.scrollTo({ top: savedScrollRef.current, behavior: "instant" as ScrollBehavior })
+      })
+      return () => cancelAnimationFrame(raf)
+    }
+  }, [open])
 
   useEffect(() => {
     onStepChange?.(currentStep)
@@ -195,30 +206,52 @@ export function SnailKeyboardSection({
     : heldKeyIds
 
   const currentEntry = VISIBLE_SNAIL_MODEL[currentStep]
-  const stopTriggerPropagation = (event: { stopPropagation: () => void }) => {
-    event.stopPropagation()
-  }
 
   return (
     <>
-      <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground={false}>
+      <Drawer
+        open={open}
+        onOpenChange={(next) => {
+          if (next) savedScrollRef.current = window.scrollY
+          setOpen(next)
+        }}
+        shouldScaleBackground={false}
+        noBodyStyles
+      >
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/96 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3 sm:px-8">
-            <div className="min-w-0">
-              <p className="truncate text-sm text-foreground">
-                Cycle {currentEntry.cycle} · Step {String(currentEntry.anchorStep).padStart(2, "0")}
-              </p>
+            <div className="flex min-w-0 items-center gap-3">
+              <a
+                href="https://artizen.fund/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation]"
+              >
+                Fund on Artizen <ArrowUpRight className="size-3" />
+              </a>
+              <a
+                href="https://github.com/plantasia-space-org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation]"
+              >
+                GitHub <ArrowUpRight className="size-3" />
+              </a>
+              <a
+                href="https://entangled.space/?contact=1"
+                className="hidden text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation] sm:inline"
+              >
+                Contact
+              </a>
             </div>
 
             <div className="flex shrink-0 items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
-                onPointerDown={stopTriggerPropagation}
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setIsPlaying((current) => !current)
-                }}
+                data-vaul-no-drag
+                className="[touch-action:manipulation]"
+                onClick={() => setIsPlaying((current) => !current)}
               >
                 {isPlaying ? <Pause className="size-3.5" /> : <Play className="size-3.5" />}
                 <span className="hidden sm:inline">{isPlaying ? "Pause" : "Play"}</span>
@@ -227,9 +260,9 @@ export function SnailKeyboardSection({
               <Button
                 variant="outline"
                 size="sm"
-                onPointerDown={stopTriggerPropagation}
-                onClick={(event) => {
-                  event.stopPropagation()
+                data-vaul-no-drag
+                className="[touch-action:manipulation]"
+                onClick={() => {
                   setSequencerKeyId(null)
                   const next = !soundEnabled
                   setSoundEnabled(next)
@@ -241,7 +274,7 @@ export function SnailKeyboardSection({
               </Button>
 
               <DrawerTrigger asChild>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="[touch-action:manipulation]">
                   <span className="hidden sm:inline">Open</span>
                   <ChevronUp className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
                 </Button>
