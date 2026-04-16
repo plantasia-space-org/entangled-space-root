@@ -14,7 +14,7 @@ export function HeroSection() {
         <div className="bg-transparent">
           <div className="aspect-square w-full overflow-hidden bg-background">
             <iframe
-              src="https://dev-world.plantasia.space/?mode=10&fullscreen=false"
+              src="https://dev-world.plantasia.space/?mode=10&fullscreen=false&skybox=0"
               title="Entangled Space 3D animation"
               className="h-full w-full"
               loading="lazy"

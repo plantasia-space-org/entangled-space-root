@@ -6,37 +6,47 @@ export function SnailFactorIntroSection({
   paragraphs,
 }: SnailFactorIntroSectionProps) {
   return (
-    <section className="border-t border-border bg-background">
-      <div className="mx-auto grid w-full max-w-6xl gap-14 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-20 lg:py-36">
-        <div className="max-w-2xl space-y-6 lg:col-start-2 lg:row-start-1">
-          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+    <section className="relative overflow-hidden border-t border-border bg-background">
+      <div className="absolute inset-0">
+        <img
+          src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/golden-ratio-drawing_mid.webp"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center opacity-24 dark:opacity-42"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.93)_40%,rgba(247,244,236,0.72)_72%,rgba(247,244,236,0.88)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.95)_0%,rgba(18,18,18,0.84)_38%,rgba(18,18,18,0.48)_72%,rgba(18,18,18,0.74)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_35%,rgba(116,83,36,0.16),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.18))] dark:bg-[radial-gradient(circle_at_78%_35%,rgba(214,171,93,0.22),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.24))]" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
+        <div className="max-w-3xl space-y-6">
+          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-foreground/62">
             The Snail Factor
           </p>
           <h2 className="max-w-xl text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
-            An economic cycle tuned to the golden ratio, derived from music
-            theory.
+            An economic cycle derived from a musical scale based on the golden ratio.
           </h2>
-        </div>
+          <div className="max-w-2xl space-y-6">
+            {paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="text-base leading-8 text-foreground/86 sm:text-lg"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
-        <div className="max-w-2xl space-y-6 lg:col-start-1 lg:row-start-1">
-          {paragraphs.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="text-base leading-8 text-foreground/88 sm:text-lg"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
-
-        <div className="border-t border-border pt-8 lg:col-span-2 lg:row-start-2">
-          <div className="max-w-3xl space-y-3">
-            <p className="text-xl leading-relaxed font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
-              Ascent. Peak. Descent. Return. Repeat.
-            </p>
-            <p className="text-base leading-8 text-foreground/88 sm:text-lg">
-              Growth is not infinite. It oscillates between stakeholders.
-            </p>
+          <div className="border-t border-border/70 pt-8">
+            <div className="max-w-3xl space-y-3">
+              <p className="text-xl leading-relaxed font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
+                Ascent. Peak. Descent. Return. Repeat.
+              </p>
+              <p className="text-base leading-8 text-foreground/84 sm:text-lg">
+                Growth is not infinite. It oscillates between stakeholders.
+              </p>
+            </div>
           </div>
         </div>
       </div>

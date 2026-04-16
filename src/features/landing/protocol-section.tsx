@@ -25,8 +25,20 @@ export function ProtocolSection({
   implementationRows,
 }: ProtocolSectionProps) {
   return (
-    <section className="border-t border-border bg-background">
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
+    <section className="relative overflow-hidden border-t border-border bg-background">
+      <div className="absolute inset-0">
+        <img
+          src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center opacity-16 dark:opacity-32"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.94)_38%,rgba(247,244,236,0.76)_72%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.95)_0%,rgba(18,18,18,0.88)_38%,rgba(18,18,18,0.58)_72%,rgba(18,18,18,0.8)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_32%,rgba(116,83,36,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.16))] dark:bg-[radial-gradient(circle_at_76%_32%,rgba(214,171,93,0.18),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2))]" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-20">
           <div className="space-y-6">
             <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
@@ -54,7 +66,7 @@ export function ProtocolSection({
             0.34
           </p>
           <p className="mt-5 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            All values computed per period (monthly)
+            All values computed per period (monthly). Snail Factor changes each season.
           </p>
         </div>
 

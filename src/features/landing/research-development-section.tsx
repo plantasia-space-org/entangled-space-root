@@ -1,3 +1,5 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 type FounderProfile = {
   name: string
   bio: readonly string[]
@@ -17,10 +19,16 @@ export function ResearchDevelopmentSection({
           Research &amp; Development
         </p>
         <div className="border-t border-border pt-8">
-          <div className="grid gap-6 sm:grid-cols-[4.5rem_minmax(0,1fr)] sm:gap-8">
-            <div className="flex size-14 items-center justify-center rounded-full border border-border bg-muted/45 text-lg font-medium tracking-[-0.03em] text-foreground sm:size-18 sm:text-xl">
-              B
-            </div>
+          <div className="grid gap-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8">
+            <Avatar className="!size-36 bg-muted/35 sm:!size-40">
+              <AvatarImage
+                src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/06b-bruna-profile-square-self-portrait_mid.webp"
+                alt="Bruna Guarnieri Colasso"
+                className="object-[center_12%]"
+                loading="lazy"
+              />
+              <AvatarFallback>B</AvatarFallback>
+            </Avatar>
             <div className="max-w-4xl">
               <h3 className="text-2xl font-medium tracking-[-0.02em] text-foreground">
                 {founderProfile.name}

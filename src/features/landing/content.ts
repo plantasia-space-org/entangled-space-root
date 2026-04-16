@@ -1,32 +1,47 @@
 export const introduction = [
-  "Every extractive economy draws a line, growth without return.",
-  "Natural systems work differently. Seasons expand and contract. Forests breathe. Tides rise and fall. There are times for planting and times for harvesting.",
-  "Entangled Space encodes this rhythm into economic infrastructure. An open protocol where revenue does not just flow out, it cycles through creators, builders, and regeneration on a pattern derived from a musical tuning system based on the golden ratio.",
-  "Golden ratio math to music and music to economics. The application is universal.",
+  "Every extractive economy acts as if resources are infinite, generating social inequality and serious environmental damage.",
+  "Natural ecosystems work differently. They expand and contract in cycles. Forests breathe. Tides rise and fall.",
+  "Entangled Space encodes one of those rhythms into economic infrastructure — an open protocol where revenue cycles through investors, creators, builders, and regeneration, on a pattern derived from a musical tuning system based on the golden ratio.",
 ] as const
 
 export const whatItIs = [
   {
     ordinal: "01",
-    label: "A specification",
+    label: "Publish the specification",
     description:
-      "The Snail Factor math, the three-role distribution, usage-based allocation rules. Published, open, auditable.",
+      "Define and release the core protocol openly: the Snail Factor math, the three-role distribution model, and the usage-based allocation rules.",
+    goal:
+      "The goal is to make the system clear, auditable, and easy for others to understand, question, and build on.",
     io: null,
   },
   {
     ordinal: "02",
-    label: "A library",
-    description: "An open-source package any platform can integrate.",
+    label: "Build the library",
+    description: "Develop an open-source package that any platform can integrate.",
+    goal:
+      "The goal is to make the protocol usable in practice across different platforms and payment systems.",
     io: {
       input: "Revenue, costs, usage data, current date",
-      output: "Distribution amounts per participant. You choose how to pay.",
+      output:
+        "Distribution amounts per participant, independent of how payment is executed",
     },
   },
   {
     ordinal: "03",
-    label: "A dashboard",
+    label: "Integrate the first use case",
     description:
-      "A public interface at entangled.space to see the cycle in motion, simulate distributions for your own context, and verify any implementation is computing correctly.",
+      "Implement the protocol in Plantasia Space as the first real integration and proof of concept.",
+    goal:
+      "This step turns the protocol from a specification and library into a working system inside a live platform. It allows us to validate the logic in practice, test the model in a concrete environment, and learn from a real creative ecosystem before expanding further.",
+    io: null,
+  },
+  {
+    ordinal: "04",
+    label: "Launch the dashboard",
+    description:
+      "Create a public interface at entangled.space where people can observe the cycle in motion, simulate distributions in their own context, and verify that implementations are computing correctly.",
+    goal:
+      "The goal is to make the protocol transparent, testable, and legible beyond the code itself.",
     io: null,
   },
 ] as const

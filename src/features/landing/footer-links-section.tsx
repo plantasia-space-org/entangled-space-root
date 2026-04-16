@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button"
+
 type FooterLinksSectionProps = {
   onContactClick: () => void
 }
@@ -13,40 +15,44 @@ export function FooterLinksSection({
             Learn More
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              href="https://plantasia.space"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
-            >
-              plantasia.space ↗
-            </a>
-            <a
-              href="https://artizen.fund/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
-            >
-              Fund on Artizen ↗
-            </a>
-            <a
-              href="https://github.com/plantasia-space-org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href="?contact=1"
-              onClick={(event) => {
-                event.preventDefault()
-                onContactClick()
-              }}
-              className="inline-flex items-center border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
-            >
-              Contact
-            </a>
+            <Button asChild size="lg" className="px-5 text-sm">
+              <a
+                href="https://plantasia.space"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                plantasia.space ↗
+              </a>
+            </Button>
+            <Button asChild size="lg" className="px-5 text-sm">
+              <a
+                href="https://artizen.fund/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fund on Artizen ↗
+              </a>
+            </Button>
+            <Button asChild size="lg" className="px-5 text-sm">
+              <a
+                href="https://github.com/plantasia-space-org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub ↗
+              </a>
+            </Button>
+            <Button asChild size="lg" className="px-5 text-sm">
+              <a
+                href="?contact=1"
+                onClick={(event) => {
+                  event.preventDefault()
+                  onContactClick()
+                }}
+              >
+                Contact
+              </a>
+            </Button>
           </div>
         </div>
       </div>
