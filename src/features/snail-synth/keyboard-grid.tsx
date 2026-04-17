@@ -2,7 +2,13 @@ import { AnimatePresence, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-import { KEYBOARD_PERIODS, getFreq, getPeriodKeys, KEY_LABELS, NOTE_NAMES } from "./snail-synth-data"
+import {
+  KEYBOARD_PERIODS,
+  getFreq,
+  getPeriodKeys,
+  KEY_LABELS,
+  NOTE_NAMES,
+} from "./snail-synth-data"
 
 type KeyboardPeriod = (typeof KEYBOARD_PERIODS)[number]
 
@@ -33,18 +39,19 @@ export function KeyboardGrid({
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+        <p className="text-[0.72rem] font-medium tracking-[0.22em] text-muted-foreground uppercase">
           Keyboard
         </p>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2" data-vaul-no-drag>
           {KEYBOARD_PERIODS.map((p) => (
             <button
               key={p}
               type="button"
+              data-vaul-no-drag
               onClick={() => onSelectPeriod(p)}
               className={cn(
-                "inline-flex h-7 items-center border px-2.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] transition-colors [touch-action:manipulation] sm:h-8 sm:px-3 sm:text-[0.72rem]",
+                "inline-flex min-h-11 [touch-action:manipulation] items-center border px-3 text-[0.68rem] font-medium tracking-[0.18em] uppercase transition-colors sm:h-8 sm:min-h-8 sm:px-3 sm:text-[0.72rem]",
                 period === p
                   ? "border-foreground bg-foreground text-background"
                   : "border-border bg-background text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -72,10 +79,10 @@ export function KeyboardGrid({
             className="absolute inset-0 space-y-3 border border-border bg-background p-2 sm:p-3"
           >
             <div className="flex items-center justify-between">
-              <p className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="text-[0.72rem] font-medium tracking-[0.22em] text-muted-foreground uppercase">
                 {`Period ${period}`}
               </p>
-              <p className="text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground">
+              <p className="text-[0.68rem] tracking-[0.2em] text-muted-foreground uppercase">
                 7 notes
               </p>
             </div>
@@ -95,7 +102,7 @@ export function KeyboardGrid({
                     onPointerLeave={() => onReleaseKey(keyId)}
                     onPointerCancel={() => onReleaseKey(keyId)}
                     className={cn(
-                      "flex min-h-32 min-w-0 flex-col justify-between bg-background px-1.5 py-2 text-center [touch-action:manipulation] sm:min-h-40 sm:px-2 sm:py-3",
+                      "flex min-h-32 min-w-0 [touch-action:manipulation] flex-col justify-between bg-background px-1.5 py-2 text-center sm:min-h-40 sm:px-2 sm:py-3",
                       isActive
                         ? "bg-foreground text-background"
                         : "text-foreground hover:bg-muted/55"
@@ -103,8 +110,10 @@ export function KeyboardGrid({
                   >
                     <span
                       className={cn(
-                        "text-[0.6rem] font-medium uppercase tracking-[0.18em] sm:text-[0.68rem]",
-                        isActive ? "text-background/70" : "text-muted-foreground"
+                        "text-[0.6rem] font-medium tracking-[0.18em] uppercase sm:text-[0.68rem]",
+                        isActive
+                          ? "text-background/70"
+                          : "text-muted-foreground"
                       )}
                     >
                       {KEY_LABELS[keyId] ?? ""}
@@ -120,11 +129,17 @@ export function KeyboardGrid({
                     <span
                       className={cn(
                         "text-[0.6rem] tabular-nums sm:text-xs",
-                        isActive ? "text-background/80" : "text-muted-foreground"
+                        isActive
+                          ? "text-background/80"
+                          : "text-muted-foreground"
                       )}
                     >
-                      <span className="hidden sm:inline">{getFreq(ni, notePeriod).toFixed(1)}</span>
-                      <span className="sm:hidden">{getFreq(ni, notePeriod).toFixed(0)}</span>
+                      <span className="hidden sm:inline">
+                        {getFreq(ni, notePeriod).toFixed(1)}
+                      </span>
+                      <span className="sm:hidden">
+                        {getFreq(ni, notePeriod).toFixed(0)}
+                      </span>
                     </span>
                   </button>
                 )

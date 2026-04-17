@@ -15,6 +15,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerHandle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import {
@@ -247,6 +248,8 @@ export function SnailKeyboardSection({
           setOpen(next)
         }}
         shouldScaleBackground={false}
+        handleOnly
+        closeThreshold={0.45}
         noBodyStyles
       >
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/96 backdrop-blur-sm">
@@ -255,6 +258,7 @@ export function SnailKeyboardSection({
               asChild
               variant="outline"
               size="sm"
+              data-vaul-no-drag
               className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
             >
               <a
@@ -262,6 +266,7 @@ export function SnailKeyboardSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="[touch-action:manipulation]"
+                data-vaul-no-drag
               >
                 <span>Fund on Artizen</span>
                 <ArrowUpRight className="size-4" />
@@ -313,6 +318,7 @@ export function SnailKeyboardSection({
                 <Button
                   variant="outline"
                   size="sm"
+                  data-vaul-no-drag
                   className="min-h-11 min-w-11 [touch-action:manipulation] px-3 sm:min-h-7 sm:min-w-0 sm:px-2.5"
                 >
                   <span className="hidden sm:inline">Open</span>
@@ -325,9 +331,12 @@ export function SnailKeyboardSection({
           </div>
         </div>
 
-        <DrawerContent className="border-t border-border bg-background">
+        <DrawerContent className="border-t border-border bg-background pb-[calc(env(safe-area-inset-bottom)+1rem)]">
           <div className="mx-auto w-full max-w-6xl px-6 py-4 sm:px-8 sm:py-5">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div
+              className="flex flex-wrap items-center justify-between gap-3"
+              data-vaul-no-drag
+            >
               <p className="text-[0.72rem] tracking-[0.2em] text-muted-foreground uppercase">
                 Cycle {currentEntry.cycle} · Step{" "}
                 {String(currentEntry.anchorStep).padStart(2, "0")}
@@ -401,7 +410,10 @@ export function SnailKeyboardSection({
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 border-t border-border pt-4">
+              <div
+                className="flex flex-wrap items-center gap-2 border-t border-border pt-4"
+                data-vaul-no-drag
+              >
                 <InfoChip
                   label="Scale"
                   content="833-cent golden-ratio scale (Bohlen). Period = φ ≈ 1.618×, anchored at 261.62 Hz on note 3."

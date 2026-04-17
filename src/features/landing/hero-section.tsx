@@ -3,7 +3,7 @@ export function HeroSection() {
     <section className="border-b border-border bg-background">
       <div className="mx-auto grid w-full max-w-6xl gap-14 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,30rem)] lg:items-start lg:gap-20 lg:py-36">
         <div className="max-w-4xl">
-          <p className="mb-8 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+          <p className="mb-8 text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
             entangled.space
           </p>
           <h1 className="max-w-4xl text-5xl leading-[0.92] font-medium tracking-[-0.04em] text-foreground sm:text-6xl lg:text-8xl">
@@ -12,13 +12,17 @@ export function HeroSection() {
         </div>
 
         <div className="bg-transparent">
-          <div className="aspect-square w-full overflow-hidden bg-background">
+          <div className="relative aspect-square w-full overflow-hidden bg-background">
             <iframe
               src="https://dev-world.plantasia.space/?mode=10&fullscreen=false&skybox=0"
               title="Entangled Space 3D animation"
-              className="pointer-events-none h-full w-full sm:pointer-events-auto"
+              className="pointer-events-none h-full w-full lg:pointer-events-auto"
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 z-10 lg:hidden"
             />
           </div>
         </div>
