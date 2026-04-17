@@ -1,7 +1,7 @@
 export const introduction = [
   "Every extractive economy acts as if resources are infinite, generating social inequality and serious environmental damage.",
-  "Natural ecosystems work differently. They expand and contract in cycles. Forests breathe. Tides rise and fall.",
-  "Entangled Space encodes one of those rhythms into economic infrastructure — an open protocol where revenue cycles through investors, creators, builders, and regeneration, on a pattern derived from a musical tuning system based on the golden ratio.",
+  "Natural ecosystems work differently. They expand and contract in balanced cycles. Beyond complexity, there is equilibrium. Forests breathe. Tides rise and fall.",
+  "Entangled Space encodes one of those rhythms into economic infrastructure — an open protocol where revenue flows between investors, team, creators, builders, and regeneration — balanced by a cycle derived from music theory.",
 ] as const
 
 export const whatItIs = [
@@ -118,7 +118,7 @@ export const implementationRows = [
 ] as const
 
 export const snailFactorCopy = [
-  "The engine of the protocol is a dynamic coefficient called the Snail Alpha Factor, derived from the 833 Cents Scale, a tuning system developed by Heinz Bohlen (2012), built on combination tones, which coincidentally converges on the golden ratio (1.618).",
+  "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
   "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",
   "We translate those 7 steps into an economic cycle: 13 steps of ascent and return spanning ~637 days. The full system breathes.",
 ] as const

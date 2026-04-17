@@ -50,7 +50,6 @@ export function ProtocolSection({
           </div>
           <div className="max-w-2xl space-y-4">
             <p className="text-base leading-8 text-foreground/88 sm:text-lg">
-              Every input maps to an output. Nothing escapes the accounting.
               The protocol defines who receives value, in what proportion, and
               modulated by what rhythm.
             </p>
