@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 
 type FooterLinksSectionProps = {
@@ -20,8 +22,10 @@ export function FooterLinksSection({
                 href="https://plantasia.space"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5"
               >
-                plantasia.space ↗
+                <span>Plantasia Space</span>
+                <ArrowUpRight className="size-4" />
               </a>
             </Button>
             <Button asChild size="lg" className="px-5 text-sm">
@@ -29,8 +33,10 @@ export function FooterLinksSection({
                 href="https://artizen.fund/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5"
               >
-                Fund on Artizen ↗
+                <span>Fund on Artizen</span>
+                <ArrowUpRight className="size-4" />
               </a>
             </Button>
             <Button asChild size="lg" className="px-5 text-sm">
@@ -38,8 +44,10 @@ export function FooterLinksSection({
                 href="https://github.com/plantasia-space-org"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5"
               >
-                GitHub ↗
+                <span>GitHub</span>
+                <ArrowUpRight className="size-4" />
               </a>
             </Button>
             <Button asChild size="lg" className="px-5 text-sm">

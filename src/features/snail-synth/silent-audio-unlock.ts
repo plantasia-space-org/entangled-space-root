@@ -1,28 +1,12 @@
-// iOS mute-switch workaround
-// ─────────────────────────────────────────────────────────────────────────────
-// On iPhone/iPad the audio session starts in "Ring/Silent" category, which
-// means Web Audio output is silenced by the hardware mute switch.  Playing any
-// sound through an <audio> element (even a silent MP3) from inside a user
-// gesture promotes the session to "Playback" category, which bypasses the
-// mute switch.  All subsequent Web Audio / Tone.js output then flows through
-// the same unlocked session.
-//
-// Pattern matches orbiters/src/audio/SilentAudioUnlock.js
+const SILENT_AUDIO_SELECTOR = "[data-silent-audio-unlock]"
 
 let audioUnlocked = false
 let unlockPromise: Promise<boolean> | null = null
-let audioEl: HTMLAudioElement | null = null
 
-function getAudioElement(): HTMLAudioElement {
-  if (!audioEl) {
-    audioEl = document.createElement("audio")
-    audioEl.setAttribute("playsinline", "")
-    audioEl.setAttribute("preload", "auto")
-    audioEl.src = "/assets/sounds/silent.mp3"
-    audioEl.style.display = "none"
-    document.body.appendChild(audioEl)
-  }
-  return audioEl
+function getAudioElement(): HTMLAudioElement | null {
+  if (typeof document === "undefined") return null
+  const element = document.querySelector(SILENT_AUDIO_SELECTOR)
+  return element instanceof HTMLAudioElement ? element : null
 }
 
 export function ensureSilentAudioUnlock(): Promise<boolean> {
@@ -30,11 +14,16 @@ export function ensureSilentAudioUnlock(): Promise<boolean> {
   if (unlockPromise) return unlockPromise
 
   const el = getAudioElement()
+  if (!el) return Promise.resolve(false)
 
   unlockPromise = Promise.resolve(el.play())
     .then(() => {
-      el.pause()
-      el.currentTime = 0
+      try {
+        el.pause()
+        el.currentTime = 0
+      } catch {
+        // Best effort; failures here are non-fatal.
+      }
       audioUnlocked = true
       unlockPromise = null
       return true

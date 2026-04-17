@@ -41,7 +41,7 @@ export function ContactDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[calc(100%-2rem)] p-6 sm:max-w-xl sm:p-8">
         <DialogHeader className="gap-3">
-          <p className="text-[0.68rem] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+          <p className="text-[0.68rem] font-medium tracking-[0.24em] text-muted-foreground uppercase">
             Contact
           </p>
           <DialogTitle className="text-2xl tracking-[-0.03em] text-foreground sm:text-3xl">
@@ -60,7 +60,11 @@ export function ContactDialog({
               {getStatusMessage(status, "Your message was received.")}
             </p>
             <div className="flex justify-end">
-              <Button type="button" className="px-6" onClick={() => onOpenChange(false)}>
+              <Button
+                type="button"
+                className="min-h-11 px-6 sm:min-h-9"
+                onClick={() => onOpenChange(false)}
+              >
                 Close
               </Button>
             </div>
@@ -70,7 +74,7 @@ export function ContactDialog({
             <div className="space-y-2">
               <label
                 htmlFor="contact-name"
-                className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+                className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase"
               >
                 Name
               </label>
@@ -81,14 +85,14 @@ export function ContactDialog({
                 autoComplete="name"
                 value={name}
                 onChange={(event) => onNameChange(event.target.value)}
-                className="w-full border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
+                className="w-full border border-border bg-background px-4 py-3 text-base text-foreground transition-colors outline-none placeholder:text-muted-foreground focus:border-foreground"
               />
             </div>
 
             <div className="space-y-2">
               <label
                 htmlFor="contact-email"
-                className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+                className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase"
               >
                 Mail
               </label>
@@ -99,14 +103,14 @@ export function ContactDialog({
                 autoComplete="email"
                 value={email}
                 onChange={(event) => onEmailChange(event.target.value)}
-                className="w-full border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
+                className="w-full border border-border bg-background px-4 py-3 text-base text-foreground transition-colors outline-none placeholder:text-muted-foreground focus:border-foreground"
               />
             </div>
 
             <div className="space-y-2">
               <label
                 htmlFor="contact-message"
-                className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+                className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase"
               >
                 Message
               </label>
@@ -116,14 +120,16 @@ export function ContactDialog({
                 rows={6}
                 value={message}
                 onChange={(event) => onMessageChange(event.target.value)}
-                className="w-full resize-y border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
+                className="w-full resize-y border border-border bg-background px-4 py-3 text-base text-foreground transition-colors outline-none placeholder:text-muted-foreground focus:border-foreground"
               />
             </div>
 
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p
                 className={`text-sm ${
-                  status.type === "error" ? "text-destructive" : "text-muted-foreground"
+                  status.type === "error"
+                    ? "text-destructive"
+                    : "text-muted-foreground"
                 }`}
                 aria-live="polite"
               >
@@ -135,7 +141,7 @@ export function ContactDialog({
               </p>
               <Button
                 type="submit"
-                className="px-6"
+                className="min-h-11 w-full px-6 sm:min-h-9 sm:w-auto"
                 disabled={status.type === "submitting"}
               >
                 {status.type === "submitting" ? "Sending..." : "Send"}

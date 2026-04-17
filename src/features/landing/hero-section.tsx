@@ -16,7 +16,7 @@ export function HeroSection() {
             <iframe
               src="https://dev-world.plantasia.space/?mode=10&fullscreen=false&skybox=0"
               title="Entangled Space 3D animation"
-              className="h-full w-full"
+              className="pointer-events-none h-full w-full sm:pointer-events-auto"
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
             />

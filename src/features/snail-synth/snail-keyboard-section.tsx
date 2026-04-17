@@ -1,9 +1,27 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react"
-import { ArrowUpRight, ChevronUp, Info, Pause, Play, Volume2, VolumeX, X } from "lucide-react"
+import {
+  ArrowUpRight,
+  ChevronUp,
+  Info,
+  Pause,
+  Play,
+  Volume2,
+  VolumeX,
+  X,
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 
 import { KeyboardGrid } from "./keyboard-grid"
 import { playVoice, toneStart } from "./snail-audio"
@@ -40,13 +58,16 @@ function InfoChip({ label, content }: { label: string; content: string }) {
       <HoverCardTrigger asChild>
         <button
           type="button"
-          className="inline-flex h-7 items-center gap-2 border border-border px-2.5 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+          className="inline-flex h-7 items-center gap-2 border border-border px-2.5 text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:bg-muted/60 hover:text-foreground"
         >
           <Info className="size-3.5" />
           {label}
         </button>
       </HoverCardTrigger>
-      <HoverCardContent align="start" className="w-72 border border-border bg-background p-3">
+      <HoverCardContent
+        align="start"
+        className="w-72 border border-border bg-background p-3"
+      >
         {content}
       </HoverCardContent>
     </HoverCard>
@@ -93,7 +114,8 @@ export function SnailKeyboardSection({
 
     const basePeriod = (entry.cycle ?? 1) - 1
     const period = noteIndex === 0 ? basePeriod + 1 : basePeriod
-    const keyId = noteIndex === 0 ? `0,${basePeriod + 1}` : `${noteIndex},${basePeriod}`
+    const keyId =
+      noteIndex === 0 ? `0,${basePeriod + 1}` : `${noteIndex},${basePeriod}`
 
     // Auto-switch the displayed keyboard period to match the sequencer's current cycle
     const displayPeriod = keyboardPeriod
@@ -129,7 +151,10 @@ export function SnailKeyboardSection({
   useEffect(() => {
     if (!open) {
       const raf = requestAnimationFrame(() => {
-        window.scrollTo({ top: savedScrollRef.current, behavior: "instant" as ScrollBehavior })
+        window.scrollTo({
+          top: savedScrollRef.current,
+          behavior: "instant" as ScrollBehavior,
+        })
       })
       return () => cancelAnimationFrame(raf)
     }
@@ -141,32 +166,36 @@ export function SnailKeyboardSection({
 
   // ── Keyboard interactions ───────────────────────────────────────────────────
 
-  const pressKey = useEffectEvent(async (noteIndex: number, period: number, keyId: string) => {
-    setHeldKeyIds((current) => (current.includes(keyId) ? current : [...current, keyId]))
-    heldKeysRef.current.add(keyId)
+  const pressKey = useEffectEvent(
+    async (noteIndex: number, period: number, keyId: string) => {
+      setHeldKeyIds((current) =>
+        current.includes(keyId) ? current : [...current, keyId]
+      )
+      heldKeysRef.current.add(keyId)
 
-    const matchingSteps = VISIBLE_SNAIL_MODEL.flatMap((entry, index) =>
-      getKeyIdForEntry(entry) === keyId ? [index] : []
-    )
+      const matchingSteps = VISIBLE_SNAIL_MODEL.flatMap((entry, index) =>
+        getKeyIdForEntry(entry) === keyId ? [index] : []
+      )
 
-    if (matchingSteps.length > 0) {
-      const nearestStep = matchingSteps.reduce((nearest, candidate) => {
-        const nearestDistance = Math.abs(nearest - stepRef.current)
-        const candidateDistance = Math.abs(candidate - stepRef.current)
+      if (matchingSteps.length > 0) {
+        const nearestStep = matchingSteps.reduce((nearest, candidate) => {
+          const nearestDistance = Math.abs(nearest - stepRef.current)
+          const candidateDistance = Math.abs(candidate - stepRef.current)
 
-        return candidateDistance < nearestDistance ? candidate : nearest
-      }, matchingSteps[0]!)
+          return candidateDistance < nearestDistance ? candidate : nearest
+        }, matchingSteps[0]!)
 
-      stepRef.current = nearestStep
-      setCurrentStep(nearestStep)
+        stepRef.current = nearestStep
+        setCurrentStep(nearestStep)
+      }
+
+      if (soundEnabled) {
+        await ensureSilentAudioUnlock()
+        await toneStart()
+        playVoice(currentVoice, noteIndex, period)
+      }
     }
-
-    if (soundEnabled) {
-      await ensureSilentAudioUnlock()
-      await toneStart()
-      playVoice(currentVoice, noteIndex, period)
-    }
-  })
+  )
 
   const releaseKey = useEffectEvent((keyId: string) => {
     heldKeysRef.current.delete(keyId)
@@ -221,64 +250,75 @@ export function SnailKeyboardSection({
         noBodyStyles
       >
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/96 backdrop-blur-sm">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3 sm:px-8">
-            <div className="flex min-w-0 items-center gap-3">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] sm:px-8 sm:py-3">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
+            >
               <a
                 href="https://artizen.fund/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation]"
+                className="[touch-action:manipulation]"
               >
-                Fund on Artizen <ArrowUpRight className="size-3" />
+                <span>Fund on Artizen</span>
+                <ArrowUpRight className="size-4" />
               </a>
-              <a
-                href="https://github.com/plantasia-space-org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation]"
-              >
-                GitHub <ArrowUpRight className="size-3" />
-              </a>
-              <a
-                href="https://entangled.space/?contact=1"
-                className="hidden text-[0.68rem] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [touch-action:manipulation] sm:inline"
-              >
-                Contact
-              </a>
-            </div>
+            </Button>
 
             <div className="flex shrink-0 items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
                 data-vaul-no-drag
-                className="[touch-action:manipulation]"
+                className="min-h-11 min-w-11 [touch-action:manipulation] px-3 sm:min-h-7 sm:min-w-0 sm:px-2.5"
                 onClick={() => setIsPlaying((current) => !current)}
               >
-                {isPlaying ? <Pause className="size-3.5" /> : <Play className="size-3.5" />}
-                <span className="hidden sm:inline">{isPlaying ? "Pause" : "Play"}</span>
+                {isPlaying ? (
+                  <Pause className="size-3.5" />
+                ) : (
+                  <Play className="size-3.5" />
+                )}
+                <span className="hidden sm:inline">
+                  {isPlaying ? "Pause" : "Play"}
+                </span>
               </Button>
 
               <Button
                 variant="outline"
                 size="sm"
                 data-vaul-no-drag
-                className="[touch-action:manipulation]"
+                className="min-h-11 min-w-11 [touch-action:manipulation] px-3 sm:min-h-7 sm:min-w-0 sm:px-2.5"
                 onClick={() => {
                   setSequencerKeyId(null)
                   const next = !soundEnabled
                   setSoundEnabled(next)
-                  if (next) void ensureSilentAudioUnlock().then(() => toneStart())
+                  if (next)
+                    void ensureSilentAudioUnlock().then(() => toneStart())
                 }}
               >
-                {soundEnabled ? <Volume2 className="size-3.5" /> : <VolumeX className="size-3.5" />}
-                <span className="hidden sm:inline">{soundEnabled ? "Sound On" : "Sound Off"}</span>
+                {soundEnabled ? (
+                  <Volume2 className="size-3.5" />
+                ) : (
+                  <VolumeX className="size-3.5" />
+                )}
+                <span className="hidden sm:inline">
+                  {soundEnabled ? "Sound On" : "Sound Off"}
+                </span>
               </Button>
 
               <DrawerTrigger asChild>
-                <Button variant="outline" size="sm" className="[touch-action:manipulation]">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="min-h-11 min-w-11 [touch-action:manipulation] px-3 sm:min-h-7 sm:min-w-0 sm:px-2.5"
+                >
                   <span className="hidden sm:inline">Open</span>
-                  <ChevronUp className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
+                  <ChevronUp
+                    className={`size-4 transition-transform ${open ? "rotate-180" : ""}`}
+                  />
                 </Button>
               </DrawerTrigger>
             </div>
@@ -288,13 +328,22 @@ export function SnailKeyboardSection({
         <DrawerContent className="border-t border-border bg-background">
           <div className="mx-auto w-full max-w-6xl px-6 py-4 sm:px-8 sm:py-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-[0.72rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Cycle {currentEntry.cycle} · Step {String(currentEntry.anchorStep).padStart(2, "0")}
+              <p className="text-[0.72rem] tracking-[0.2em] text-muted-foreground uppercase">
+                Cycle {currentEntry.cycle} · Step{" "}
+                {String(currentEntry.anchorStep).padStart(2, "0")}
               </p>
 
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={() => setIsPlaying((current) => !current)}>
-                  {isPlaying ? <Pause className="size-3.5" /> : <Play className="size-3.5" />}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsPlaying((current) => !current)}
+                >
+                  {isPlaying ? (
+                    <Pause className="size-3.5" />
+                  ) : (
+                    <Play className="size-3.5" />
+                  )}
                   {isPlaying ? "Pause" : "Play"}
                 </Button>
 
@@ -305,15 +354,25 @@ export function SnailKeyboardSection({
                     setSequencerKeyId(null)
                     const next = !soundEnabled
                     setSoundEnabled(next)
-                    if (next) void ensureSilentAudioUnlock().then(() => toneStart())
+                    if (next)
+                      void ensureSilentAudioUnlock().then(() => toneStart())
                   }}
                 >
-                  {soundEnabled ? <Volume2 className="size-3.5" /> : <VolumeX className="size-3.5" />}
+                  {soundEnabled ? (
+                    <Volume2 className="size-3.5" />
+                  ) : (
+                    <VolumeX className="size-3.5" />
+                  )}
                   {soundEnabled ? "Sound On" : "Sound Off"}
                 </Button>
 
                 <DrawerClose asChild>
-                  <Button variant="outline" size="icon-sm" aria-label="Close sound drawer">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    aria-label="Close sound drawer"
+                  >
+                    <span className="hidden sm:inline">Close</span>
                     <X className="size-4" />
                   </Button>
                 </DrawerClose>
