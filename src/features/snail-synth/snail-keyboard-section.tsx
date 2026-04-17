@@ -40,6 +40,29 @@ import { TransportControls } from "./transport-controls"
 // 2 steps per beat → each step is one eighth note
 const STEPS_PER_BEAT = 2
 
+type InfoChipItem = {
+  label: string
+  content: string
+}
+
+const INFO_CHIP_ITEMS: InfoChipItem[] = [
+  {
+    label: "Scale",
+    content:
+      "833-cent golden-ratio scale (Bohlen). Period = phi ~= 1.618x, anchored at 261.62 Hz on note 3.",
+  },
+  {
+    label: "Mapping",
+    content:
+      "Keyboard rows map Q-U high, A-J mid, and Z-M low. Each row plays 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.",
+  },
+  {
+    label: "Periods",
+    content:
+      "The keyboard shows one golden-ratio period at a time. Use the switcher to move between period 0 and period 5.",
+  },
+]
+
 function isEditableTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false
 
@@ -71,6 +94,19 @@ function InfoChip({ label, content }: { label: string; content: string }) {
         {content}
       </HoverCardContent>
     </HoverCard>
+  )
+}
+
+function InfoCards({ items }: { items: InfoChipItem[] }) {
+  return (
+    <div
+      className="hidden flex-wrap items-center gap-2 sm:flex"
+      data-vaul-no-drag
+    >
+      {items.map(({ label, content }) => (
+        <InfoChip key={label} label={label} content={content} />
+      ))}
+    </div>
   )
 }
 
@@ -341,7 +377,7 @@ export function SnailKeyboardSection({
                 {String(currentEntry.anchorStep).padStart(2, "0")}
               </p>
 
-              <div className="flex items-center gap-2">
+              <div className="hidden items-center gap-2 sm:flex">
                 <Button
                   variant="outline"
                   size="sm"
@@ -410,21 +446,10 @@ export function SnailKeyboardSection({
               </div>
 
               <div
-                className="flex flex-wrap items-center gap-2 border-t border-border pt-4"
+                className="hidden flex-wrap items-center gap-2 border-t border-border pt-4 sm:flex"
                 data-vaul-no-drag
               >
-                <InfoChip
-                  label="Scale"
-                  content="833-cent golden-ratio scale (Bohlen). Period = φ ≈ 1.618×, anchored at 261.62 Hz on note 3."
-                />
-                <InfoChip
-                  label="Mapping"
-                  content="Keyboard rows map Q–U high, A–J mid, and Z–M low. Each row plays 1 → 2 → 3 → 4 → 5 → 6 → 7."
-                />
-                <InfoChip
-                  label="Periods"
-                  content="The keyboard shows one golden-ratio period at a time. Use the switcher to move between period 0 and period 5."
-                />
+                <InfoCards items={INFO_CHIP_ITEMS} />
               </div>
             </div>
           </div>

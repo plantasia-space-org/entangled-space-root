@@ -1,4 +1,3 @@
-import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 
 import "./index.css"
@@ -9,9 +8,7 @@ import { registerSilentAudioUnlockHandlers } from "@/features/snail-synth/silent
 registerSilentAudioUnlockHandlers()
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </StrictMode>
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
 )

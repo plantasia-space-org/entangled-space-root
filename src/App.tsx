@@ -30,8 +30,8 @@ import { SnailKeyboardSection } from "@/features/snail-synth/snail-keyboard-sect
 import { SnailVisualizationSection } from "@/features/snail-visualization/snail-visualization-section"
 
 export function App() {
-  const { theme, setTheme } = useTheme()
-  const isDark = theme === "dark"
+  const { resolvedTheme, setTheme } = useTheme()
+  const isDark = resolvedTheme === "dark"
   const [activeSnailStep, setActiveSnailStep] = useState(0)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [waitlistEmail, setWaitlistEmail] = useState("")

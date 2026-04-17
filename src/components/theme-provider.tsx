@@ -13,6 +13,7 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme
+  resolvedTheme: ResolvedTheme
   setTheme: (theme: Theme) => void
 }
 
@@ -73,6 +74,11 @@ export function ThemeProvider({
 
     return defaultTheme
   })
+  const [resolvedTheme, setResolvedTheme] = React.useState<ResolvedTheme>(() => {
+    const storedTheme = localStorage.getItem(storageKey)
+    const nextTheme = isTheme(storedTheme) ? storedTheme : defaultTheme
+    return nextTheme === "system" ? getSystemTheme() : nextTheme
+  })
 
   const setTheme = React.useCallback(
     (nextTheme: Theme) => {
@@ -83,7 +89,7 @@ export function ThemeProvider({
   )
 
   const applyTheme = React.useCallback(
-    (nextTheme: Theme) => {
+    (nextTheme: Theme): ResolvedTheme => {
       const root = document.documentElement
       const resolvedTheme =
         nextTheme === "system" ? getSystemTheme() : nextTheme
@@ -97,12 +103,14 @@ export function ThemeProvider({
       if (restoreTransitions) {
         restoreTransitions()
       }
+
+      return resolvedTheme
     },
     [disableTransitionOnChange]
   )
 
-  React.useEffect(() => {
-    applyTheme(theme)
+  React.useLayoutEffect(() => {
+    setResolvedTheme(applyTheme(theme))
 
     if (theme !== "system") {
       return undefined
@@ -110,7 +118,7 @@ export function ThemeProvider({
 
     const mediaQuery = window.matchMedia(COLOR_SCHEME_QUERY)
     const handleChange = () => {
-      applyTheme("system")
+      setResolvedTheme(applyTheme("system"))
     }
 
     mediaQuery.addEventListener("change", handleChange)
@@ -148,9 +156,10 @@ export function ThemeProvider({
   const value = React.useMemo(
     () => ({
       theme,
+      resolvedTheme,
       setTheme,
     }),
-    [theme, setTheme]
+    [theme, resolvedTheme, setTheme]
   )
 
   return (
