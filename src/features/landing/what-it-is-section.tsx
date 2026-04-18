@@ -49,52 +49,48 @@ export function WhatItIsSection({ items }: WhatItIsSectionProps) {
                   index > 0 ? "border-t border-border" : ""
                 }`}
               >
-                <div className="grid gap-4 py-7 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-6 lg:grid-cols-[4.5rem_minmax(0,1fr)] lg:gap-10">
+                <AccordionTrigger className="min-h-11 gap-4 py-7 text-left hover:no-underline sm:grid sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-6 lg:grid-cols-[4.5rem_minmax(0,1fr)] lg:gap-10">
                   <div className="relative flex items-start gap-4">
                     <div className="relative z-10 flex size-9 shrink-0 items-center justify-center border border-border bg-background text-[0.68rem] font-medium tracking-[0.18em] text-foreground sm:mb-4 sm:size-10">
                       {ordinal}
                     </div>
                   </div>
-                  <div className="max-w-2xl">
-                    <AccordionTrigger className="min-h-11 items-start gap-6 py-2 text-left hover:no-underline sm:py-0">
-                      <div className="space-y-2">
-                        <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
-                          {label}
-                        </p>
-                        <p className="text-base leading-7 text-foreground/88 sm:text-lg">
-                          {description}
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-0">
-                      <div className="space-y-5 pt-5">
-                        {io && (
-                          <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
-                            <div className="bg-background px-4 py-3">
-                              <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                                Input
-                              </p>
-                              <p className="font-mono text-sm text-foreground/80">
-                                {io.input}
-                              </p>
-                            </div>
-                            <div className="bg-background px-4 py-3">
-                              <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                                Output
-                              </p>
-                              <p className="font-mono text-sm text-foreground/80">
-                                {io.output}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                        <p className="text-base leading-8 text-foreground/72 sm:text-lg">
-                          {goal}
-                        </p>
-                      </div>
-                    </AccordionContent>
+                  <div className="max-w-2xl space-y-2">
+                    <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
+                      {label}
+                    </p>
+                    <p className="text-base leading-7 text-foreground/88 sm:text-lg">
+                      {description}
+                    </p>
                   </div>
-                </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-0 sm:pl-[5rem] lg:pl-[7rem]">
+                  <div className="space-y-5 pt-5">
+                    {io && (
+                      <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
+                        <div className="bg-background px-4 py-3">
+                          <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                            Input
+                          </p>
+                          <p className="font-mono text-sm text-foreground/80">
+                            {io.input}
+                          </p>
+                        </div>
+                        <div className="bg-background px-4 py-3">
+                          <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                            Output
+                          </p>
+                          <p className="font-mono text-sm text-foreground/80">
+                            {io.output}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                    <p className="text-base leading-8 text-foreground/72 sm:text-lg">
+                      {goal}
+                    </p>
+                  </div>
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
