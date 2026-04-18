@@ -120,7 +120,7 @@ export const implementationRows = [
 export const snailFactorCopy = [
   "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
   "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",
-  "We translate those 7 steps into an economic cycle: 13 steps of ascent and return spanning ~637 days. The full system breathes.",
+  "We translate those 7 steps into an economic cycle: 12 steps of ascent and return spanning ~637 days. The full system breathes.",
 ] as const
 
 export const founderProfile = {

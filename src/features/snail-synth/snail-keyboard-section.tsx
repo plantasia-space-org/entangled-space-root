@@ -59,7 +59,7 @@ const INFO_CHIP_ITEMS: InfoChipItem[] = [
   {
     label: "Periods",
     content:
-      "The keyboard shows one golden-ratio period at a time. Use the switcher to move between period 0 and period 5.",
+      "The keyboard shows one golden-ratio period at a time. Use the switcher to move between period 0 and period 2.",
   },
 ]
 

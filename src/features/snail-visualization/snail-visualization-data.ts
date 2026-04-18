@@ -14,6 +14,7 @@ type FormulaState = {
 }
 
 const TOTAL_STEPS = VISIBLE_SNAIL_MODEL.length
+const CYCLE_STEPS = 12
 
 function getFormulaState(position: number, factor: number): FormulaState {
   const progressT = TOTAL_STEPS <= 1 ? 0 : position / (TOTAL_STEPS - 1)
@@ -41,7 +42,7 @@ function getFormulaState(position: number, factor: number): FormulaState {
 
 export const VISUALIZATION_MODEL = VISIBLE_SNAIL_MODEL.map((entry, index) => {
   const formula = getFormulaState(index, entry.factor)
-  const theta = index / 13 * Math.PI * 2 - Math.PI / 2
+  const theta = index / CYCLE_STEPS * Math.PI * 2 - Math.PI / 2
   const growthRadius = 10 + Math.pow(index / Math.max(TOTAL_STEPS - 1, 1), 1.18) * formula.revenue * 128
   const qOffset = ((entry.factor - 0.46667) / 0.36666) * 20
   const radius = growthRadius + qOffset

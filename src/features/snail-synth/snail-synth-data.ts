@@ -9,7 +9,7 @@ export const ROOT_FREQ = 261.62 * Math.pow(2, -366.91 / 1200)
 export const MIN_BPM = 70
 export const MAX_BPM = 140
 export const DEFAULT_BPM = 96
-export const VISIBLE_CYCLES = 6
+export const VISIBLE_CYCLES = 3
 // Each sequencer step is one eighth note ('8n' in Tone.Transport, 2 steps per beat).
 export const KEYBOARD_PERIODS = Array.from(
   { length: VISIBLE_CYCLES },
@@ -100,15 +100,12 @@ const BASE_SNAIL_CYCLE: ModelEntry[] = [
   { step: 10, justStep: 10, justCents: 466.18, octaveStep: 14, octaveCents: 466.67, season: "Spring", factor: 0.46667 },
   { step: 11, justStep: 11, justCents: 366.91, octaveStep: 11, octaveCents: 366.67, season: "Summer", factor: 0.36667 },
   { step: 12, justStep: 12, justCents: 235.77, octaveStep: 7, octaveCents: 233.33, season: "Autumn", factor: 0.23333 },
-  { step: 13, justStep: 13, justCents: 99.27, octaveStep: 3, octaveCents: 100, season: "Winter", factor: 0.1 },
 ]
 
 const repeatedCycle: Required<ModelEntry>[] = []
 
 for (let cycle = 1; cycle <= VISIBLE_CYCLES; cycle += 1) {
-  const start = cycle === 1 ? 0 : 1
-
-  BASE_SNAIL_CYCLE.slice(start).forEach((base) => {
+  BASE_SNAIL_CYCLE.forEach((base) => {
     repeatedCycle.push({
       ...base,
       position: repeatedCycle.length + 1,

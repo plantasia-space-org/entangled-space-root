@@ -93,7 +93,7 @@ export function SnailVisualizationSection({
                 <div className="border-b border-border px-5 py-4 sm:px-6">
                   <p className="text-sm font-medium text-foreground">Q-Factor Signal</p>
                   <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                    Entangled Space 13-step rise-and-return cycle repeated across time
+                    Entangled Space 12-step rise-and-return cycle repeated across time
                   </p>
                 </div>
                 <div className="px-4 py-4 sm:px-5 sm:py-5">
