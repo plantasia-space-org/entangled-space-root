@@ -369,15 +369,26 @@ export function SnailKeyboardSection({
         <DrawerContent className="border-t border-border bg-background pb-[calc(env(safe-area-inset-bottom)+1rem)]">
           <div className="mx-auto w-full max-w-6xl px-6 py-4 sm:px-8 sm:py-5">
             <div
-              className="flex flex-wrap items-center justify-between gap-3"
+              className="relative flex flex-wrap items-center justify-between gap-3"
               data-vaul-no-drag
             >
+              <DrawerClose asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  aria-label="Close sound drawer"
+                  className="absolute top-0 right-0 min-h-11 min-w-11 px-3 sm:hidden"
+                >
+                  <X className="size-4" />
+                </Button>
+              </DrawerClose>
+
               <p className="text-[0.72rem] tracking-[0.2em] text-muted-foreground uppercase">
                 Cycle {currentEntry.cycle} · Step{" "}
                 {String(currentEntry.anchorStep).padStart(2, "0")}
               </p>
 
-              <div className="hidden items-center gap-2 sm:flex">
+              <div className="flex items-center gap-2 pr-14 sm:pr-0">
                 <Button
                   variant="outline"
                   size="sm"
@@ -415,6 +426,7 @@ export function SnailKeyboardSection({
                     variant="outline"
                     size="sm"
                     aria-label="Close sound drawer"
+                    className="hidden sm:inline-flex"
                   >
                     <span className="hidden sm:inline">Close</span>
                     <X className="size-4" />

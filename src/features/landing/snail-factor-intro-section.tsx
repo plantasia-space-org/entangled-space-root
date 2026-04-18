@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 type SnailFactorIntroSectionProps = {
   paragraphs: readonly string[]
 }
@@ -5,6 +12,8 @@ type SnailFactorIntroSectionProps = {
 export function SnailFactorIntroSection({
   paragraphs,
 }: SnailFactorIntroSectionProps) {
+  const [introParagraph, ...detailParagraphs] = paragraphs
+
   return (
     <section className="relative overflow-hidden border-t border-border bg-background">
       <div className="absolute inset-0">
@@ -28,25 +37,35 @@ export function SnailFactorIntroSection({
             An economic cycle derived from a musical scale based on the golden ratio.
           </h2>
           <div className="max-w-2xl space-y-6">
-            {paragraphs.map((paragraph) => (
+            {introParagraph && (
               <p
-                key={paragraph}
                 className="text-base leading-8 text-foreground/86 sm:text-lg"
               >
-                {paragraph}
+                {introParagraph}
               </p>
-            ))}
-          </div>
+            )}
 
-          <div className="border-t border-border/70 pt-8">
-            <div className="max-w-3xl space-y-3">
-              <p className="text-xl leading-relaxed font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
-                Ascent. Peak. Descent. Return. Repeat.
-              </p>
-              <p className="text-base leading-8 text-foreground/84 sm:text-lg">
-                Growth is not infinite. It oscillates between stakeholders.
-              </p>
-            </div>
+            {detailParagraphs.length > 0 && (
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="snail-factor-details" className="border-t border-border/70">
+                  <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
+                    Learn how the scale becomes a cycle
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-0">
+                    <div className="space-y-5 pt-2">
+                      {detailParagraphs.map((paragraph) => (
+                        <p
+                          key={paragraph}
+                          className="text-base leading-8 text-foreground/86 sm:text-lg"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            )}
           </div>
         </div>
       </div>

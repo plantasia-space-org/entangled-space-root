@@ -56,7 +56,7 @@ export function WhatItIsSection({ items }: WhatItIsSectionProps) {
                     </div>
                   </div>
                   <div className="max-w-2xl">
-                    <AccordionTrigger className="items-start gap-6 py-0 text-left hover:no-underline">
+                    <AccordionTrigger className="min-h-11 items-start gap-6 py-2 text-left hover:no-underline sm:py-0">
                       <div className="space-y-2">
                         <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
                           {label}

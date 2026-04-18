@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 type FormulaItem = {
   symbol: string
   description: string
@@ -94,54 +101,65 @@ export function ProtocolSection({
           ))}
         </div>
 
-        <div className="mt-14">
-          <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Each implementation maps these roles to its own context
-          </p>
-          <div className="overflow-x-auto border border-border">
-            <table className="w-full min-w-[40rem] text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground" />
-                  {["Creators", "Builders", "Regeneration"].map((col) => (
-                    <th
-                      key={col}
-                      className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
-                    >
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {implementationRows.map(
-                  ({ context, creators, builders, regeneration }, index) => (
-                    <tr
-                      key={context}
-                      className={
-                        index < implementationRows.length - 1
-                          ? "border-b border-border"
-                          : ""
-                      }
-                    >
-                      <td className="px-5 py-4 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                        {context}
-                      </td>
-                      <td className="px-5 py-4 leading-6 text-foreground/88">
-                        {creators}
-                      </td>
-                      <td className="px-5 py-4 leading-6 text-foreground/88">
-                        {builders}
-                      </td>
-                      <td className="px-5 py-4 leading-6 text-foreground/88">
-                        {regeneration}
-                      </td>
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
-          </div>
+        <div className="mt-14 max-w-4xl">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="protocol-implementations" className="border-t border-border/70">
+              <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
+                Learn more: use cases
+              </AccordionTrigger>
+              <AccordionContent className="pb-0">
+                <div className="space-y-5 pt-2">
+                  <p className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    Each implementation maps these roles to its own context
+                  </p>
+                  <div className="overflow-x-auto border border-border">
+                    <table className="w-full min-w-[40rem] text-sm">
+                      <thead>
+                        <tr className="border-b border-border">
+                          <th className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground" />
+                          {["Creators", "Builders", "Regeneration"].map((col) => (
+                            <th
+                              key={col}
+                              className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                            >
+                              {col}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {implementationRows.map(
+                          ({ context, creators, builders, regeneration }, index) => (
+                            <tr
+                              key={context}
+                              className={
+                                index < implementationRows.length - 1
+                                  ? "border-b border-border"
+                                  : ""
+                              }
+                            >
+                              <td className="px-5 py-4 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                                {context}
+                              </td>
+                              <td className="px-5 py-4 leading-6 text-foreground/88">
+                                {creators}
+                              </td>
+                              <td className="px-5 py-4 leading-6 text-foreground/88">
+                                {builders}
+                              </td>
+                              <td className="px-5 py-4 leading-6 text-foreground/88">
+                                {regeneration}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </section>
