@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import type { FormEvent } from "react"
-import { Infinity as InfinityIcon, Moon, Sun } from "lucide-react"
+import { Menu, Moon, Sun, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/components/theme-provider"
+import entSpaceBlackLogo from "@/assets/ENT-SPACE-LOGO-BLACK-BACKGROUND.svg"
+import entSpaceWhiteLogo from "@/assets/ENT-SPACE-LOGO-WHITE-BACKGROUND.svg"
 import { ContactDialog } from "@/features/landing/contact-dialog"
 import { FooterLinksSection } from "@/features/landing/footer-links-section"
 import { HeroSection } from "@/features/landing/hero-section"
@@ -29,17 +31,83 @@ import {
 import { SnailKeyboardSection } from "@/features/snail-synth/snail-keyboard-section"
 import { SnailVisualizationSection } from "@/features/snail-visualization/snail-visualization-section"
 
+const navigationSections = [
+  { id: "home", label: "Home" },
+  { id: "thesis", label: "Thesis" },
+  { id: "snail-factor", label: "Snail Factor" },
+  { id: "model", label: "Model" },
+  { id: "protocol", label: "Protocol" },
+  { id: "roadmap", label: "Roadmap" },
+  { id: "author", label: "Author" },
+] as const
+
+type NavigationSectionId = (typeof navigationSections)[number]["id"]
+
+const navigationSectionIds = new Set<string>(
+  navigationSections.map(({ id }) => id)
+)
+
 export function App() {
   const { resolvedTheme, setTheme } = useTheme()
   const isDark = resolvedTheme === "dark"
+  const headerLogo = isDark ? entSpaceBlackLogo : entSpaceWhiteLogo
   const [activeSnailStep, setActiveSnailStep] = useState(0)
+  const [activeSection, setActiveSection] = useState<NavigationSectionId>(
+    navigationSections[0].id
+  )
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [waitlistEmail, setWaitlistEmail] = useState("")
-  const [waitlistStatus, setWaitlistStatus] = useState<FormStatus>({ type: "idle" })
+  const [waitlistStatus, setWaitlistStatus] = useState<FormStatus>({
+    type: "idle",
+  })
   const [contactName, setContactName] = useState("")
   const [contactEmail, setContactEmail] = useState("")
   const [contactMessage, setContactMessage] = useState("")
-  const [contactStatus, setContactStatus] = useState<FormStatus>({ type: "idle" })
+  const [contactStatus, setContactStatus] = useState<FormStatus>({
+    type: "idle",
+  })
+
+  useEffect(() => {
+    const sectionElements = navigationSections
+      .map(({ id }) => document.getElementById(id))
+      .filter((element): element is HTMLElement => Boolean(element))
+
+    if (sectionElements.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+        const mostVisibleEntry = visibleEntries[0]
+
+        const nextSectionId = mostVisibleEntry?.target.id
+
+        if (nextSectionId && navigationSectionIds.has(nextSectionId)) {
+          setActiveSection(nextSectionId as NavigationSectionId)
+        }
+      },
+      {
+        rootMargin: "-22% 0px -58% 0px",
+        threshold: [0.08, 0.18, 0.32, 0.48],
+      }
+    )
+
+    sectionElements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isMobileNavOpen) return
+
+    const closeOnHashChange = () => setIsMobileNavOpen(false)
+    window.addEventListener("hashchange", closeOnHashChange)
+
+    return () => window.removeEventListener("hashchange", closeOnHashChange)
+  }, [isMobileNavOpen])
 
   useEffect(() => {
     const syncContactDialog = () => {
@@ -111,7 +179,8 @@ export function App() {
     } catch (error) {
       setWaitlistStatus({
         type: "error",
-        message: error instanceof Error ? error.message : "Unable to submit form",
+        message:
+          error instanceof Error ? error.message : "Unable to submit form",
       })
     }
   }
@@ -169,7 +238,8 @@ export function App() {
     } catch (error) {
       setContactStatus({
         type: "error",
-        message: error instanceof Error ? error.message : "Unable to submit form",
+        message:
+          error instanceof Error ? error.message : "Unable to submit form",
       })
     }
   }
@@ -177,27 +247,113 @@ export function App() {
   return (
     <>
       <main className="min-h-screen bg-background pb-24 text-foreground sm:pb-28">
-        <header className="border-b border-border bg-background">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
+        <header className="sticky top-0 z-50 border-b border-border bg-background/96 backdrop-blur supports-[backdrop-filter]:bg-background/82">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-5 px-6 py-4 sm:px-8">
             <div className="flex items-center gap-3">
-              <InfinityIcon
-                className="size-4 text-foreground"
-                strokeWidth={1.75}
+              <img
+                src={headerLogo}
+                alt=""
+                className="size-7 rounded-[4px] border border-border"
                 aria-hidden="true"
               />
-              <span className="text-[0.7rem] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+              <span className="text-[0.7rem] font-medium tracking-[0.24em] text-muted-foreground uppercase">
                 Entangled Space
               </span>
             </div>
-            <Button
-              variant="outline"
-              size="icon-sm"
-              aria-label="Toggle theme"
-              onClick={() => setTheme(isDark ? "light" : "dark")}
+            <nav
+              className="hidden items-center gap-1 lg:flex"
+              aria-label="Primary navigation"
             >
-              {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
-            </Button>
+              {navigationSections.map(({ id, label }) => {
+                const isActive = activeSection === id
+
+                return (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    className={`px-2.5 py-2 text-[0.68rem] font-medium tracking-[0.14em] uppercase transition-colors ${
+                      isActive
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    aria-current={isActive ? "location" : undefined}
+                  >
+                    {label}
+                  </a>
+                )
+              })}
+            </nav>
+            <div className="flex items-center gap-2">
+              <Button asChild className="hidden px-4 sm:inline-flex">
+                <a href="#waitlist">Waitlist</a>
+              </Button>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                aria-label="Toggle theme"
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+              >
+                {isDark ? (
+                  <Sun className="size-4" />
+                ) : (
+                  <Moon className="size-4" />
+                )}
+              </Button>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                className="lg:hidden"
+                aria-label={
+                  isMobileNavOpen ? "Close navigation" : "Open navigation"
+                }
+                aria-expanded={isMobileNavOpen}
+                aria-controls="mobile-navigation"
+                onClick={() => setIsMobileNavOpen((open) => !open)}
+              >
+                {isMobileNavOpen ? (
+                  <X className="size-4" />
+                ) : (
+                  <Menu className="size-4" />
+                )}
+              </Button>
+            </div>
           </div>
+          {isMobileNavOpen && (
+            <nav
+              id="mobile-navigation"
+              className="border-t border-border bg-background lg:hidden"
+              aria-label="Primary navigation"
+            >
+              <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-border px-6 py-px sm:px-8">
+                {navigationSections.map(({ id, label }) => {
+                  const isActive = activeSection === id
+
+                  return (
+                    <a
+                      key={id}
+                      href={`#${id}`}
+                      className={`bg-background px-4 py-3 text-sm font-medium ${
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      aria-current={isActive ? "location" : undefined}
+                      onClick={() => setIsMobileNavOpen(false)}
+                    >
+                      {label}
+                    </a>
+                  )
+                })}
+                <a
+                  href="#waitlist"
+                  className="bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+                  onClick={() => setIsMobileNavOpen(false)}
+                >
+                  Waitlist
+                </a>
+              </div>
+            </nav>
+          )}
         </header>
         <HeroSection />
         <OpeningThesisSection paragraphs={introduction} />
