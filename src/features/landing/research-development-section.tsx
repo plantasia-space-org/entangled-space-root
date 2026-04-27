@@ -13,10 +13,13 @@ export function ResearchDevelopmentSection({
   founderProfile,
 }: ResearchDevelopmentSectionProps) {
   return (
-    <section id="team" className="border-t border-border bg-background">
+    <section
+      id="author"
+      className="scroll-mt-24 border-t border-border bg-background"
+    >
       <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
-        <p className="mb-8 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
-          Research &amp; Development
+        <p className="mb-8 text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
+          Author
         </p>
         <div className="border-t border-border pt-8">
           <div className="grid gap-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8">

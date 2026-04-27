@@ -32,7 +32,10 @@ export function ProtocolSection({
   implementationRows,
 }: ProtocolSectionProps) {
   return (
-    <section className="relative overflow-hidden border-t border-border bg-background">
+    <section
+      id="protocol"
+      className="relative scroll-mt-24 overflow-hidden border-t border-border bg-background"
+    >
       <div className="absolute inset-0">
         <img
           src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"

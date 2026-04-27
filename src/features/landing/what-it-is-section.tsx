@@ -22,7 +22,10 @@ type WhatItIsSectionProps = {
 
 export function WhatItIsSection({ items }: WhatItIsSectionProps) {
   return (
-    <section className="border-t border-border bg-muted/35">
+    <section
+      id="roadmap"
+      className="scroll-mt-24 border-t border-border bg-muted/35"
+    >
       <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-20">
           <div className="space-y-6">

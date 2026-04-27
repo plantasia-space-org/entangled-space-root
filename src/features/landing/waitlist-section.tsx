@@ -19,10 +19,13 @@ export function WaitlistSection({
   const isSuccess = status.type === "success"
 
   return (
-    <section id="waitlist" className="border-t border-border bg-muted/35">
+    <section
+      id="waitlist"
+      className="scroll-mt-24 border-t border-border bg-muted/35"
+    >
       <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+          <p className="text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
             Stay in the loop
           </p>
           <h2 className="mt-6 text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
@@ -46,7 +49,7 @@ export function WaitlistSection({
                 autoComplete="email"
                 value={email}
                 onChange={(event) => onEmailChange(event.target.value)}
-                className="min-w-0 flex-1 border border-border bg-background px-5 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground sm:h-11"
+                className="min-w-0 flex-1 border border-border bg-background px-5 py-3 text-base text-foreground transition-colors outline-none placeholder:text-muted-foreground focus:border-foreground sm:h-11"
               />
               <Button
                 type="submit"
@@ -60,7 +63,9 @@ export function WaitlistSection({
 
           <p
             className={`mt-4 text-sm ${
-              status.type === "error" ? "text-destructive" : "text-muted-foreground"
+              status.type === "error"
+                ? "text-destructive"
+                : "text-muted-foreground"
             }`}
             aria-live="polite"
           >

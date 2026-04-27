@@ -15,7 +15,10 @@ export function SnailFactorIntroSection({
   const [introParagraph, ...detailParagraphs] = paragraphs
 
   return (
-    <section className="relative overflow-hidden border-t border-border bg-background">
+    <section
+      id="snail-factor"
+      className="relative scroll-mt-24 overflow-hidden border-t border-border bg-background"
+    >
       <div className="absolute inset-0">
         <img
           src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/golden-ratio-drawing_mid.webp"
@@ -50,9 +53,7 @@ export function SnailFactorIntroSection({
                   value="snail-factor-details"
                   className="border-t border-border/70"
                 >
-                  <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
-
-                  </AccordionTrigger>
+                  <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline"></AccordionTrigger>
                   <AccordionContent className="pb-6">
                     <div className="space-y-5 pt-2">
                       {detailParagraphs.map((paragraph) => (

@@ -32,13 +32,14 @@ import { SnailKeyboardSection } from "@/features/snail-synth/snail-keyboard-sect
 import { SnailVisualizationSection } from "@/features/snail-visualization/snail-visualization-section"
 
 const navigationSections = [
-  { id: "home", label: "Home" },
   { id: "thesis", label: "Thesis" },
   { id: "snail-factor", label: "Snail Factor" },
   { id: "model", label: "Model" },
   { id: "protocol", label: "Protocol" },
   { id: "roadmap", label: "Roadmap" },
   { id: "author", label: "Author" },
+  { id: "waitlist", label: "Waitlist" },
+  { id: "discover", label: "Discover" },
 ] as const
 
 type NavigationSectionId = (typeof navigationSections)[number]["id"]
@@ -249,7 +250,11 @@ export function App() {
       <main className="min-h-screen bg-background pb-24 text-foreground sm:pb-28">
         <header className="sticky top-0 z-50 border-b border-border bg-background/96 backdrop-blur supports-[backdrop-filter]:bg-background/82">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-5 px-6 py-4 sm:px-8">
-            <div className="flex items-center gap-3">
+            <a
+              href="#home"
+              className="flex items-center gap-3 transition-opacity hover:opacity-75"
+              aria-label="Entangled Space home"
+            >
               <img
                 src={headerLogo}
                 alt=""
@@ -259,7 +264,7 @@ export function App() {
               <span className="text-[0.7rem] font-medium tracking-[0.24em] text-muted-foreground uppercase">
                 Entangled Space
               </span>
-            </div>
+            </a>
             <nav
               className="hidden items-center gap-1 lg:flex"
               aria-label="Primary navigation"
@@ -284,9 +289,6 @@ export function App() {
               })}
             </nav>
             <div className="flex items-center gap-2">
-              <Button asChild className="hidden px-4 sm:inline-flex">
-                <a href="#waitlist">Waitlist</a>
-              </Button>
               <Button
                 variant="outline"
                 size="icon-sm"
@@ -321,10 +323,10 @@ export function App() {
           {isMobileNavOpen && (
             <nav
               id="mobile-navigation"
-              className="border-t border-border bg-background lg:hidden"
+              className="border-t border-border bg-white lg:hidden dark:bg-background"
               aria-label="Primary navigation"
             >
-              <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-border px-6 py-px sm:px-8">
+              <div className="mx-auto grid w-full max-w-6xl grid-cols-2 px-6 sm:px-8">
                 {navigationSections.map(({ id, label }) => {
                   const isActive = activeSection === id
 
@@ -332,7 +334,7 @@ export function App() {
                     <a
                       key={id}
                       href={`#${id}`}
-                      className={`bg-background px-4 py-3 text-sm font-medium ${
+                      className={`border-b border-border bg-white px-4 py-3 text-sm font-medium odd:border-r dark:bg-background ${
                         isActive
                           ? "text-foreground"
                           : "text-muted-foreground hover:text-foreground"
@@ -344,13 +346,6 @@ export function App() {
                     </a>
                   )
                 })}
-                <a
-                  href="#waitlist"
-                  className="bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
-                  onClick={() => setIsMobileNavOpen(false)}
-                >
-                  Waitlist
-                </a>
               </div>
             </nav>
           )}

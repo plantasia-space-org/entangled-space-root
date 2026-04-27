@@ -1,7 +1,7 @@
 export const introduction = [
   "The music industry went from vinyl to streaming and called it progress. Plastic use dropped. But carbon emissions from storing and transmitting digital music kept rising — the footprint didn't disappear, it moved from landfill to atmosphere. The model changed. The damage didn't. It's a structural problem with how economies distribute value.",
-  "Every extractive economy draws the same line: growth without return. Natural ecosystems work differently. They expand and contract in balanced cycles. Forests breathe. Tides rise and fall.",
-  "Entangled Space encodes one of those rhythms into economic infrastructure — an open protocol where revenue flows between investors, team, creators, builders, and regeneration — balanced by a cycle derived from music theory.",
+  "Every extractive economy draws the same line: growth without return. Natural ecosystems work differently. They expand and contract in balanced cycles. Forests breathe. Tides rise and fall. Landscapes regenerate.",
+  "Entangled Space encodes one of these harmonies into economic infrastructure: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — balanced by a cycle derived from music theory.",
   "The application is universal. Music is where it starts.",
 ] as const
 
@@ -29,7 +29,7 @@ export const whatItIs = [
   },
   {
     ordinal: "03",
-    label: "Integrate the first use case",
+    label: "Live inside Plantasia Space",
     description:
       "Implement the protocol in Plantasia Space as the first real integration and proof of concept.",
     goal:

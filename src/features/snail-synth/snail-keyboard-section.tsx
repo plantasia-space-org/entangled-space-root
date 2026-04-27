@@ -289,24 +289,50 @@ export function SnailKeyboardSection({
       >
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/96 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] sm:px-8 sm:py-3">
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
+            <div
+              className="flex min-h-11 items-center gap-1.5 sm:min-h-7"
               data-vaul-no-drag
-              className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
             >
-              <a
-                href="https://artizen.fund/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="[touch-action:manipulation]"
+              <span className="hidden text-[0.66rem] font-medium tracking-[0.16em] text-muted-foreground uppercase sm:inline">
+                Sponsor on:
+              </span>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
                 data-vaul-no-drag
+                className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
               >
-                <span>Fund on Artizen</span>
-                <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
+                <a
+                  href="https://artizen.fund/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="[touch-action:manipulation]"
+                  data-vaul-no-drag
+                >
+                  <span>Artizen</span>
+                  <ArrowUpRight className="size-4" />
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                data-vaul-no-drag
+                className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
+              >
+                <a
+                  href="https://github.com/sponsors/plantasia-space-org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="[touch-action:manipulation]"
+                  data-vaul-no-drag
+                >
+                  <span>GitHub</span>
+                  <ArrowUpRight className="size-4" />
+                </a>
+              </Button>
+            </div>
 
             <div className="flex shrink-0 items-center gap-2">
               <Button
