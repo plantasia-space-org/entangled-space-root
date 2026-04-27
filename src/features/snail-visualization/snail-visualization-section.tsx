@@ -23,6 +23,12 @@ import {
   getVisualizationEntry,
 } from "./snail-visualization-data"
 
+const euroFormatter = new Intl.NumberFormat("en-US", {
+  currency: "EUR",
+  maximumFractionDigits: 0,
+  style: "currency",
+})
+
 function EditorialBlock({
   children,
   note,
@@ -76,13 +82,12 @@ export function SnailVisualizationSection({
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-20 sm:px-8 sm:py-28 lg:gap-12 lg:py-36">
         <EditorialBlock
           title="Harmonic Source"
-          note="833 Cents Scale data used as the source for the Entangled Space seasonal mapping"
+          note="Each month selects a point from the 833 Cents Scale rise-and-return pattern. That harmonic value becomes the Snail Factor used by the economic model."
         >
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <MetricCell label="Just Step" value={String(activeEntry.justStep)} />
-            <MetricCell label="Just Cents" value={activeEntry.justCents.toFixed(2)} />
-            <MetricCell label="36/Oct Step" value={String(activeEntry.octaveStep)} />
+          <div className="grid gap-5 sm:grid-cols-3">
+            <MetricCell label="Just Step / Month" value={String(activeEntry.anchorStep).padStart(2, "0")} />
             <MetricCell label="36/Oct Cents" value={activeEntry.octaveCents.toFixed(2)} />
+            <MetricCell label="Snail Factor" value={activeEntry.factor.toFixed(5)} />
           </div>
         </EditorialBlock>
 
@@ -91,9 +96,9 @@ export function SnailVisualizationSection({
             <div className="grid h-full gap-0">
               <div>
                 <div className="border-b border-border px-5 py-4 sm:px-6">
-                  <p className="text-sm font-medium text-foreground">Q-Factor Signal</p>
+                  <p className="text-sm font-medium text-foreground">Snail Factor Signal</p>
                   <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                    Entangled Space 12-step rise-and-return cycle repeated across time
+                    Monthly economic modulation derived from the 833 Cents Scale
                   </p>
                 </div>
                 <div className="px-4 py-4 sm:px-5 sm:py-5">
@@ -117,7 +122,7 @@ export function SnailVisualizationSection({
                             labelFormatter={(_, payload) => {
                               const item = payload?.[0]?.payload
                               return item
-                                ? `Cycle ${item.cycle} · Step ${String(item.anchorStep).padStart(2, "0")}`
+                                ? `Cycle ${item.cycle} · Month ${String(item.anchorStep).padStart(2, "0")}`
                                 : ""
                             }}
                           />
@@ -126,9 +131,9 @@ export function SnailVisualizationSection({
                       <ReferenceLine x={activeEntry.position} stroke="var(--foreground)" strokeOpacity={0.18} />
                       <Line
                         type="monotone"
-                        dataKey="qFactor"
-                        name="qFactor"
-                        stroke="var(--color-qFactor)"
+                        dataKey="snailFactor"
+                        name="snailFactor"
+                        stroke="var(--color-snailFactor)"
                         strokeWidth={2.5}
                         dot={(props) => {
                           const isActive = props.payload?.index === activeStep
@@ -137,7 +142,7 @@ export function SnailVisualizationSection({
                               cx={props.cx}
                               cy={props.cy}
                               r={isActive ? 4.5 : 2.5}
-                              fill={isActive ? "var(--foreground)" : "var(--color-qFactor)"}
+                              fill={isActive ? "var(--foreground)" : "var(--color-snailFactor)"}
                             />
                           )
                         }}
@@ -150,9 +155,9 @@ export function SnailVisualizationSection({
 
               <div className="border-t border-border">
                 <div className="border-b border-border px-5 py-4 sm:px-6">
-                  <p className="text-sm font-medium text-foreground">Formula Growth</p>
+                  <p className="text-sm font-medium text-foreground">Monthly Growth Simulation</p>
                   <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                    Revenue, total deductions, and the remaining value across repeated cycles
+                    A hypothetical model showing how the protocol behaves over three repeated yearly cycles. Revenue follows an S-curve: slow early adoption, faster growth, then stabilization. Fixed and flexible costs are deducted first; flexible costs rise and fall with the monthly Snail Factor. Remaining value can be distributed to creators, builders, and regeneration. This is not a financial forecast.
                   </p>
                 </div>
                 <div className="px-4 py-4 sm:px-5 sm:py-5">
@@ -169,8 +174,35 @@ export function SnailVisualizationSection({
                         tickMargin={12}
                         minTickGap={24}
                       />
-                      <YAxis tickLine={false} axisLine={false} tickMargin={12} />
-                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <YAxis
+                        tickFormatter={(value) => euroFormatter.format(Number(value))}
+                        tickLine={false}
+                        axisLine={false}
+                        tickMargin={12}
+                        width={78}
+                      />
+                      <ChartTooltip
+                        content={
+                          <ChartTooltipContent
+                            formatter={(value, name, item) => (
+                              <>
+                                <div
+                                  className="h-2.5 w-2.5 shrink-0 rounded-[2px]"
+                                  style={{ backgroundColor: item.color }}
+                                />
+                                <div className="flex flex-1 justify-between gap-4 leading-none">
+                                  <span className="text-muted-foreground">
+                                    {HARMONIC_SOURCE_CONFIG[name as keyof typeof HARMONIC_SOURCE_CONFIG]?.label ?? name}
+                                  </span>
+                                  <span className="font-mono font-medium text-foreground tabular-nums">
+                                    {euroFormatter.format(Number(value))}
+                                  </span>
+                                </div>
+                              </>
+                            )}
+                          />
+                        }
+                      />
                       <ChartLegend content={<ChartLegendContent />} />
                       <ReferenceLine x={activeEntry.position} stroke="var(--foreground)" strokeOpacity={0.18} />
                       <Line type="monotone" dataKey="revenue" name="revenue" stroke="var(--color-revenue)" strokeWidth={2.2} dot={false} />
@@ -194,7 +226,7 @@ export function SnailVisualizationSection({
             <div className="border-b border-border px-5 py-4 sm:px-6">
               <p className="text-sm font-medium text-foreground">Polar Result</p>
               <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                Derived from growth radius plus Q-factor modulation in polar space
+                A circular view of the same simulation. Each point is one month; each full turn is one year. Revenue growth pushes the curve outward, while the monthly Snail Factor creates the cyclical expansion and contraction.
               </p>
             </div>
             <div className="flex flex-1 px-4 py-4 sm:px-5 sm:py-5">
@@ -213,7 +245,7 @@ export function SnailVisualizationSection({
                             labelFormatter={(_, payload) => {
                               const item = payload?.[0]?.payload
                               return item
-                                ? `Cycle ${item.cycle} · Step ${String(item.anchorStep).padStart(2, "0")}`
+                                ? `Cycle ${item.cycle} · Month ${String(item.anchorStep).padStart(2, "0")}`
                                 : ""
                             }}
                           />

@@ -1,7 +1,8 @@
 export const introduction = [
-  "Every extractive economy acts as if resources are infinite, generating social inequality and serious environmental damage.",
-  "Natural ecosystems work differently. They expand and contract in balanced cycles. Beyond complexity, there is equilibrium. Forests breathe. Tides rise and fall.",
+  "The music industry went from vinyl to streaming and called it progress. Plastic use dropped. But carbon emissions from storing and transmitting digital music kept rising — the footprint didn't disappear, it moved from landfill to atmosphere. The model changed. The damage didn't. It's a structural problem with how economies distribute value.",
+  "Every extractive economy draws the same line: growth without return. Natural ecosystems work differently. They expand and contract in balanced cycles. Forests breathe. Tides rise and fall.",
   "Entangled Space encodes one of those rhythms into economic infrastructure — an open protocol where revenue flows between investors, team, creators, builders, and regeneration — balanced by a cycle derived from music theory.",
+  "The application is universal. Music is where it starts.",
 ] as const
 
 export const whatItIs = [
@@ -64,12 +65,12 @@ export const formulaBreakdown = [
       {
         symbol: "Fₜ",
         description:
-          "Fixed costs — operations, hosting, taxes, legal. Non-negotiable, not modulated by the cycle",
+          "Fixed costs — operations, hosting, taxes, legal, salaries. Non-negotiable, not modulated by the cycle",
       },
       {
-        symbol: "Vₜ × Snailsₜ",
+        symbol: "Vₜ × Sₜ",
         description:
-          "Variable costs — salaries, investor returns, anything defined as flexible. These breathe with the cycle",
+          "Flexible costs modulated by the Snail Factor — investor returns or other adjustable allocations. These breathe with the cycle",
       },
     ],
   },
@@ -120,7 +121,7 @@ export const implementationRows = [
 export const snailFactorCopy = [
   "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
   "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",
-  "We translate those 7 steps into an economic cycle: 12 steps of ascent and return spanning ~637 days. The full system breathes.",
+  "We translate those 7 steps into an economic cycle: 12 steps of ascent and return spanning one calendar year. The full system breathes.",
 ] as const
 
 export const founderProfile = {

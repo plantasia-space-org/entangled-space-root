@@ -80,7 +80,6 @@ type ModelEntry = {
   justCents: number
   octaveStep: number
   octaveCents: number
-  season: "Spring" | "Summer" | "Autumn" | "Winter"
   factor: number
   position?: number
   cycle?: number
@@ -88,18 +87,18 @@ type ModelEntry = {
 }
 
 const BASE_SNAIL_CYCLE: ModelEntry[] = [
-  { step: 1, justStep: 1, justCents: 99.27, octaveStep: 3, octaveCents: 100, season: "Spring", factor: 0.1 },
-  { step: 2, justStep: 2, justCents: 235.77, octaveStep: 7, octaveCents: 233.33, season: "Summer", factor: 0.23333 },
-  { step: 3, justStep: 3, justCents: 366.91, octaveStep: 11, octaveCents: 366.67, season: "Autumn", factor: 0.36667 },
-  { step: 4, justStep: 4, justCents: 466.18, octaveStep: 14, octaveCents: 466.67, season: "Winter", factor: 0.46667 },
-  { step: 5, justStep: 5, justCents: 597.32, octaveStep: 18, octaveCents: 600, season: "Spring", factor: 0.6 },
-  { step: 6, justStep: 6, justCents: 733.82, octaveStep: 22, octaveCents: 733.33, season: "Summer", factor: 0.73333 },
-  { step: 7, justStep: 7, justCents: 833.09, octaveStep: 25, octaveCents: 833.33, season: "Autumn", factor: 0.83333 },
-  { step: 8, justStep: 8, justCents: 733.82, octaveStep: 22, octaveCents: 733.33, season: "Autumn", factor: 0.73333 },
-  { step: 9, justStep: 9, justCents: 597.32, octaveStep: 18, octaveCents: 600, season: "Winter", factor: 0.6 },
-  { step: 10, justStep: 10, justCents: 466.18, octaveStep: 14, octaveCents: 466.67, season: "Spring", factor: 0.46667 },
-  { step: 11, justStep: 11, justCents: 366.91, octaveStep: 11, octaveCents: 366.67, season: "Summer", factor: 0.36667 },
-  { step: 12, justStep: 12, justCents: 235.77, octaveStep: 7, octaveCents: 233.33, season: "Autumn", factor: 0.23333 },
+  { step: 1, justStep: 1, justCents: 99.27, octaveStep: 3, octaveCents: 100, factor: 0.1 },
+  { step: 2, justStep: 2, justCents: 235.77, octaveStep: 7, octaveCents: 233.33, factor: 0.23333 },
+  { step: 3, justStep: 3, justCents: 366.91, octaveStep: 11, octaveCents: 366.67, factor: 0.36667 },
+  { step: 4, justStep: 4, justCents: 466.18, octaveStep: 14, octaveCents: 466.67, factor: 0.46667 },
+  { step: 5, justStep: 5, justCents: 597.32, octaveStep: 18, octaveCents: 600, factor: 0.6 },
+  { step: 6, justStep: 6, justCents: 733.82, octaveStep: 22, octaveCents: 733.33, factor: 0.73333 },
+  { step: 7, justStep: 7, justCents: 833.09, octaveStep: 25, octaveCents: 833.33, factor: 0.83333 },
+  { step: 8, justStep: 8, justCents: 733.82, octaveStep: 22, octaveCents: 733.33, factor: 0.73333 },
+  { step: 9, justStep: 9, justCents: 597.32, octaveStep: 18, octaveCents: 600, factor: 0.6 },
+  { step: 10, justStep: 10, justCents: 466.18, octaveStep: 14, octaveCents: 466.67, factor: 0.46667 },
+  { step: 11, justStep: 11, justCents: 366.91, octaveStep: 11, octaveCents: 366.67, factor: 0.36667 },
+  { step: 12, justStep: 12, justCents: 235.77, octaveStep: 7, octaveCents: 233.33, factor: 0.23333 },
 ]
 
 const repeatedCycle: Required<ModelEntry>[] = []

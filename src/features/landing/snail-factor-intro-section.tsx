@@ -30,28 +30,30 @@ export function SnailFactorIntroSection({
 
       <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
         <div className="max-w-3xl space-y-6">
-          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-foreground/62">
+          <p className="text-[0.72rem] font-medium tracking-[0.28em] text-foreground/62 uppercase">
             The Snail Factor
           </p>
           <h2 className="max-w-xl text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
-            An economic cycle derived from a musical scale based on the golden ratio.
+            An economic cycle derived from a musical scale based on the golden
+            ratio.
           </h2>
           <div className="max-w-2xl space-y-6">
             {introParagraph && (
-              <p
-                className="text-base leading-8 text-foreground/86 sm:text-lg"
-              >
+              <p className="text-base leading-8 text-foreground/86 sm:text-lg">
                 {introParagraph}
               </p>
             )}
 
             {detailParagraphs.length > 0 && (
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="snail-factor-details" className="border-t border-border/70">
+                <AccordionItem
+                  value="snail-factor-details"
+                  className="border-t border-border/70"
+                >
                   <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
-                    Learn how the scale becomes a cycle
+
                   </AccordionTrigger>
-                  <AccordionContent className="pb-0">
+                  <AccordionContent className="pb-6">
                     <div className="space-y-5 pt-2">
                       {detailParagraphs.map((paragraph) => (
                         <p

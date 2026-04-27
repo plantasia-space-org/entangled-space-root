@@ -13,7 +13,7 @@ export function OpeningThesisSection({
             Opening Thesis
           </p>
           <h2 className="max-w-xl text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
-            Economies extract. Ecosystems oscillate.
+            An Economy That Breathes
           </h2>
         </div>
 

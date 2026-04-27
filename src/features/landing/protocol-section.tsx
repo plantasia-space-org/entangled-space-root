@@ -48,7 +48,7 @@ export function ProtocolSection({
       <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-20">
           <div className="space-y-6">
-            <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+            <p className="text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
               The Protocol
             </p>
             <h2 className="text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
@@ -65,14 +65,15 @@ export function ProtocolSection({
 
         <div className="mt-14 border border-border bg-muted/35 px-6 py-8 sm:px-10 sm:py-10">
           <p className="font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
-            (Rₜ + Iₜ) − Fₜ − (Vₜ × Snailsₜ)
+            (Rₜ + Iₜ) − Fₜ − (Vₜ × Sₜ)
           </p>
           <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
             &nbsp;&nbsp;= creators × 0.33 + builders × 0.33 + regeneration ×
             0.34
           </p>
-          <p className="mt-5 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            All values computed per period (monthly). Snail Factor changes each season.
+          <p className="mt-5 text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+            All values computed per period (monthly). Snail Factor changes each
+            month.
           </p>
         </div>
 
@@ -82,7 +83,7 @@ export function ProtocolSection({
               key={label}
               className="space-y-5 bg-background px-6 py-7 sm:px-7 sm:py-8"
             >
-              <p className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              <p className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
                 {label}
               </p>
               <ul className="space-y-4">
@@ -103,33 +104,41 @@ export function ProtocolSection({
 
         <div className="mt-14 max-w-4xl">
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="protocol-implementations" className="border-t border-border/70">
+            <AccordionItem
+              value="protocol-implementations"
+              className="border-t border-border/70"
+            >
               <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
                 Learn more: use cases
               </AccordionTrigger>
-              <AccordionContent className="pb-0">
+              <AccordionContent className="pb-6">
                 <div className="space-y-5 pt-2">
-                  <p className="text-[0.68rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  <p className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
                     Each implementation maps these roles to its own context
                   </p>
                   <div className="overflow-x-auto border border-border">
                     <table className="w-full min-w-[40rem] text-sm">
                       <thead>
                         <tr className="border-b border-border">
-                          <th className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground" />
-                          {["Creators", "Builders", "Regeneration"].map((col) => (
-                            <th
-                              key={col}
-                              className="px-5 py-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
-                            >
-                              {col}
-                            </th>
-                          ))}
+                          <th className="px-5 py-3 text-left text-[0.68rem] font-medium tracking-[0.18em] text-muted-foreground uppercase" />
+                          {["Creators", "Builders", "Regeneration"].map(
+                            (col) => (
+                              <th
+                                key={col}
+                                className="px-5 py-3 text-left text-[0.68rem] font-medium tracking-[0.18em] text-muted-foreground uppercase"
+                              >
+                                {col}
+                              </th>
+                            )
+                          )}
                         </tr>
                       </thead>
                       <tbody>
                         {implementationRows.map(
-                          ({ context, creators, builders, regeneration }, index) => (
+                          (
+                            { context, creators, builders, regeneration },
+                            index
+                          ) => (
                             <tr
                               key={context}
                               className={
@@ -138,7 +147,7 @@ export function ProtocolSection({
                                   : ""
                               }
                             >
-                              <td className="px-5 py-4 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                              <td className="px-5 py-4 text-[0.72rem] font-medium tracking-[0.14em] text-muted-foreground uppercase">
                                 {context}
                               </td>
                               <td className="px-5 py-4 leading-6 text-foreground/88">

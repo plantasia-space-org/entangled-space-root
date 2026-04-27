@@ -366,8 +366,8 @@ export function SnailKeyboardSection({
           </div>
         </div>
 
-        <DrawerContent className="border-t border-border bg-background pb-[calc(env(safe-area-inset-bottom)+1rem)]">
-          <div className="mx-auto w-full max-w-6xl px-6 py-4 sm:px-8 sm:py-5">
+        <DrawerContent className="overflow-hidden border-t border-border bg-background">
+          <div className="mx-auto max-h-[calc(90dvh-2.5rem)] w-full max-w-6xl overflow-y-auto overscroll-contain px-6 py-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] sm:max-h-[calc(85dvh-2.5rem)] sm:px-8 sm:py-5 sm:pb-[calc(env(safe-area-inset-bottom)+1rem)]">
             <div
               className="relative flex flex-wrap items-center justify-between gap-3"
               data-vaul-no-drag
