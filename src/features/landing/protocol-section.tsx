@@ -48,7 +48,7 @@ export function ProtocolSection({
           src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover object-center opacity-50 dark:opacity-46"
+          className="h-full w-full object-cover object-center opacity-50 dark:opacity-10"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.94)_38%,rgba(247,244,236,0.76)_72%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.88)_0%,rgba(18,18,18,0.72)_38%,rgba(18,18,18,0.38)_72%,rgba(18,18,18,0.6)_100%)]" />

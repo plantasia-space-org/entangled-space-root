@@ -24,7 +24,7 @@ export function SnailFactorIntroSection({
           src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/golden-ratio-drawing_mid.webp"
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover object-center opacity-24 dark:opacity-56"
+          className="h-full w-full object-cover object-center opacity-24 dark:opacity-10"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.93)_40%,rgba(247,244,236,0.72)_72%,rgba(247,244,236,0.88)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.88)_0%,rgba(18,18,18,0.68)_38%,rgba(18,18,18,0.3)_72%,rgba(18,18,18,0.56)_100%)]" />

@@ -22,7 +22,7 @@ export function ResearchDevelopmentSection({
           src="https://herbarium.plantasia.space/image-assets/entangled-space/landing/sunflower_mid.webp"
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover object-center opacity-50 dark:opacity-36"
+          className="h-full w-full object-cover object-center opacity-50 dark:opacity-10"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.98)_0%,rgba(247,244,236,0.95)_44%,rgba(247,244,236,0.72)_78%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.9)_0%,rgba(18,18,18,0.76)_44%,rgba(18,18,18,0.42)_78%,rgba(18,18,18,0.64)_100%)]" />
