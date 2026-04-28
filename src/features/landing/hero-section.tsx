@@ -5,7 +5,9 @@ const LIGHT_VIDEO_SRC =
   "https://plantasia-prod-public.fra1.digitaloceanspaces.com/entangled-space/videos/entangled-space-preview-light.mp4"
 const DARK_VIDEO_SRC =
   "https://plantasia-prod-public.fra1.digitaloceanspaces.com/entangled-space/videos/entangled-space-preview-dark.mp4"
-const PLANTASIA_SPACE_LOGO_SRC =
+const PLANTASIA_SPACE_DARK_LOGO_SRC =
+  "https://plantasia-prod-public.fra1.digitaloceanspaces.com/assets/logos/current/plantasia-space-white-transparent-background-512.svg"
+const PLANTASIA_SPACE_LIGHT_LOGO_SRC =
   "https://plantasia-prod-public.fra1.digitaloceanspaces.com/assets/logos/current/plantasia-space-logo-black-transparent-background-512.svg"
 
 export function HeroSection() {
@@ -14,6 +16,10 @@ export function HeroSection() {
   const [isVideoReady, setIsVideoReady] = useState(false)
 
   const videoSrc = resolvedTheme === "dark" ? DARK_VIDEO_SRC : LIGHT_VIDEO_SRC
+  const watermarkLogoSrc =
+    resolvedTheme === "dark"
+      ? PLANTASIA_SPACE_DARK_LOGO_SRC
+      : PLANTASIA_SPACE_LIGHT_LOGO_SRC
 
   useEffect(() => {
     setIsVideoReady(false)
@@ -25,7 +31,7 @@ export function HeroSection() {
 
     const playPromise = video.play()
     if (playPromise) {
-      playPromise.catch(() => {})
+      playPromise.catch(() => { })
     }
   }, [videoSrc])
 
@@ -50,17 +56,22 @@ export function HeroSection() {
         </video>
         <div
           aria-hidden="true"
-          className={`absolute inset-0 bg-background transition-opacity duration-500 ${
-            isVideoReady ? "pointer-events-none opacity-0" : "opacity-100"
-          }`}
+          className={`absolute inset-0 bg-background transition-opacity duration-500 ${isVideoReady ? "pointer-events-none opacity-0" : "opacity-100"
+            }`}
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-r from-background via-background/84 via-42% to-background/24 lg:via-background/72 lg:to-background/14"
+          className="absolute inset-0 bg-linear-to-r from-background via-background/84 via-42% to-background/24 lg:via-background/72 lg:to-background/14 dark:via-background/54 dark:to-background/0 dark:lg:via-background/44 dark:lg:to-background/0"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-b from-background/16 via-transparent to-background/66"
+          className="absolute inset-0 bg-linear-to-b from-background/16 via-transparent to-background/66 dark:from-background/4 dark:to-background/32"
+        />
+        <img
+          src={watermarkLogoSrc}
+          alt=""
+          aria-hidden="true"
+          className="absolute right-6 bottom-6 w-7 opacity-15 mix-blend-multiply sm:bottom-8 sm:w-8 lg:right-[max(2rem,calc((100vw-72rem)/2+2rem))] lg:bottom-8 lg:w-9 dark:opacity-75 dark:mix-blend-screen"
         />
       </div>
 
@@ -72,18 +83,11 @@ export function HeroSection() {
         </div>
 
         <div className="mt-14 border-t border-border/80 pt-8 lg:max-w-2xl lg:border-t-0 lg:pt-0">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <img
-              src={PLANTASIA_SPACE_LOGO_SRC}
-              alt="Plantasia Space"
-              className="h-8 w-fit max-w-48 opacity-80 sm:h-9 dark:invert"
-            />
-            <p className="max-w-2xl text-base leading-8 text-foreground sm:text-lg">
-              <span className="font-medium">A Plantasia Space project:</span>{" "}
-              Derived from music theory. Tuned to landscape cycles. Open by
-              design.
-            </p>
-          </div>
+          <p className="max-w-2xl text-sm leading-7 text-foreground sm:text-lg sm:leading-8">
+            <span className="font-medium">A Plantasia Space project:</span>{" "}
+            Derived from music theory. Tuned to landscape cycles. Open by
+            design.
+          </p>
         </div>
       </div>
     </section>

@@ -22,14 +22,21 @@ type ImplementationRow = {
   regeneration: string
 }
 
+type CapitalReturnsNote = {
+  heading: string
+  paragraphs: readonly string[]
+}
+
 type ProtocolSectionProps = {
   formulaBreakdown: readonly FormulaBlock[]
   implementationRows: readonly ImplementationRow[]
+  capitalReturnsNote: CapitalReturnsNote
 }
 
 export function ProtocolSection({
   formulaBreakdown,
   implementationRows,
+  capitalReturnsNote,
 }: ProtocolSectionProps) {
   return (
     <section
@@ -41,11 +48,11 @@ export function ProtocolSection({
           src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover object-center opacity-16 dark:opacity-32"
+          className="h-full w-full object-cover object-center opacity-50 dark:opacity-46"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.94)_38%,rgba(247,244,236,0.76)_72%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.95)_0%,rgba(18,18,18,0.88)_38%,rgba(18,18,18,0.58)_72%,rgba(18,18,18,0.8)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_32%,rgba(116,83,36,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.16))] dark:bg-[radial-gradient(circle_at_76%_32%,rgba(214,171,93,0.18),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.94)_38%,rgba(247,244,236,0.76)_72%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.88)_0%,rgba(18,18,18,0.72)_38%,rgba(18,18,18,0.38)_72%,rgba(18,18,18,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_32%,rgba(116,83,36,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.16))] dark:bg-[radial-gradient(circle_at_76%_32%,rgba(214,171,93,0.2),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.1))]" />
       </div>
 
       <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
@@ -107,6 +114,26 @@ export function ProtocolSection({
 
         <div className="mt-14 max-w-4xl">
           <Accordion type="single" collapsible className="w-full">
+            <AccordionItem
+              value="capital-returns"
+              className="border-t border-border/70"
+            >
+              <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
+                {capitalReturnsNote.heading}
+              </AccordionTrigger>
+              <AccordionContent className="pb-6">
+                <div className="max-w-3xl space-y-3 pt-2">
+                  {capitalReturnsNote.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-sm leading-6 text-foreground/75"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
             <AccordionItem
               value="protocol-implementations"
               className="border-t border-border/70"

@@ -118,6 +118,16 @@ export const implementationRows = [
   },
 ] as const
 
+export const capitalReturnsNote = {
+  heading: "Capital returns and ownership",
+  paragraphs: [
+    "The protocol is neutral on how a project organizes ownership. Cap tables, cooperatives, revenue-share, tokens, or no investors at all — all are compatible.",
+    "Whatever mechanism a project uses to return capital to those who provided it lives in Vₜ × Sₜ, the flexible-cost term. Creators, builders, and regeneration receive their fixed shares (33%, 33%, 34%) regardless of how capital is structured. Capital is treated as a cost of operation, not as a perpetual claim on value created.",
+    "Projects without investors run the protocol with Vₜ containing only operational flexible costs.",
+    "Each implementation decides its own ownership model, return structure, and how individual creators or builders share their respective slices.",
+  ],
+} as const
+
 export const snailFactorCopy = [
   "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
   "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",

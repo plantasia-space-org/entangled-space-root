@@ -16,6 +16,7 @@ import { SnailFactorIntroSection } from "@/features/landing/snail-factor-intro-s
 import { WaitlistSection } from "@/features/landing/waitlist-section"
 import { WhatItIsSection } from "@/features/landing/what-it-is-section"
 import {
+  capitalReturnsNote,
   founderProfile,
   formulaBreakdown,
   implementationRows,
@@ -34,11 +35,9 @@ import { SnailVisualizationSection } from "@/features/snail-visualization/snail-
 const navigationSections = [
   { id: "thesis", label: "Thesis" },
   { id: "snail-factor", label: "Snail Factor" },
-  { id: "model", label: "Model" },
   { id: "protocol", label: "Protocol" },
   { id: "roadmap", label: "Roadmap" },
   { id: "author", label: "Author" },
-  { id: "waitlist", label: "Waitlist" },
   { id: "discover", label: "Discover" },
 ] as const
 
@@ -53,6 +52,7 @@ export function App() {
   const isDark = resolvedTheme === "dark"
   const headerLogo = isDark ? entSpaceBlackLogo : entSpaceWhiteLogo
   const [activeSnailStep, setActiveSnailStep] = useState(0)
+  const [isSnailDrawerOpen, setIsSnailDrawerOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<NavigationSectionId>(
     navigationSections[0].id
   )
@@ -353,10 +353,14 @@ export function App() {
         <HeroSection />
         <OpeningThesisSection paragraphs={introduction} />
         <SnailFactorIntroSection paragraphs={snailFactorCopy} />
-        <SnailVisualizationSection activeStep={activeSnailStep} />
+        <SnailVisualizationSection
+          activeStep={activeSnailStep}
+          onExplore={() => setIsSnailDrawerOpen(true)}
+        />
         <ProtocolSection
           formulaBreakdown={formulaBreakdown}
           implementationRows={implementationRows}
+          capitalReturnsNote={capitalReturnsNote}
         />
         <WhatItIsSection items={whatItIs} />
         <ResearchDevelopmentSection founderProfile={founderProfile} />
@@ -400,7 +404,11 @@ export function App() {
         }}
         onSubmit={handleContactSubmit}
       />
-      <SnailKeyboardSection onStepChange={setActiveSnailStep} />
+      <SnailKeyboardSection
+        open={isSnailDrawerOpen}
+        onOpenChange={setIsSnailDrawerOpen}
+        onStepChange={setActiveSnailStep}
+      />
     </>
   )
 }

@@ -36,6 +36,10 @@ import {
   type SnailVoice,
 } from "./snail-synth-data"
 import { TransportControls } from "./transport-controls"
+import {
+  SnailModelCharts,
+  SnailModelMetrics,
+} from "@/features/snail-visualization/snail-visualization-section"
 
 // 2 steps per beat → each step is one eighth note
 const STEPS_PER_BEAT = 2
@@ -111,11 +115,15 @@ function InfoCards({ items }: { items: InfoChipItem[] }) {
 }
 
 export function SnailKeyboardSection({
+  open: controlledOpen,
+  onOpenChange,
   onStepChange,
 }: {
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
   onStepChange?: (step: number) => void
 }) {
-  const [open, setOpen] = useState(false)
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
   const [soundEnabled, setSoundEnabled] = useState(false)
   const [bpm, setBpm] = useState(DEFAULT_BPM)
@@ -131,6 +139,37 @@ export function SnailKeyboardSection({
   const stepRef = useRef(0)
   const heldKeysRef = useRef(new Set<string>())
   const savedScrollRef = useRef(0)
+  const open = controlledOpen ?? uncontrolledOpen
+
+  const setOpen = (next: boolean) => {
+    if (controlledOpen === undefined) {
+      setUncontrolledOpen(next)
+    }
+
+    onOpenChange?.(next)
+  }
+
+  const syncKeyboardPeriod = (entry: (typeof VISIBLE_SNAIL_MODEL)[number]) => {
+    const nextPeriod = (entry.cycle ?? 1) - 1
+
+    if (
+      nextPeriod !== keyboardPeriod &&
+      KEYBOARD_PERIODS.includes(nextPeriod)
+    ) {
+      setPeriodDirection(nextPeriod > keyboardPeriod ? 1 : -1)
+      setKeyboardPeriod(nextPeriod)
+    }
+  }
+
+  const selectStep = (nextStep: number) => {
+    const nextEntry = VISIBLE_SNAIL_MODEL[nextStep]
+    if (!nextEntry) return
+
+    stepRef.current = nextStep
+    setCurrentStep(nextStep)
+    setSequencerKeyId(null)
+    syncKeyboardPeriod(nextEntry)
+  }
 
   // ── Sequencer: setInterval clock ────────────────────────────────────────────
   //
@@ -221,8 +260,7 @@ export function SnailKeyboardSection({
           return candidateDistance < nearestDistance ? candidate : nearest
         }, matchingSteps[0]!)
 
-        stepRef.current = nearestStep
-        setCurrentStep(nearestStep)
+        selectStep(nearestStep)
       }
 
       if (soundEnabled) {
@@ -268,11 +306,15 @@ export function SnailKeyboardSection({
 
   // ── Derived UI state ────────────────────────────────────────────────────────
 
-  const activeKeyIds = sequencerKeyId
-    ? Array.from(new Set([...heldKeyIds, sequencerKeyId]))
-    : heldKeyIds
-
   const currentEntry = VISIBLE_SNAIL_MODEL[currentStep]
+  const selectedKeyId = currentEntry ? getKeyIdForEntry(currentEntry) : null
+  const activeKeyIds = Array.from(
+    new Set([
+      ...heldKeyIds,
+      ...(sequencerKeyId ? [sequencerKeyId] : []),
+      ...(!isPlaying && selectedKeyId ? [selectedKeyId] : []),
+    ])
+  )
 
   return (
     <>
@@ -393,7 +435,7 @@ export function SnailKeyboardSection({
         </div>
 
         <DrawerContent className="overflow-hidden border-t border-border bg-background">
-          <div className="mx-auto max-h-[calc(90dvh-2.5rem)] w-full max-w-6xl overflow-y-auto overscroll-contain px-6 py-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] sm:max-h-[calc(85dvh-2.5rem)] sm:px-8 sm:py-5 sm:pb-[calc(env(safe-area-inset-bottom)+1rem)]">
+          <div className="themed-scrollbar mx-auto max-h-[calc(90dvh-2.5rem)] w-full max-w-6xl overflow-y-auto overscroll-contain px-6 py-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] sm:max-h-[calc(85dvh-2.5rem)] sm:px-8 sm:py-5 sm:pb-[calc(env(safe-area-inset-bottom)+1rem)]">
             <div
               className="relative flex flex-wrap items-center justify-between gap-3"
               data-vaul-no-drag
@@ -410,8 +452,8 @@ export function SnailKeyboardSection({
               </DrawerClose>
 
               <p className="text-[0.72rem] tracking-[0.2em] text-muted-foreground uppercase">
-                Cycle {currentEntry.cycle} · Step{" "}
-                {String(currentEntry.anchorStep).padStart(2, "0")}
+                Month {String(currentEntry.position).padStart(2, "0")} ·
+                Harmonic step {String(currentEntry.anchorStep).padStart(2, "0")}
               </p>
 
               <div className="flex items-center gap-2 pr-14 sm:pr-0">
@@ -488,6 +530,19 @@ export function SnailKeyboardSection({
                 data-vaul-no-drag
               >
                 <InfoCards items={INFO_CHIP_ITEMS} />
+              </div>
+
+              <div className="border-t border-border pt-6">
+                <div className="border border-border bg-background px-4 py-4 sm:px-5 sm:py-5">
+                  <SnailModelMetrics activeStep={currentStep} />
+                </div>
+                <div className="pt-6">
+                  <SnailModelCharts
+                    activeStep={currentStep}
+                    interactive={!isPlaying}
+                    onSelectStep={selectStep}
+                  />
+                </div>
               </div>
             </div>
           </div>

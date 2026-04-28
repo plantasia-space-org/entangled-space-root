@@ -62,7 +62,7 @@ const maxFactor = Math.max(...factorValues)
 
 export const VISUALIZATION_MODEL = VISIBLE_SNAIL_MODEL.map((entry, index) => {
   const formula = FORMULA_STATES[index]
-  const theta = index / CYCLE_STEPS * Math.PI * 2 - Math.PI / 2
+  const theta = (index / CYCLE_STEPS) * Math.PI * 2 - Math.PI / 2
   const normalizedRevenue = normalize(formula.revenue, minRevenue, maxRevenue)
   const normalizedFactor = normalize(entry.factor, minFactor, maxFactor)
   const growthRadius = 34 + Math.pow(normalizedRevenue, 0.85) * 180
