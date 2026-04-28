@@ -89,7 +89,7 @@ export function SnailVisualizationSection({
             />
             <MetricCell
               label="Snail Factor"
-              value={activeEntry.factor.toFixed(5)}
+              value={activeEntry.factor.toFixed(2)}
             />
           </div>
         </EditorialBlock>

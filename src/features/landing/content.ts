@@ -1,7 +1,7 @@
 export const introduction = [
-  "The music industry went from vinyl to streaming and called it progress. Plastic use dropped. But carbon emissions from storing and transmitting digital music kept rising — the footprint didn't disappear, it moved from landfill to atmosphere. The model changed. The damage didn't. It's a structural problem with how economies distribute value.",
-  "Every extractive economy draws the same line: growth without return. Natural ecosystems work differently. They expand and contract in balanced cycles. Forests breathe. Tides rise and fall. Landscapes regenerate.",
-  "Entangled Space encodes one of these harmonies into economic infrastructure: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — balanced by a cycle derived from music theory.",
+  "The music industry went from vinyl to streaming. Plastic use dropped. But carbon emissions from storing and transmitting digital music kept rising — the footprint didn't disappear, it moved from landfill to atmosphere. The model changed. The damage didn't. It's a structural problem.",
+  "Every extractive economy draws the same line: growth without return. Natural ecosystems work through cycles of exchange, return, and redistribution. A sunflower arranges its seeds in a golden spiral — each seed placed at an angle that packs them efficiently across the seed head, with room to grow and a path to fall. Less crowding. Less waste. The pattern isn't aesthetic; it's how the plant solves the problem of distributing many participants across one finite surface.",
+  "Entangled Space encodes that logic into economic infrastructure: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — balanced by a cycle derived from music theory and the golden ratio.",
   "The application is universal. Music is where it starts.",
 ] as const
 
@@ -10,7 +10,7 @@ export const whatItIs = [
     ordinal: "01",
     label: "Publish the specification",
     description:
-      "Define and release the core protocol openly: the Snail Factor math, the three-role distribution model, and the usage-based allocation rules.",
+      "Define and release the core protocol openly: the Snail Factor math, the creator/builder/regeneration distribution model, and the usage-based allocation rules.",
     goal:
       "The goal is to make the system clear, auditable, and easy for others to understand, question, and build on.",
     io: null,
@@ -24,25 +24,25 @@ export const whatItIs = [
     io: {
       input: "Revenue, costs, usage data, current date",
       output:
-        "Distribution amounts per participant, independent of how payment is executed",
+        "Distribution amounts per participant. The library calculates; the platform executes payment.",
     },
   },
   {
     ordinal: "03",
-    label: "Live inside Plantasia Space",
+    label: "Launch the dashboard",
     description:
-      "Implement the protocol in Plantasia Space as the first real integration and proof of concept.",
+      "Create a public interface at entangled.space where anyone can observe the cycle, simulate distributions in their own context, and verify how implementations should compute.",
     goal:
-      "This step turns the protocol from a specification and library into a working system inside a live platform. It allows us to validate the logic in practice, test the model in a concrete environment, and learn from a real creative ecosystem before expanding further.",
+      "The goal is to make the protocol transparent, testable, and understandable before and during real-world deployment. At first, the dashboard can run on simulated or test data; later, it can also display verified live implementations.",
     io: null,
   },
   {
     ordinal: "04",
-    label: "Launch the dashboard",
+    label: "Deploy in Plantasia Space",
     description:
-      "Create a public interface at entangled.space where people can observe the cycle in motion, simulate distributions in their own context, and verify that implementations are computing correctly.",
+      "Plantasia Space becomes the first live implementation of the protocol inside a working creative platform.",
     goal:
-      "The goal is to make the protocol transparent, testable, and legible beyond the code itself.",
+      "This step moves the protocol from public specification, library, and simulation into real economic activity. It lets us validate the logic inside a live creative ecosystem, observe how the roles behave in practice, and learn before expanding to other contexts.",
     io: null,
   },
 ] as const
@@ -55,7 +55,7 @@ export const formulaBreakdown = [
       {
         symbol: "Iₜ",
         description:
-          "Investment input, prorated — yearly investment enters as 1/12 per month",
+          "Investment input, prorated. Yearly investment enters as 1/12 per month",
       },
     ],
   },
@@ -65,12 +65,12 @@ export const formulaBreakdown = [
       {
         symbol: "Fₜ",
         description:
-          "Fixed costs — operations, hosting, taxes, legal, salaries. Non-negotiable, not modulated by the cycle",
+          "Fixed costs. Operations, hosting, taxes, legal, salaries. Non-negotiable, not modulated by the cycle",
       },
       {
         symbol: "Vₜ × Sₜ",
         description:
-          "Flexible costs modulated by the Snail Factor — investor returns or other adjustable allocations. These breathe with the cycle",
+          "Flexible costs modulated by the Snail Factor. Investor returns, infrastructure investment, equipment, travel, marketing, and other discretionary spend the company needs to operate but can scale up or down with the cycle",
       },
     ],
   },
@@ -85,7 +85,7 @@ export const formulaBreakdown = [
       {
         symbol: "Regeneration × 0.34",
         description:
-          "Projects dedicated to human and planetary wellbeing, linked to the activity",
+          "Projects addressing the human and environmental externalities of the activity",
       },
     ],
   },
@@ -93,43 +93,40 @@ export const formulaBreakdown = [
 
 export const implementationRows = [
   {
-    context: "Plantasia Space (music)",
-    creators: "Artists",
-    builders: "Orbiter & tool developers",
-    regeneration: "Environmental projects linked to releases",
+    context: "Plantasia Space",
+    creators: "Artists releasing music and interactive works",
+    builders: "Developers building Orbiters, worlds, and platform tools",
+    regeneration: "Environmental or landscape-regeneration projects linked to releases",
   },
   {
-    context: "Food cooperative",
-    creators: "Farmers",
-    builders: "Distribution & logistics networks",
-    regeneration: "Soil restoration, biodiversity programs",
+    context: "Documentary film",
+    creators: "Directors, writers, cinematographers, editors, and core creative crew",
+    builders: "Production systems, distribution tools, archives, and preservation infrastructure",
+    regeneration: "Communities represented in the film, location repair, or long-term subject support",
   },
   {
-    context: "Research collective",
-    creators: "Researchers",
-    builders: "Lab maintainers & toolmakers",
-    regeneration: "Community health, public education",
+    context: "Scientific research lab",
+    creators: "Researchers producing the scientific work",
+    builders: "Lab infrastructure, data systems, instruments, software, and peer-review tools",
+    regeneration: "Open-access publication, replication funding, public education, or ecological repair connected to the research",
   },
   {
-    context: "Artisan workshop",
-    creators: "Makers & craftspeople",
-    builders: "Supply chain & workshop operators",
-    regeneration: "Local material sourcing, waste reduction",
+    context: "Software platform",
+    creators: "Product teams creating the user-facing value",
+    builders: "Infrastructure, DevOps, security, maintenance, documentation",
+    regeneration: "Open-source maintenance, digital literacy, accessibility, or environmental impact mitigation",
   },
 ] as const
 
 export const snailFactorCopy = [
   "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
   "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",
-  "We translate those 7 steps into an economic cycle: 12 steps of ascent and return spanning one calendar year. The full system breathes.",
+  "We translate those 7 tones into an economic cycle of 12 steps — ascending and descending without repeating the turning points — spanning one calendar year.",
 ] as const
 
 export const founderProfile = {
   name: "Bruna Guarnieri Colasso",
   bio: [
-    "Engineer and artist, 25 years in music across 3 continents.",
-    "70+ products shipped. 7 international awards. Venice Biennale, IRCAM.",
-    "Creator of ENT Cards (blockchain-physical album format). Founder of Maar.World.",
-    "Coufounded, Designed and Developed Plantasia Space.",
+    "Engineer, artist, and musician. 20+ years designing immersive sound experiences across three continents. Co-founder, designer, and developer of Plantasia Space. Founder of Maar.World, an independent record label developing new formats that merge physical and digital releases, music listening and making. Work shown at the Venice Biennale, Expo Milan, and London Fashion Week. Orbits and Bodies (with Gabriel Vigliensoni) premiered at IRCAM in 2025.",
   ],
 } as const

@@ -105,12 +105,12 @@ export function WhatItIsSection({ items }: WhatItIsSectionProps) {
               Guiding Principle
             </p>
             <p className="text-xl leading-relaxed font-medium tracking-[-0.02em] text-foreground sm:text-2xl">
-              The protocol should remain infrastructure-agnostic.
+              The protocol is infrastructure-agnostic.
             </p>
             <p className="text-base leading-8 text-foreground/88 sm:text-lg">
-              It should be able to run on Stripe, on a blockchain, on both, or
-              on any other system. The implementation layer can vary. The math
-              and logic should remain consistent.
+              It can run on a blockchain, on Stripe, on both, or on something we
+              haven't seen yet. The implementation layer varies. The math stays
+              the same.
             </p>
           </div>
         </div>

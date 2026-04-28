@@ -116,9 +116,14 @@ export function ProtocolSection({
               </AccordionTrigger>
               <AccordionContent className="pb-6">
                 <div className="space-y-5 pt-2">
-                  <p className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
-                    Each implementation maps these roles to its own context
-                  </p>
+                  <div>
+                    <p className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+                      The same roles can adapt to different contexts
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-foreground/75">
+                      Each implementation decides who belongs to each role.
+                    </p>
+                  </div>
                   <div className="overflow-x-auto border border-border">
                     <table className="w-full min-w-[40rem] text-sm">
                       <thead>
