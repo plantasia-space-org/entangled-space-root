@@ -67,7 +67,7 @@ type ChartPayload = {
 }
 
 type ChartClickState = {
-  activePayload?: Array<{ payload?: ChartPayload }>
+  activeIndex?: unknown
 }
 
 export function SnailModelCharts({
@@ -85,7 +85,9 @@ export function SnailModelCharts({
     onSelectStep?.(payload.index)
   }
   const selectChartPoint = (state?: ChartClickState) => {
-    selectPayload(state?.activePayload?.[0]?.payload)
+    const nextIndex = Number(state?.activeIndex)
+    if (!Number.isInteger(nextIndex)) return
+    selectPayload(VISUALIZATION_MODEL[nextIndex])
   }
 
   return (
