@@ -97,7 +97,7 @@ export const HARMONIC_SOURCE_CONFIG = {
     color: "var(--chart-3)",
   },
   distributable: {
-    label: "Remaining value",
+    label: "Distributable surplus (Dₜ)",
     color: "var(--chart-4)",
   },
   polar: {

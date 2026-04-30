@@ -184,7 +184,7 @@ export function SnailModelCharts({
                 repeated yearly cycles. Revenue follows an S-curve: slow early
                 adoption, faster growth, then stabilization. Fixed and flexible
                 costs are deducted first; flexible costs rise and fall with the
-                monthly Snail Factor. Remaining value can be distributed to
+                monthly Snail Factor. Distributable surplus (Dₜ) flows to
                 creators, builders, and regeneration. This is not a financial
                 forecast.
               </p>

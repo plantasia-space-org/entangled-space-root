@@ -15,6 +15,12 @@
       "source": "shadcn/ui",
       "sourceType": "github",
       "computedHash": "873c67922d80775a9fdf596db7964b579f0408c30ec6e3d11989f6055bbec89f"
+    },
+    "whitepapers": {
+      "source": "gtmagents/gtm-agents",
+      "sourceType": "github",
+      "skillPath": "plugins/content-marketing/skills/whitepapers/SKILL.md",
+      "computedHash": "2f61d455cc2dd2b2309dc463e8179d76f015998693a80e74a30b0f755fa546ed"
     }
   }
 }

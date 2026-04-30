@@ -77,13 +77,18 @@ export const formulaBreakdown = [
   {
     label: "What flows out",
     items: [
-      { symbol: "Creators × 0.33", description: "Whoever produces the primary value" },
       {
-        symbol: "Builders × 0.33",
+        symbol: "Dₜ",
+        description:
+          "Distributable surplus — what remains after all costs are covered. Non-negative: if costs exceed revenue, no distribution occurs that period.",
+      },
+      { symbol: "0.33 · Dₜ → Creators", description: "Whoever produces the primary value" },
+      {
+        symbol: "0.33 · Dₜ → Builders",
         description: "Whoever builds and maintains the tools and systems",
       },
       {
-        symbol: "Regeneration × 0.34",
+        symbol: "0.34 · Dₜ → Regeneration",
         description:
           "Projects addressing the human and environmental externalities of the activity",
       },
@@ -122,7 +127,7 @@ export const capitalReturnsNote = {
   heading: "Capital returns and ownership",
   paragraphs: [
     "The protocol is neutral on how a project organizes ownership. Cap tables, cooperatives, revenue-share, tokens, or no investors at all — all are compatible.",
-    "Whatever mechanism a project uses to return capital to those who provided it lives in Vₜ × Sₜ, the flexible-cost term. Creators, builders, and regeneration receive their fixed shares (33%, 33%, 34%) regardless of how capital is structured. Capital is treated as a cost of operation, not as a perpetual claim on value created.",
+    "Whatever mechanism a project uses to return capital to those who provided it lives in Vₜ · Sₜ, the flexible-cost term. Creators, builders, and regeneration receive their fixed shares (33%, 33%, 34%) regardless of how capital is structured. Capital is treated as a cost of operation, not as a perpetual claim on value created.",
     "Projects without investors run the protocol with Vₜ containing only operational flexible costs.",
     "Each implementation decides its own ownership model, return structure, and how individual creators or builders share their respective slices.",
   ],

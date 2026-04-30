@@ -75,11 +75,11 @@ export function ProtocolSection({
 
         <div className="mt-14 border border-border bg-muted/35 px-6 py-8 sm:px-10 sm:py-10">
           <p className="font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
-            (Rₜ + Iₜ) − Fₜ − (Vₜ × Sₜ)
+            Dₜ = (Rₜ + Iₜ) − Fₜ − (Vₜ · Sₜ),&nbsp;&nbsp;Dₜ ≥ 0
           </p>
           <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
-            &nbsp;&nbsp;= creators × 0.33 + builders × 0.33 + regeneration ×
-            0.34
+            &nbsp;&nbsp;0.33 · Dₜ → Creators&nbsp;&nbsp;+&nbsp;&nbsp;0.33 · Dₜ
+            → Builders&nbsp;&nbsp;+&nbsp;&nbsp;0.34 · Dₜ → Regeneration
           </p>
           <p className="mt-5 text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
             All values computed per period (monthly). Snail Factor changes each
