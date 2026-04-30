@@ -15,6 +15,7 @@ import { ResearchDevelopmentSection } from "@/features/landing/research-developm
 import { SnailFactorIntroSection } from "@/features/landing/snail-factor-intro-section"
 import { WaitlistSection } from "@/features/landing/waitlist-section"
 import { WhatItIsSection } from "@/features/landing/what-it-is-section"
+import { WhitePaperPage } from "@/features/white-paper/white-paper-page"
 import {
   capitalReturnsNote,
   founderProfile,
@@ -68,6 +69,8 @@ export function App() {
   const [contactStatus, setContactStatus] = useState<FormStatus>({
     type: "idle",
   })
+  const isWhitePaperRoute =
+    window.location.pathname.replace(/\/$/, "") === "/white-paper"
 
   useEffect(() => {
     const sectionElements = navigationSections
@@ -243,6 +246,10 @@ export function App() {
           error instanceof Error ? error.message : "Unable to submit form",
       })
     }
+  }
+
+  if (isWhitePaperRoute) {
+    return <WhitePaperPage />
   }
 
   return (

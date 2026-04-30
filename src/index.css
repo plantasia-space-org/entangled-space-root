@@ -173,6 +173,92 @@
     color: var(--background);
   }
 
+  .white-paper-prose {
+    @apply text-foreground;
+  }
+
+  .white-paper-prose h1 {
+    @apply mt-0 mb-6 text-5xl leading-none font-medium tracking-[-0.04em] sm:text-6xl;
+  }
+
+  .white-paper-prose h2 {
+    @apply mt-16 border-t border-border pt-10 text-3xl leading-tight font-medium tracking-[-0.03em] sm:text-4xl;
+  }
+
+  .white-paper-prose h3 {
+    @apply mt-12 text-xl leading-tight font-medium tracking-[-0.02em] sm:text-2xl;
+  }
+
+  .white-paper-prose h4 {
+    @apply mt-8 text-sm font-medium tracking-[0.18em] text-muted-foreground uppercase;
+  }
+
+  .white-paper-prose p,
+  .white-paper-prose li {
+    @apply text-base leading-8 text-foreground/88;
+  }
+
+  .white-paper-prose p {
+    @apply mt-5;
+  }
+
+  .white-paper-prose ul,
+  .white-paper-prose ol {
+    @apply mt-5 space-y-3 pl-5;
+  }
+
+  .white-paper-prose ul {
+    @apply list-disc;
+  }
+
+  .white-paper-prose ol {
+    @apply list-decimal;
+  }
+
+  .white-paper-prose blockquote {
+    @apply mt-8 border-l border-foreground bg-muted/35 px-6 py-5 text-base leading-8 text-foreground/88;
+  }
+
+  .white-paper-prose pre {
+    @apply mt-6 overflow-x-auto border border-border bg-muted/35 px-5 py-4 font-mono text-sm leading-7 text-foreground;
+  }
+
+  .white-paper-prose code {
+    @apply bg-muted px-1.5 py-0.5 font-mono text-[0.9em] text-foreground;
+  }
+
+  .white-paper-prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .white-paper-prose a {
+    @apply text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground;
+  }
+
+  .white-paper-prose hr {
+    @apply my-12 border-border;
+  }
+
+  .white-paper-prose figure {
+    @apply mt-8;
+  }
+
+  .white-paper-prose figcaption {
+    @apply mt-3 text-sm leading-6 text-muted-foreground;
+  }
+
+  .white-paper-prose table {
+    @apply w-full min-w-[44rem] text-sm;
+  }
+
+  .white-paper-prose th {
+    @apply border-b border-border px-4 py-3 text-left text-[0.68rem] font-medium tracking-[0.16em] text-muted-foreground uppercase;
+  }
+
+  .white-paper-prose td {
+    @apply border-b border-border px-4 py-3 leading-6 text-foreground/88;
+  }
+
   .themed-scrollbar {
     scrollbar-color: color-mix(in oklab, var(--foreground) 34%, transparent)
       color-mix(in oklab, var(--muted) 72%, transparent);
@@ -195,5 +281,65 @@
 
   .themed-scrollbar::-webkit-scrollbar-thumb:hover {
     background: color-mix(in oklab, var(--foreground) 52%, transparent);
+  }
+}
+
+@media print {
+  @page {
+    margin: 0.65in;
+  }
+
+  :root,
+  .dark {
+    --background: white;
+    --foreground: black;
+    --muted: white;
+    --muted-foreground: #444;
+    --border: #bbb;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main,
+  section,
+  article {
+    background: white !important;
+  }
+
+  img,
+  video {
+    print-color-adjust: exact;
+  }
+
+  .white-paper-prose h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .white-paper-prose h3,
+  .white-paper-prose h4,
+  .white-paper-prose table,
+  .white-paper-prose pre,
+  .white-paper-prose blockquote {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .white-paper-prose p,
+  .white-paper-prose li,
+  .white-paper-prose td {
+    color: black !important;
   }
 }

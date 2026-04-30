@@ -21,6 +21,9 @@ export function FooterLinksSection({
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg" className="px-5 text-sm">
+              <a href="/white-paper">White Paper</a>
+            </Button>
+            <Button asChild size="lg" className="px-5 text-sm">
               <a
                 href="https://plantasia.space"
                 target="_blank"

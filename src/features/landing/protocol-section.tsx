@@ -67,23 +67,33 @@ export function ProtocolSection({
           </div>
           <div className="max-w-2xl space-y-4">
             <p className="text-base leading-8 text-foreground/88 sm:text-lg">
-              The protocol defines who receives value, in what proportion, and
-              modulated by what rhythm.
+              The protocol first defines Dₜ, the distributable surplus for
+              period t, then allocates Dₜ across creators, builders, and
+              regeneration.
             </p>
           </div>
         </div>
 
         <div className="mt-14 border border-border bg-muted/35 px-6 py-8 sm:px-10 sm:py-10">
           <p className="font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
-            Dₜ = (Rₜ + Iₜ) − Fₜ − (Vₜ · Sₜ),&nbsp;&nbsp;Dₜ ≥ 0
+            Dₜ = (Rₜ + Iₜ) − Fₜ − (Vₜ × Sₜ),&nbsp;&nbsp;Dₜ ≥ 0
           </p>
           <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
-            &nbsp;&nbsp;0.33 · Dₜ → Creators&nbsp;&nbsp;+&nbsp;&nbsp;0.33 · Dₜ
-            → Builders&nbsp;&nbsp;+&nbsp;&nbsp;0.34 · Dₜ → Regeneration
+            0.33 × Dₜ → Creators
+          </p>
+          <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            0.33 × Dₜ → Builders
+          </p>
+          <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            0.34 × Dₜ → Regeneration
           </p>
           <p className="mt-5 text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
             All values computed per period (monthly). Snail Factor changes each
             month.
+          </p>
+          <p className="mt-2 text-[0.68rem] text-muted-foreground/75 italic">
+            One third cannot be expressed exactly in two decimal places. The
+            rounding residual goes to Regeneration.
           </p>
         </div>
 
