@@ -1,0 +1,143 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+type FormulaItem = {
+  symbol: string
+  description: string
+}
+
+type FormulaBlock = {
+  label: string
+  items: readonly FormulaItem[]
+}
+
+type CapitalReturnsNote = {
+  heading: string
+  paragraphs: readonly string[]
+}
+
+type ProtocolSectionProps = {
+  formulaBreakdown: readonly FormulaBlock[]
+  capitalReturnsNote: CapitalReturnsNote
+}
+
+export function ProtocolSection({
+  formulaBreakdown,
+  capitalReturnsNote,
+}: ProtocolSectionProps) {
+  return (
+    <section
+      id="protocol"
+      className="relative scroll-mt-24 overflow-hidden border-t border-border bg-background"
+    >
+      <div className="absolute inset-0">
+        <img
+          src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center opacity-50 dark:opacity-10"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.97)_0%,rgba(247,244,236,0.94)_38%,rgba(247,244,236,0.76)_72%,rgba(247,244,236,0.9)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.88)_0%,rgba(18,18,18,0.72)_38%,rgba(18,18,18,0.38)_72%,rgba(18,18,18,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_32%,rgba(116,83,36,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.16))] dark:bg-[radial-gradient(circle_at_76%_32%,rgba(214,171,93,0.2),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.1))]" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-28 lg:py-36">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-20">
+          <div className="space-y-6">
+            <p className="text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
+              The Protocol
+            </p>
+            <h2 className="text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
+              The formula.
+            </h2>
+          </div>
+          <div className="max-w-2xl space-y-4">
+            <p className="text-base leading-8 text-foreground/88 sm:text-lg">
+              The protocol first defines Dₜ, the distributable surplus for
+              period t, then allocates Dₜ across creators, builders, and
+              regeneration.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14 border border-border bg-muted/35 px-6 py-8 sm:px-10 sm:py-10">
+          <p className="font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            Dₜ = (Rₜ + Iₜ) − Fₜ − (Vₜ × Sₜ),&nbsp;&nbsp;Dₜ ≥ 0
+          </p>
+          <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            0.33 × Dₜ → Creators
+          </p>
+          <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            0.33 × Dₜ → Builders
+          </p>
+          <p className="mt-1 font-mono text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+            0.34 × Dₜ → Regeneration
+          </p>
+          <p className="mt-5 text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+            All values computed per period (monthly). Snail Factor changes each
+            month.
+          </p>
+          <p className="mt-2 text-[0.68rem] text-muted-foreground/75 italic">
+            One third cannot be expressed exactly in two decimal places. The
+            rounding residual goes to Regeneration.
+          </p>
+        </div>
+
+        <div className="mt-3 grid gap-px border border-border bg-border sm:grid-cols-3">
+          {formulaBreakdown.map(({ label, items }) => (
+            <div
+              key={label}
+              className="space-y-5 bg-background px-6 py-7 sm:px-7 sm:py-8"
+            >
+              <p className="text-[0.68rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+                {label}
+              </p>
+              <ul className="space-y-4">
+                {items.map(({ symbol, description }) => (
+                  <li key={symbol}>
+                    <p className="font-mono text-sm font-medium text-foreground">
+                      {symbol}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-foreground/75">
+                      {description}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 max-w-4xl">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem
+              value="capital-returns"
+              className="border-t border-border/70"
+            >
+              <AccordionTrigger className="py-4 text-left text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase hover:no-underline">
+                {capitalReturnsNote.heading}
+              </AccordionTrigger>
+              <AccordionContent className="pb-6">
+                <div className="max-w-3xl space-y-3 pt-2">
+                  {capitalReturnsNote.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-sm leading-6 text-foreground/75"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
+    </section>
+  )
+}
