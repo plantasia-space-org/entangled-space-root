@@ -40,17 +40,10 @@ export function OverviewVideoSection() {
       <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-24 lg:py-28">
         <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)] lg:items-end">
           <div className="space-y-4">
-            <p className="text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
-              60-second overview
-            </p>
             <h2 className="max-w-2xl text-3xl leading-tight font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-5xl">
-              See the protocol in motion.
+              Video overview
             </h2>
           </div>
-          <p className="max-w-xl text-base leading-8 text-foreground/78 sm:text-lg">
-            A short introduction to Entangled Space: take, create, return, in
-            balance.
-          </p>
         </div>
 
         <div className="overflow-hidden border border-border bg-muted/35">
