@@ -1,8 +1,9 @@
 export const introduction = [
-  "The music industry went from vinyl to streaming. Plastic use dropped. But carbon emissions from storing and transmitting digital music kept rising — the footprint didn't disappear, it moved from landfill to atmosphere. The model changed. The damage didn't. It's a structural problem.",
-  "Every extractive economy draws the same line: growth without return. Natural ecosystems work through cycles of exchange, return, and redistribution. A sunflower arranges its seeds in a golden spiral — each seed placed at an angle that packs them efficiently across the seed head, with room to grow and a path to fall. Less crowding. Less waste. The pattern isn't aesthetic; it's how the plant solves the problem of distributing many participants across one finite surface.",
-  "Entangled Space encodes that logic into economic infrastructure: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — balanced by a cycle derived from music theory and the golden ratio.",
-  "The application is universal. Music is where it starts.",
+  "The music industry moved from vinyl to streaming. Plastic use declined, but the energy required to store and transmit digital media continued to grow. The footprint did not disappear; it shifted from physical waste toward invisible infrastructure. The model changed. The extraction remained structural.",
+  "Most economic systems are optimized for accumulation without built-in mechanisms of return. Natural ecosystems operate differently: through cycles of exchange, redistribution, decay, and renewal.",
+  "A sunflower arranges its seeds in a spiral pattern that distributes growth efficiently across a finite surface, balancing density, expansion, and access to light. The pattern is not decorative; it is functional.",
+  "Entangled Space draws inspiration from these recursive patterns to explore alternative forms of economic coordination: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — modulated through a cyclical system informed by music theory and the Golden Ratio.",
+  "Music is where the experiment begins.",
 ] as const
 
 export const whatItIs = [
@@ -166,9 +167,9 @@ export const capitalReturnsNote = {
 } as const
 
 export const snailFactorCopy = [
-  "The engine of the protocol is a dynamic coefficient called the Snail Factor, derived from the 833 Cents Scale — a musical scale developed by Heinz Bohlen (2012), built on combination tones, that coincidentally converges on the golden ratio (1.618).",
-  "Most music repeats at the octave, a 2:1 ratio. The 833 Cents Scale replaces this with the golden ratio as its repeating interval, producing a symmetrical seven-tone structure.",
-  "We translate those 7 tones into an economic cycle of 12 steps — ascending and descending without repeating the turning points — spanning one calendar year.",
+  "The Snail Factor is not a decorative modulation, but a structural application of recursive proportional systems. Inspired by Benoit Mandelbrot’s work on fractals and self-similar patterns in natural and financial systems, we use a musical derivation: the 833 Cents Scale.",
+  "Music theory offers one of humanity’s longest-standing mathematical frameworks for studying proportional relationships as they unfold through time. By encoding these recursive ratios into the protocol, the system moves away from the binary logic of perpetual growth or collapse, toward a model of oscillation, adaptation, and redistribution.",
+  "The scale’s 7 tones are translated into a 12-step economic cycle — ascending and descending without repeating the turning points — spanning one calendar year to modulate the protocol’s flexible costs.",
 ] as const
 
 export const founderProfile = {

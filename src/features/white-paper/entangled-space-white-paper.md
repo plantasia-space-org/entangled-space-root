@@ -45,15 +45,21 @@ This is not a technology problem or a platform problem. It is a structural probl
 
 ## Entangled Space
 
-Every extractive economy draws the same line: growth without return. Natural ecosystems work through cycles of exchange, return, and redistribution. A sunflower arranges its seeds in a golden spiral — each seed placed at an angle that packs them efficiently across the seed head, with room to grow and a path to fall. Less crowding. Less waste. The pattern isn't aesthetic; it's how the plant solves the problem of distributing many participants across one finite surface.
+Most economic systems are optimized for accumulation without built-in mechanisms of return. Natural ecosystems operate differently: through cycles of exchange, redistribution, decay, and renewal.
 
-Entangled Space encodes that logic into economic infrastructure: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — balanced by a cycle derived from music theory and the golden ratio. Music is where it starts. The application is universal.
+A sunflower arranges its seeds in a spiral pattern that distributes growth efficiently across a finite surface, balancing density, expansion, and access to light. The pattern is not decorative; it is functional.
+
+Entangled Space draws inspiration from these recursive patterns to explore alternative forms of economic coordination: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — modulated through a cyclical system informed by music theory and the Golden Ratio.
+
+Music is where the experiment begins.
 
 A platform could change its payment terms. A cooperative could choose its members. A policy could mandate disclosure. None of these change the underlying logic: value flows to whoever controls distribution. A protocol is different. It embeds the distribution logic at the infrastructure layer — open, auditable, and independent of any single platform's incentives. Any implementation that adopts the protocol inherits its distribution structure. The math does not change based on who runs the system.
 
 Entangled Space draws from an existing lineage of work on this problem. Elinor Ostrom's research on commons governance identified the design principles that allow shared resources to be managed sustainably — without privatisation or state control — by the communities that depend on them.[^8] Platform cooperativism, developed by Trebor Scholz and others, applied that logic to digital platforms, arguing for structural alternatives to the extractive corporate model.[^9] Kate Raworth's doughnut economics established the social and ecological boundaries within which any genuinely regenerative economy must operate.[^10] Entangled Space is not a cooperative and does not prescribe an ownership model. It works at the layer beneath ownership — encoding distribution rules into infrastructure so that any implementation, whatever its governance structure, inherits the same shape of value flow.
 
 ## The Snail Factor
+
+The Snail Factor is not intended as a decorative modulation, but as a structural application of recursive proportional systems. Inspired by Benoit Mandelbrot’s observations that natural and financial systems often exhibit self-similar behavior across scales, Entangled Space adopts a cyclical distribution curve informed by the Golden Ratio ($\phi$). We use a musical derivation — the 833 Cents Scale — because music theory offers one of humanity’s longest-standing frameworks for studying proportional relationships unfolding through time. By encoding recursive ratios into the protocol, the system moves away from the binary logic of perpetual growth or collapse toward a model of oscillation, adaptation, and redistribution.
 
 **The 833 Cents Scale[^1]** is a musical tuning system developed by Heinz Bohlen (2012). Most music repeats at the octave — a 2:1 ratio. Bohlen's scale replaces this with the golden ratio (1.618034) as its repeating interval, producing a symmetrical seven-tone structure built on combination tones.
 
