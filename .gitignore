@@ -27,4 +27,7 @@ dist-ssr
 *.sw?
 
 
+# Agent skills system — kept local until validated; do not publish to this public repo
 .agents/
+/AGENTS.md
+/CLAUDE.md
