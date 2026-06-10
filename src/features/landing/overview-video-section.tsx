@@ -4,6 +4,10 @@ const LANDSCAPE_VIDEO_SRC =
   "https://herbarium.plantasia.space/entangled-space/videos/horizontal-entangled-space-60.mp4"
 const VERTICAL_VIDEO_SRC =
   "https://herbarium.plantasia.space/entangled-space/videos/vertical-entangled-space-60.mp4"
+const LANDSCAPE_POSTER_SRC =
+  "https://herbarium.plantasia.space/image-assets/entangled-space/landing/ent-space-horizontal-poster_mid.webp"
+const VERTICAL_POSTER_SRC =
+  "https://herbarium.plantasia.space/image-assets/entangled-space/landing/ent-space-vertical-poster_mid.webp"
 
 function useIsDesktopVideo() {
   const [isDesktopVideo, setIsDesktopVideo] = useState(() =>
@@ -28,6 +32,7 @@ function useIsDesktopVideo() {
 export function OverviewVideoSection() {
   const isDesktopVideo = useIsDesktopVideo()
   const videoSrc = isDesktopVideo ? LANDSCAPE_VIDEO_SRC : VERTICAL_VIDEO_SRC
+  const posterSrc = isDesktopVideo ? LANDSCAPE_POSTER_SRC : VERTICAL_POSTER_SRC
   const videoClassName = isDesktopVideo
     ? "aspect-video w-full bg-background object-cover"
     : "aspect-[9/16] w-full bg-background object-cover"
@@ -53,6 +58,7 @@ export function OverviewVideoSection() {
             controls
             playsInline
             preload="metadata"
+            poster={posterSrc}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
