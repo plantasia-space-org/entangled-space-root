@@ -83,10 +83,7 @@ function parseInline(text: string): ReactNode[] {
       return pieces.flatMap((piece, pieceIndex) =>
         pieceIndex === pieces.length - 1
           ? [piece]
-          : [
-              piece,
-              <br key={`${key}-break-${pieceIndex}`} />,
-            ]
+          : [piece, <br key={`${key}-break-${pieceIndex}`} />]
       )
     })
 }
@@ -253,7 +250,9 @@ function parseMarkdown(markdown: string): MarkdownBlock[] {
 }
 
 const paperBlocks = parseMarkdown(whitePaperMarkdown)
+// Skip the title and subtitle headings, which are not rendered in the article body.
 const sectionLinks = paperBlocks
+  .slice(2)
   .filter(
     (block): block is Extract<MarkdownBlock, { type: "heading" }> =>
       block.type === "heading" && block.depth === 2
@@ -262,6 +261,11 @@ const sectionLinks = paperBlocks
     id: getHeadingId(block.text),
     label: block.text.replace(/\s\\?-\s.*$/, ""),
   }))
+
+const versionMatch = whitePaperMarkdown.match(/^\*Version\s+([^*]+)\*/m)
+const versionLabel = versionMatch
+  ? `Version ${versionMatch[1].replace(" — ", " · ")}`
+  : null
 
 function MarkdownRenderer({ blocks }: { blocks: MarkdownBlock[] }) {
   return (
@@ -433,9 +437,11 @@ export function WhitePaperPage() {
               A regenerative and oscillatory economy for a new music industry
               and beyond.
             </p>
-            <p className="mt-8 text-[0.72rem] font-medium tracking-[0.22em] text-muted-foreground uppercase">
-              Version 0.2 · April 2026
-            </p>
+            {versionLabel && (
+              <p className="mt-8 text-[0.72rem] font-medium tracking-[0.22em] text-muted-foreground uppercase">
+                {versionLabel}
+              </p>
+            )}
           </div>
           <aside className="no-print hidden border-l border-border pl-6 lg:block">
             <p className="text-[0.68rem] font-medium tracking-[0.22em] text-muted-foreground uppercase">

@@ -10,7 +10,7 @@ export const whatItIs = [
     ordinal: "01",
     label: "Publish the specification",
     description:
-      "Define and release the core protocol openly: the Snail Factor math, the creator/builder/regeneration distribution model, and the usage-based allocation rules.",
+      "Define and release the core protocol openly: the Snail Factor math, the creator/builder/regeneration distribution model, and the formula.",
     goal: "The goal is to make the system clear, auditable, and easy for others to understand, question, and build on.",
     io: null,
   },
