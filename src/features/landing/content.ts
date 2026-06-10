@@ -219,7 +219,7 @@ export const designHighlights = {
 export const founderProfile = {
   name: "Bruna Guarnieri Colasso",
   bio: [
-    "Engineer, artist, and musician. 20+ years designing immersive sound experiences across three continents. Co-founder, designer, and developer of Plantasia Space. Founder of Maar.World, an independent record label developing new formats that merge physical and digital releases, music listening and making. Work shown at the Venice Biennale, Expo Milan, and London Fashion Week. Orbits and Bodies (with Gabriel Vigliensoni) premiered at IRCAM in 2025.",
+    "Luthier. 20+ years working at the intersection of art, science, and technology across three continents — building new instruments and experiences, as physical as they are digital. Co-founder, designer, and developer of Plantasia Space. Founder of Maar.World, an independent record label developing new formats that merge physical and digital releases, music listening and making. Work shown at the Venice Biennale, Expo Milan, and London Fashion Week. Orbits and Bodies (with Gabriel Vigliensoni) premiered at IRCAM in 2025.",
     "Entangled Space also grows out of years of work with complex systems — building with agent-based models in NetLogo to study collective motion, self-organization, and the transition between order and disorder, then translating those models into sound and music. That practice became a theory, and the theory became a protocol: rather than simulating a complex system, Entangled Space is designed as one, where value moves through recursive, proportional cycles.",
   ],
 } as const
