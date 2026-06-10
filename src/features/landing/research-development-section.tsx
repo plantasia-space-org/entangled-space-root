@@ -37,7 +37,7 @@ export function ResearchDevelopmentSection({
           <div className="grid gap-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8">
             <Avatar className="!size-36 bg-muted/35 sm:!size-40">
               <AvatarImage
-                src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/06b-bruna-profile-square-self-portrait_mid.webp"
+                src="https://herbarium.plantasia.space/image-assets/entangled-space/landing/06b-bruna-profile-square-self-portrait_mid.webp"
                 alt="Bruna Guarnieri Colasso"
                 className="object-[center_12%]"
                 loading="lazy"

@@ -36,7 +36,7 @@ export function ProtocolSection({
     >
       <div className="absolute inset-0">
         <img
-          src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
+          src="https://herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
           alt=""
           aria-hidden="true"
           className="h-full w-full object-cover object-center opacity-50 dark:opacity-10"

@@ -418,7 +418,7 @@ export function WhitePaperPage() {
       <section className="relative overflow-hidden border-b border-border bg-background">
         <div className="absolute inset-0">
           <img
-            src="https://dev-herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
+            src="https://herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
             alt=""
             aria-hidden="true"
             className="h-full w-full object-cover object-center opacity-45 dark:opacity-10"
