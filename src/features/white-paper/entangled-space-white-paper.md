@@ -27,17 +27,17 @@ The protocol is open, infrastructure-agnostic, and designed to be adopted by any
 
 ## Problem Statement \- Motive of the Innovation:
 
-The music industry’s transition from physical formats to digital streaming was often presented as an environmental improvement.[^2] Physical music plastic waste did fall sharply — from approximately 58 million kilograms at its peak to around 8 million kilograms by 2016 as streaming took over. But the assumption that dematerialization meant decarbonization has not held — and the physical format is not gone. Vinyl sales have grown for nineteen consecutive years. The first ISO-compliant lifecycle analysis of the vinyl supply chain, published by the Vinyl Record Manufacturers Association in 2024, found that a standard 140g record carries approximately 1.15 kg CO₂e cradle to factory gate — rising to between 2.5 and 4.6 kg CO₂e once logistics are included, with air freight alone exceeding the manufacturing footprint.[^3]
+The music industry’s transition from physical formats to digital streaming was often presented as an environmental improvement.[^2] Physical music plastic waste did fall sharply — from approximately 58 million kilograms at its peak to around 8 million kilograms by 2016 as streaming took over. But the assumption that dematerialization meant decarbonization has not held — and the physical format is not gone. Vinyl sales have grown for nineteen consecutive years. The first ISO-compliant lifecycle analysis of the vinyl supply chain, published jointly by the Vinyl Record Manufacturers Association and the Vinyl Alliance in 2024, found that a standard 140g record carries approximately 1.15 kg CO₂e cradle to factory gate — rising to between 2.5 and 4.6 kg CO₂e once logistics are included, with air freight alone exceeding the manufacturing footprint.[^3]
 
-Research by Devine and Brennan (University of Glasgow / Oslo Metropolitan University, 2019) found that by 2016, storing and transmitting digital music in the United States alone generated an estimated 200–350 million kg of CO₂ equivalents — a figure higher than at any previous point in the physical format era, including the CD peak of approximately 157 million kg in 2000. The footprint did not disappear. It moved from landfill to atmosphere.
+Research by Devine and Brennan (University of Glasgow / University of Oslo, 2019) found that by 2016, storing and transmitting digital music in the United States alone generated an estimated 200–350 million kg of CO₂ equivalents — a figure higher than at any previous point in the physical format era, including the CD peak of approximately 157 million kg in 2000. The footprint did not disappear. It moved from landfill to atmosphere.
 
 The picture has grown more complex since. A 2024 initiative by France’s Centre national de la musique (CNM) and industry partners — the most comprehensive recent whole-sector estimate available — measured the French recorded music sector at approximately 2,780 kilotonnes CO₂e in 2022, across production, distribution, and listening. The same report warned that emissions could triple by 2030 under continued growth and rising audio quality assumptions.
 
-Critically, that analysis found that the largest share of the sector’s footprint — 51% — comes not from data centres or streaming servers, but from the manufacture and end-of-life disposal of the devices people use to listen. Digital distribution accounts for 22%, and use-phase energy for 23%. The environmental cost is distributed across hardware supply chains and household electricity, not concentrated in a single visible source. A peer-reviewed lifecycle analysis of music player devices (Alejandre et al., 2023) gives this a concrete unit: one hour of music listening on a smartphone generates approximately 2.58 g CO₂e; on a smart TV, 8.18 g CO₂e.[^4] A BBC Research & Development study of UK audio consumption independently found that consumer devices accounted for 73.4% of total system energy — corroborating the French figure from a different national baseline and methodology.[^5]
+Critically, that analysis found that the largest share of the sector’s footprint — 51% — comes not from data centres or streaming servers, but from the manufacture and end-of-life disposal of the devices people use to listen. Digital distribution accounts for 22%, and use-phase energy for 23%. The environmental cost is distributed across hardware supply chains and household electricity, not concentrated in a single visible source. A peer-reviewed lifecycle analysis of music player devices (Alejandre et al., 2023) gives this a concrete unit: one hour of music listening on a smartphone generates approximately 2.58 g CO₂e; on a smart TV, 8.18 g CO₂e.[^4] A BBC Research & Development study of UK radio services independently found that consumer devices accounted for 73.4–81% of total system energy — corroborating the French figure from a different national baseline and methodology.[^5]
 
 At infrastructure scale, the International Energy Agency (IEA) estimates that global data centres consumed approximately 415 TWh of electricity in 2024 — about 1.5% of global electricity demand — and could reach 945 TWh by 2030.[^6] Music streaming is part of that load, though no public source currently isolates music’s global share with sufficient confidence to quote as a standalone figure.
 
-The structure of streaming economics amplifies these effects beyond infrastructure. With per-stream payments averaging a fraction of a cent, most artists remain economically dependent on live touring. A 2023 study by the MIT Climate Machine team estimated that live music generated 14.3 million metric tons CO₂e in the United States alone — with fan travel accounting for 62% of that total.[^7] The same low-margin streaming economy that concentrates emissions in consumer hardware also drives the touring dependency that produces a separate, largely untracked emissions category.
+The structure of streaming economics amplifies these effects beyond infrastructure. With per-stream payments averaging a fraction of a cent, most artists remain economically dependent on live touring. An MIT Climate Machine assessment (published 2025, using 2023 data) estimated that live music generated 14.3 million metric tons CO₂e in the United States alone — with fan travel accounting for 62% of that total.[^7] The same low-margin streaming economy that concentrates emissions in consumer hardware also drives the touring dependency that produces a separate, largely untracked emissions category.
 
 Corporate disclosure remains limited. Spotify reported total greenhouse gas emissions of 195,027 metric tons CO₂e for 2024 — but its reporting explicitly excluded Category 11 (use of sold products), meaning the energy consumed by user devices was absent by design, not oversight. Neither Apple Music nor YouTube Music publishes service-level footprint figures. What the available numbers reveal is not the full cost of music streaming — it is the portion that companies choose to account for.
 
@@ -412,9 +412,7 @@ To follow progress or start a conversation: [entangled.space](https://entangled.
 
 ## Works Cited
 
-Alejandre, C., O. Akizu-Gardoki, J. Montoya, J. Larrinaga, and R. Minguez. 2023. “Environmental burdens analysis of current music player devices through Life-Cycle Assessment methodology and optimum lifespan of these apparatus.” *Environmental Challenges* 13: 100774.
-
-BBC Research & Development. 2025. *White Paper 424: The Carbon Footprint of UK Audio.* London: BBC.
+Alejandre, C., O. Akizu-Gardoki, J. Montoya, J. Larrinaga, and R. Minguez. 2023. “Environmental burdens analysis of current music player devices through Life-Cycle Assessment methodology and optimum lifespan of these apparatus.” *Environmental Challenges* 13: 100774. https://doi.org/10.1016/j.envc.2023.100774.
 
 Bohlen, Heinz. 2012. “An 833 Cents Scale: An Experiment on Harmony.” *The Bohlen-Pierce Site.* https://www.huygens-fokker.org/bpsite/833cent.html.
 
@@ -422,11 +420,13 @@ Centre national de la musique, SNEP, UPFI, and SMA. 2024. *REC “Reduce our Car
 
 Devine, Kyle. 2019. *Decomposed: The Political Ecology of Music.* Cambridge, MA: MIT Press.
 
-Devine, Kyle, and Oisín Brennan. 2019. “Music consumption has unintended economic and environmental costs.” *University of Glasgow News.* https://www.gla.ac.uk/news/archiveofnews/2019/april/headline_643297_en.html.
+Devine, Kyle, and Matt Brennan. 2019. “Music consumption has unintended economic and environmental costs.” *University of Glasgow News.* https://www.gla.ac.uk/news/archiveofnews/2019/april/headline_643297_en.html.
+
+Fletcher, Chloe, and Jigna Chandaria. 2020. *The Energy Footprint of BBC Radio Services: Now and in the Future.* White Paper WHP 393. London: BBC Research & Development. https://downloads.bbc.co.uk/rd/pubs/whp/whp-pdf-files/WHP393.pdf.
 
 International Energy Agency. 2025. *Energy and AI.* Paris: IEA. https://www.iea.org/reports/energy-and-ai.
 
-MIT Climate Machine. 2023. *The Carbon Footprint of Live Music.* Cambridge, MA: Massachusetts Institute of Technology.
+MIT Climate Machine. 2025. *Assessment Report of the Media and Entertainment Industry and Climate Change. Phase 1: Live Music, UK and US.* Cambridge, MA: Massachusetts Institute of Technology. https://climatemachine.mit.edu/.
 
 Ostrom, Elinor. 1990. *Governing the Commons: The Evolution of Institutions for Collective Action.* Cambridge: Cambridge University Press.
 
@@ -436,21 +436,21 @@ Scholz, Trebor. 2016. *Platform Cooperativism: Challenging the Corporate Sharing
 
 Spotify. 2025. *Equity & Impact Report 2024.* Stockholm: Spotify Technology S.A. https://s29.q4cdn.com/175625835/files/doc_governance/2025/Mar/10/Spotify-Equity-Impact-Report-2024-9b1865.pdf.
 
-Vinyl Record Manufacturers Association. 2024. *Corporate Carbon Footprint: Vinyl Record Supply Chain.* Vinyl Alliance. https://www.vinylalliance.org.
+VRMA/Vinyl Alliance Working Group on Carbon Footprinting the Vinyl Record Supply Chain. 2024. *Vinyl Record Industry: First Carbon Footprinting Report.* Vinyl Record Manufacturers Association and Vinyl Alliance. https://vinylalliance.org/wp-content/uploads/2024/06/First-Carbon-Footprint-report_VRMA_VA_30-May-2024_final.pdf.
 
 [^1]: Bohlen, Heinz. 2012. “An 833 Cents Scale: An Experiment on Harmony.” *The Bohlen-Pierce Site*. https://www.huygens-fokker.org/bpsite/833cent.html.
 
 [^2]: Devine, Kyle. 2019. *Decomposed: The Political Ecology of Music.* Cambridge, MA: MIT Press. Devine documents how the shift from physical formats to streaming was framed as a dematerialization that would reduce the music industry’s environmental footprint, and shows empirically that the footprint did not disappear but moved into energy and hardware.
 
-[^3]: Vinyl Record Manufacturers Association. 2024. *Corporate Carbon Footprint: Vinyl Record Supply Chain.* Vinyl Alliance. https://www.vinylalliance.org.
+[^3]: VRMA/Vinyl Alliance Working Group on Carbon Footprinting the Vinyl Record Supply Chain. 2024. *Vinyl Record Industry: First Carbon Footprinting Report.* Vinyl Record Manufacturers Association and Vinyl Alliance. https://vinylalliance.org/wp-content/uploads/2024/06/First-Carbon-Footprint-report_VRMA_VA_30-May-2024_final.pdf.
 
 [^4]: Alejandre et al. 2023. “Environmental burdens analysis of current music player devices through Life-Cycle Assessment methodology.” *Environmental Challenges* 13: 100774.
 
-[^5]: BBC Research & Development. 2025. *White Paper 424: The Carbon Footprint of UK Audio.* London: BBC.
+[^5]: Fletcher, Chloe, and Jigna Chandaria. 2020. *The Energy Footprint of BBC Radio Services: Now and in the Future.* White Paper WHP 393. London: BBC Research & Development. https://downloads.bbc.co.uk/rd/pubs/whp/whp-pdf-files/WHP393.pdf.
 
 [^6]: International Energy Agency. 2025. *Energy and AI.* Paris: IEA. https://www.iea.org/reports/energy-and-ai.
 
-[^7]: MIT Climate Machine. 2023. *The Carbon Footprint of Live Music.* Cambridge, MA: Massachusetts Institute of Technology.
+[^7]: MIT Climate Machine. 2025. *Assessment Report of the Media and Entertainment Industry and Climate Change. Phase 1: Live Music, UK and US.* Cambridge, MA: Massachusetts Institute of Technology. https://climatemachine.mit.edu/.
 
 [^8]: Ostrom, Elinor. 1990. *Governing the Commons: The Evolution of Institutions for Collective Action.* Cambridge: Cambridge University Press.
 
