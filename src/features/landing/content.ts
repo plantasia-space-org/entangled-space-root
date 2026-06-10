@@ -90,7 +90,7 @@ export const formulaBreakdown = [
       {
         symbol: "0.34 × Dₜ → Regeneration",
         description:
-          "Projects dedicated to people or landscapes in the broader context the activity inhabits or affects — the wider system where need is greatest. One third cannot be expressed exactly in two decimal places — the rounding residual goes to Regeneration.",
+          "Projects that restore a landscape — people and place, one living system. One third cannot be expressed exactly in two decimal places — the rounding residual goes to Regeneration.",
       },
     ],
   },

@@ -201,7 +201,7 @@ After fixed and flexible costs are subtracted, the remaining value is distribute
 
 * **0.33 × Dₜ → Creators** — participants who produce the primary cultural or creative value.
 * **0.33 × Dₜ → Builders** — participants who build, maintain, and improve the tools, systems, and infrastructure.
-* **0.34 × Dₜ → Regeneration** — projects dedicated to people or landscapes in the broader context the activity inhabits or affects. Not only first-order externalities, but the wider system where need is greatest — communities, regions, or ecosystems the activity touches even indirectly.
+* **0.34 × Dₜ → Regeneration** — projects that restore a landscape: people and place, one living system. Each implementation defines how its regeneration projects are chosen.
 
 Three roles, equal shares. When the split cannot be exactly equal, Dₜ is distributed with regeneration receiving the surplus step — the layer that addresses the wider human and ecological needs the system touches.
 
@@ -398,9 +398,11 @@ To follow progress or start a conversation: [entangled.space](https://entangled.
 
 **Golden Ratio (φ)** — The mathematical constant ≈ 1.618034, appearing in natural growth patterns including the spiral arrangements of seeds and leaves. The repeating interval of the 833 Cents Scale.
 
+**Landscape** — A living system of people and place: a territory, its ecosystems, and those who inhabit them. The protocol says *landscape* rather than *nature* because humans are not outside it.
+
 **Protocol** — A set of rules that defines how a system operates, independently of any specific platform or technology that implements it. The math is fixed; the implementation is open.
 
-**Regeneration** — Participants or projects dedicated to people or landscapes in the broader context the activity inhabits or affects: ecological repair, community wellbeing, social inclusion, open access, or similar. Need not be a first-order externality of the activity; what matters is genuine need within the wider system the activity is part of. Receives 34% of the distributable surplus.
+**Regeneration** — Participants or projects that restore a landscape: ecological repair, community wellbeing, social inclusion, open access, or similar. Receives 34% of the distributable surplus. Each implementation defines how its projects are chosen.
 
 **Snail Factor (Sₜ)** — The monthly modulation coefficient, ranging from 0.10 to 0.83, derived from the 833 Cents Scale. Determines how strongly the flexible cost layer is activated in a given month.
 
