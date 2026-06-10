@@ -10,7 +10,7 @@ export const whatItIs = [
     ordinal: "01",
     label: "Publish the specification",
     description:
-      "Define and release the core protocol openly: the Snail Factor math, the creator/builder/regeneration distribution model, and the usage-based allocation rules.",
+      "Define and release the core protocol openly: the Snail Factor math, the creator/builder/regeneration distribution model, and the formula.",
     goal: "The goal is to make the system clear, auditable, and easy for others to understand, question, and build on.",
     io: null,
   },
@@ -90,7 +90,7 @@ export const formulaBreakdown = [
       {
         symbol: "0.34 × Dₜ → Regeneration",
         description:
-          "Projects addressing the human and environmental externalities of the activity. One third cannot be expressed exactly in two decimal places — the rounding residual goes to Regeneration.",
+          "Projects dedicated to people or landscapes in the broader context the activity inhabits or affects — the wider system where need is greatest. One third cannot be expressed exactly in two decimal places — the rounding residual goes to Regeneration.",
       },
     ],
   },
@@ -169,10 +169,52 @@ export const capitalReturnsNote = {
 } as const
 
 export const snailFactorCopy = [
-  "The Snail Factor is not a decorative modulation, but a structural application of recursive proportional systems. Inspired by Benoit Mandelbrot’s work on fractals and self-similar patterns in natural and financial systems, we use a musical derivation: the 833 Cents Scale.",
-  "Music theory offers one of humanity’s longest-standing mathematical frameworks for studying proportional relationships as they unfold through time. By encoding these recursive ratios into the protocol, the system moves away from the binary logic of perpetual growth or collapse, toward a model of oscillation, adaptation, and redistribution.",
+  "The Snail Factor gives the economy its rhythm. Inspired by Benoit Mandelbrot’s work on fractals and self-similar patterns in natural and financial systems, we use a musical derivation: the 833 Cents Scale.",
+  "Music is one of humanity’s oldest tools for studying proportion as it unfolds in time. By encoding its recursive ratios into the protocol, the system moves away from the binary of endless growth or collapse — it oscillates: it grows, rests, redistributes, and adapts.",
   "The scale’s 7 tones are translated into a 12-step economic cycle — 1 2 3 4 5 6 7 6 5 4 3 2, ascending and descending without repeating the turning points — spanning one calendar year to modulate the protocol’s flexible costs.",
 ] as const
+
+export const designHighlights = {
+  intro:
+    "Linear budgets assume reality is flat — growth is the baseline and contraction is an emergency. The protocol assumes reality fluctuates, and designs for it.",
+  items: [
+    {
+      title: "Three capitals, one system",
+      description:
+        "Financial capital is what the formula moves. Cultural capital is what creators and builders grow — better music, better tools, better experiences. Material capital is what regeneration feeds. Not competing parties: the same system, seen from three sides.",
+    },
+    {
+      title: "Contraction by design",
+      description:
+        "Low phases are part of the rhythm, not an emergency. Spending on expansion rests on a schedule everyone already knows — and what rests flows into culture and regeneration instead.",
+    },
+    {
+      title: "Predictability without rigidity",
+      description:
+        "Revenue stays uncertain; behavior doesn't. Anyone can look twelve months ahead and know exactly how the protocol treats flexible spending on that date.",
+    },
+    {
+      title: "One year is the unit",
+      description:
+        "Join in any month — a commitment runs a full cycle, all twelve steps, ascent and descent. Nobody rides only the peak. The protocol runs as code, so this can't be timed or gamed.",
+    },
+    {
+      title: "Growth that consolidates",
+      description:
+        "Peak months fund expansion. The descent that follows is built-in consolidation — maintain, test, pay down — before the next ascent. Growth and repair alternate by construction.",
+    },
+    {
+      title: "Regeneration is structural",
+      description:
+        "34% of every distribution, in every phase of the cycle. Not a goodwill budget line that disappears when budgets tighten.",
+    },
+    {
+      title: "Nothing arbitrary",
+      description:
+        "Every value in the cycle comes from the 833 Cents Scale — derived, not negotiated. Played three times, the scale sums to 100: each ascent is exactly one third, the same shape as the 33 / 33 / 34 split.",
+    },
+  ],
+} as const
 
 export const founderProfile = {
   name: "Bruna Guarnieri Colasso",

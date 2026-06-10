@@ -2,7 +2,7 @@
 
 ## A Regenerative and Oscillatory Economy for a New Music Industry and Beyond.
 
-*Version 0.2 — April 2026*
+*Version 0.3 — June 2026*
 
 Bruna Guarnieri∗  
 Plantasia.space  
@@ -19,7 +19,7 @@ The music industry's carbon footprint did not disappear with digitization — it
 
 Entangled Space is an open protocol designed to address that structure. It defines a formula for distributing revenue among the three parties whose participation makes any creative economy function — creators, builders, and regeneration — modulated by a temporal cycle derived from music theory and the golden ratio. 
 
-The protocol is open, infrastructure-agnostic, and designed to be adopted by any platform. Plantasia Space is its first live deployment. This paper documents the problem, the model, and the implementation path.
+The protocol is open, infrastructure-agnostic, and designed to be adopted by any platform. Plantasia Space is its first live deployment. This paper documents the problem, the model, why it runs on a cycle, and the implementation path.
 
 > *This document describes a protocol specification. It does not constitute a financial product, investment offer, or legal commitment of any kind. Implementations must define their own legal and governance frameworks.*
 
@@ -57,7 +57,7 @@ Entangled Space draws from an existing lineage of work on this problem. Elinor O
 
 ## The Snail Factor
 
-The Snail Factor is not intended as a decorative modulation, but as a structural application of recursive proportional systems. Inspired by Benoit Mandelbrot’s observations that natural and financial systems often exhibit self-similar behavior across scales, Entangled Space adopts a cyclical distribution curve informed by the Golden Ratio ($\phi$). We use a musical derivation — the 833 Cents Scale — because music theory offers one of humanity’s longest-standing frameworks for studying proportional relationships unfolding through time. By encoding recursive ratios into the protocol, the system moves away from the binary logic of perpetual growth or collapse toward a model of oscillation, adaptation, and redistribution.
+The Snail Factor is the part of the protocol that gives the economy its rhythm. Benoit Mandelbrot observed that natural and financial systems often repeat the same patterns at different scales; Entangled Space borrows that idea and uses a cyclical curve based on the Golden Ratio ($\phi$). We take the curve from music — the 833 Cents Scale — because music is one of humanity’s oldest tools for studying proportion as it unfolds in time. The result: instead of the binary of endless growth or collapse, the system oscillates — it grows, rests, redistributes, and adapts.
 
 **The 833 Cents Scale[^1]** is a musical tuning system developed by Heinz Bohlen (2012). Most music repeats at the octave — a 2:1 ratio. Bohlen's scale replaces this with the golden ratio (1.618034) as its repeating interval, producing a symmetrical seven-tone structure built on combination tones.
 
@@ -163,7 +163,7 @@ where 0.33 + 0.33 + 0.34 = 1, confirming full distribution of Dₜ.
 
 All values are computed per period, usually monthly. The formula is applied once per cycle step.
 
-**If Dₜ < 0** — costs exceed revenue plus investment in a given period — no distribution occurs for that period. Implementations must define how to handle the shortfall: common approaches are carrying the deficit forward against future surpluses, drawing from a reserve, or reducing Vₜ before the deficit reaches fixed costs. The protocol does not mandate a specific mechanism; it requires that one is defined before deployment.
+**If Dₜ < 0** — costs exceed revenue plus investment in a given period — no distribution occurs for that period. Implementations must define how to handle the shortfall: common approaches are carrying the deficit forward against future surpluses, drawing from a reserve, or reducing Vₜ before the deficit reaches fixed costs. The protocol does not mandate a specific mechanism; it requires that one is defined before deployment. A simple default — a reserve filled gradually from surplus — is described in **Safeguards**.
 
 ---
 
@@ -204,6 +204,14 @@ After fixed and flexible costs are subtracted, the remaining value is distribute
 * **0.34 × Dₜ → Regeneration** — projects dedicated to people or landscapes in the broader context the activity inhabits or affects. Not only first-order externalities, but the wider system where need is greatest — communities, regions, or ecosystems the activity touches even indirectly.
 
 Three roles, equal shares. When the split cannot be exactly equal, Dₜ is distributed with regeneration receiving the surplus step — the layer that addresses the wider human and ecological needs the system touches.
+
+**The split echoes the scale.** Read each tone of the scale as a percentage (cents ÷ 100) and one ascent through the seven tones sums to exactly one third:
+
+```text
+1.00 + 2.33 + 3.67 + 4.67 + 6.00 + 7.33 + 8.33 = 33.33
+```
+
+Played three times, the scale completes the whole: the cumulative sum passes through 33, 67, and lands on 100 — the same shape as the 33 / 33 / 34 split, rounding residual included. This is a correspondence, not a derivation — the shares are equal because no role is secondary — but it means the distribution and the cycle are the same scale, read from two different angles. The same cumulative curve can guide later decisions too, such as the pace at which a reserve is filled.
 
 Each implementation maps these roles to its own context:
 
@@ -311,6 +319,37 @@ D₇ = (80,000 + 25,000) − 40,000 − (30,000 × 0.83)
 
 ---
 
+## Why a Cycle?
+
+The formula moves money. But money is only one of the capitals this system holds.
+
+**Financial capital** is what the formula manages: revenue, costs, surplus. **Cultural capital** is what creators and builders grow with their shares — better music, better tools, better experiences. **Material capital** is what regeneration feeds — the land and communities the activity touches. These are not separate parties competing for a pie. They are the same system, seen from three sides.
+
+The cycle keeps the three in equilibrium. In high months, more goes into the system's own growth. In low months, that spending rests, and more of the surplus flows into culture and regeneration. Nothing is taken from one side and handed to another — the system is feeding the sources of its own value, in turn.
+
+This is also why the cycle is fixed and public:
+
+* **Low months are not emergencies.** Contraction is part of the rhythm and known in advance. Nobody has to make panic cuts.
+* **Everyone can see ahead.** Revenue is uncertain; the cycle is not. Anyone can look twelve months forward and know how the protocol will behave.
+* **The unit is one year, not one month.** Participants can join in any month, but a commitment runs a full cycle — all twelve steps, ascent and descent. Nobody rides only the peak. The protocol is designed to run as code — automatic and auditable, like a contract that executes itself (with or without a blockchain) — so this cannot be timed or gamed.
+* **Growth comes with rest.** After every expansion comes a quieter phase: maintain, repair, consolidate, before the next ascent.
+* **Regeneration is never optional.** 34% of every distribution, in every phase. It shrinks and grows with the surplus, but it cannot be cut from the structure.
+* **Nothing is arbitrary.** Every value in the cycle comes from the 833 Cents Scale — derived, not negotiated. Its smallest steps sit on either side of the peak, so the cycle eases through its turning points.
+
+Whether this rhythm truly strengthens a system over time — lower burn, stronger reserves, healthier culture — is something each implementation should measure and publish, not assume.
+
+---
+
+## Safeguards
+
+A first version of a protocol does not need to solve everything. Three habits keep an implementation honest:
+
+* **Keep a reserve.** Set a clear target — for example, six months of fixed costs — and fill it gradually from surplus, gently at first so a young project is not starved. In a deficit month (Dₜ < 0), the reserve absorbs the shock and no distribution happens.
+* **Don't move the lines quietly.** The cycle only modulates what is declared flexible. What an implementation counts as fixed or flexible must be public, and changing it must be a public decision — not a bookkeeping trick.
+* **Don't touch the cycle.** The cycle's value is that nobody can reschedule it. If an implementation ever allows a shift, it should be rare, public, and hard to do.
+
+---
+
 ## Implementation Path
 
 The protocol is released in four phases:
@@ -364,6 +403,8 @@ To follow progress or start a conversation: [entangled.space](https://entangled.
 **Regeneration** — Participants or projects dedicated to people or landscapes in the broader context the activity inhabits or affects: ecological repair, community wellbeing, social inclusion, open access, or similar. Need not be a first-order externality of the activity; what matters is genuine need within the wider system the activity is part of. Receives 34% of the distributable surplus.
 
 **Snail Factor (Sₜ)** — The monthly modulation coefficient, ranging from 0.10 to 0.83, derived from the 833 Cents Scale. Determines how strongly the flexible cost layer is activated in a given month.
+
+**Reserve** — A recommended habit for deficit periods: a fund with a clear target (for example, six months of fixed costs), filled gradually from surplus and used when Dₜ < 0.
 
 ---
 
