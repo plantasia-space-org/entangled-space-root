@@ -7,6 +7,7 @@ import { useTheme } from "@/components/theme-provider"
 import entSpaceBlackLogo from "@/assets/ENT-SPACE-LOGO-BLACK-BACKGROUND.svg"
 import entSpaceWhiteLogo from "@/assets/ENT-SPACE-LOGO-WHITE-BACKGROUND.svg"
 import { ContactDialog } from "@/features/landing/contact-dialog"
+import { DesignPropertiesSection } from "@/features/landing/design-properties-section"
 import { FooterLinksSection } from "@/features/landing/footer-links-section"
 import { HeroSection } from "@/features/landing/hero-section"
 import { OpeningThesisSection } from "@/features/landing/opening-thesis-section"
@@ -20,6 +21,7 @@ import { WhatItIsSection } from "@/features/landing/what-it-is-section"
 import { WhitePaperPage } from "@/features/white-paper/white-paper-page"
 import {
   capitalReturnsNote,
+  designHighlights,
   founderProfile,
   formulaBreakdown,
   implementationRows,
@@ -39,6 +41,7 @@ const navigationSections = [
   { id: "thesis", label: "Thesis" },
   { id: "snail-factor", label: "Snail Factor" },
   { id: "protocol", label: "Protocol" },
+  { id: "why-oscillate", label: "Why Oscillate" },
   { id: "use-cases", label: "Use Cases" },
   { id: "roadmap", label: "Roadmap" },
   { id: "white-paper", label: "White Paper", href: "/white-paper" },
@@ -401,6 +404,7 @@ export function App() {
           formulaBreakdown={formulaBreakdown}
           capitalReturnsNote={capitalReturnsNote}
         />
+        <DesignPropertiesSection highlights={designHighlights} />
         <UseCasesSection implementationRows={implementationRows} />
         <WhatItIsSection items={whatItIs} />
         <ResearchDevelopmentSection founderProfile={founderProfile} />
