@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import type { FormEvent } from "react"
-import { Menu, Moon, Sun, X } from "lucide-react"
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/components/theme-provider"
@@ -36,20 +36,30 @@ import { SnailKeyboardSection } from "@/features/snail-synth/snail-keyboard-sect
 import { SnailVisualizationSection } from "@/features/snail-visualization/snail-visualization-section"
 
 const navigationSections = [
-  { id: "video", label: "Video" },
   { id: "thesis", label: "Thesis" },
   { id: "snail-factor", label: "Snail Factor" },
   { id: "protocol", label: "Protocol" },
   { id: "use-cases", label: "Use Cases" },
   { id: "roadmap", label: "Roadmap" },
-  { id: "author", label: "Author" },
-  { id: "discover", label: "Discover" },
+  { id: "white-paper", label: "White Paper", href: "/white-paper" },
 ] as const
 
 type NavigationSectionId = (typeof navigationSections)[number]["id"]
+type NavigationPageItem = Extract<
+  (typeof navigationSections)[number],
+  { href: string }
+>
 
 const navigationSectionIds = new Set<string>(
   navigationSections.map(({ id }) => id)
+)
+
+// In-page anchors vs. links to a separate page (e.g. the white paper).
+const inPageNavItems = navigationSections.filter(
+  (section) => !("href" in section)
+)
+const pageNavItems = navigationSections.filter(
+  (section): section is NavigationPageItem => "href" in section
 )
 
 export function App() {
@@ -280,16 +290,16 @@ export function App() {
               className="hidden items-center gap-1 lg:flex"
               aria-label="Primary navigation"
             >
-              {navigationSections.map(({ id, label }) => {
+              {inPageNavItems.map(({ id, label }) => {
                 const isActive = activeSection === id
 
                 return (
                   <a
                     key={id}
                     href={`#${id}`}
-                    className={`px-2.5 py-2 text-[0.68rem] font-medium tracking-[0.14em] uppercase transition-colors ${
+                    className={`px-2.5 py-2 text-[0.68rem] font-medium tracking-[0.14em] uppercase underline-offset-[6px] transition-colors ${
                       isActive
-                        ? "text-foreground"
+                        ? "text-foreground underline decoration-1"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                     aria-current={isActive ? "location" : undefined}
@@ -298,6 +308,15 @@ export function App() {
                   </a>
                 )
               })}
+              {pageNavItems.map(({ id, label, href }) => (
+                <a
+                  key={id}
+                  href={href}
+                  className="ml-2 border-l border-border py-2 pr-2.5 pl-4 text-[0.68rem] font-medium tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+                >
+                  {label}
+                </a>
+              ))}
             </nav>
             <div className="flex items-center gap-2">
               <Button
@@ -338,22 +357,31 @@ export function App() {
               aria-label="Primary navigation"
             >
               <div className="mx-auto grid w-full max-w-6xl grid-cols-2 px-6 sm:px-8">
-                {navigationSections.map(({ id, label }) => {
+                {navigationSections.map((section) => {
+                  const { id, label } = section
+                  const isPage = "href" in section
+                  const href = isPage ? section.href : `#${id}`
                   const isActive = activeSection === id
 
                   return (
                     <a
                       key={id}
-                      href={`#${id}`}
-                      className={`border-b border-border bg-white px-4 py-3 text-sm font-medium odd:border-r dark:bg-background ${
+                      href={href}
+                      className={`flex items-center justify-between gap-2 border-b border-border bg-white px-4 py-3 text-sm font-medium underline-offset-[6px] odd:border-r dark:bg-background ${
                         isActive
-                          ? "text-foreground"
+                          ? "text-foreground underline decoration-1"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                       aria-current={isActive ? "location" : undefined}
                       onClick={() => setIsMobileNavOpen(false)}
                     >
-                      {label}
+                      <span>{label}</span>
+                      {isPage && (
+                        <ArrowUpRight
+                          className="size-3.5 shrink-0 text-muted-foreground/70"
+                          aria-hidden="true"
+                        />
+                      )}
                     </a>
                   )
                 })}

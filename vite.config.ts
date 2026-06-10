@@ -4,25 +4,31 @@ import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
-const localPlantasiaCert = path.resolve(
-  __dirname,
-  "../../plantasia.space-root/.certs/local.plantasia.space.pem"
-)
-
-const localPlantasiaKey = path.resolve(
-  __dirname,
-  "../../plantasia.space-root/.certs/local.plantasia.space-key.pem"
-)
+// The shared local cert lives in plantasia.space-root/.certs. Resolve it across the
+// possible checkout layouts: this repo's trunk and worktree dirs, and the ps-fe sibling
+// layout. First existing pair wins; otherwise dev falls back to plain HTTP.
+const certDirCandidates = [
+  "../../plantasia.space-root/.certs",
+  "../../ps-fe/plantasia.space-root/.certs",
+  "../../../plantasia.space-root/.certs",
+  "../../../ps-fe/plantasia.space-root/.certs",
+]
 
 function getLocalHttpsConfig() {
-  if (!fs.existsSync(localPlantasiaCert) || !fs.existsSync(localPlantasiaKey)) {
-    return undefined
+  for (const relativeDir of certDirCandidates) {
+    const certDir = path.resolve(__dirname, relativeDir)
+    const cert = path.join(certDir, "local.plantasia.space.pem")
+    const key = path.join(certDir, "local.plantasia.space-key.pem")
+
+    if (fs.existsSync(cert) && fs.existsSync(key)) {
+      return {
+        cert: fs.readFileSync(cert),
+        key: fs.readFileSync(key),
+      }
+    }
   }
 
-  return {
-    cert: fs.readFileSync(localPlantasiaCert),
-    key: fs.readFileSync(localPlantasiaKey),
-  }
+  return undefined
 }
 
 const localHttpsConfig = getLocalHttpsConfig()
@@ -34,13 +40,13 @@ export default defineConfig({
   server: {
     host: "local.plantasia.space",
     https: localHttpsConfig,
-    port: 5175,
+    port: 5174,
     strictPort: true,
   },
   preview: {
     host: "local.plantasia.space",
     https: localHttpsConfig,
-    port: 5175,
+    port: 5174,
     strictPort: true,
   },
   resolve: {

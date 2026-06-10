@@ -47,11 +47,9 @@ This is not a technology problem or a platform problem. It is a structural probl
 
 Most economic systems are optimized for accumulation without built-in mechanisms of return. Natural ecosystems operate differently: through cycles of exchange, redistribution, decay, and renewal.
 
-A sunflower arranges its seeds in a spiral pattern that distributes growth efficiently across a finite surface, balancing density, expansion, and access to light. The pattern is not decorative; it is functional.
-
 Entangled Space draws inspiration from these recursive patterns to explore alternative forms of economic coordination: an open protocol where revenue flows between stakeholders — investors, team, creators, builders, and landscape regeneration — modulated through a cyclical system informed by music theory and the Golden Ratio.
 
-Music is where the experiment begins.
+Music Industry is where the experiment begins.
 
 A platform could change its payment terms. A cooperative could choose its members. A policy could mandate disclosure. None of these change the underlying logic: value flows to whoever controls distribution. A protocol is different. It embeds the distribution logic at the infrastructure layer — open, auditable, and independent of any single platform's incentives. Any implementation that adopts the protocol inherits its distribution structure. The math does not change based on who runs the system.
 
@@ -337,7 +335,7 @@ Entangled Space is in active development. We are looking for three kinds of coll
 
 **Partners** — creative platforms, labels, collectives, or cooperatives in any sector who want to run the protocol as their distribution model.
 
-**Founding Sponsors and Investors** — individuals, funds, or organizations aligned with regenerative economics who want to support the development phase and participate in Plantasia Space's first live deployment, whether through sponsorship or equity.
+**Founding Sponsors** — individuals and organizations aligned with regenerative economics who want to sponsor the development phase and see the protocol's first live deployment in Plantasia Space.
 
 To follow progress or start a conversation: [entangled.space](https://entangled.space)
 
