@@ -179,14 +179,14 @@ export const designHighlights = {
     "Linear budgets assume reality is flat — growth is the baseline and contraction is an emergency. The protocol assumes reality fluctuates, and designs for it. Six properties follow.",
   items: [
     {
-      title: "Contraction by design",
+      title: "Three capitals, one system",
       description:
-        "Low phases are part of the rhythm, not an emergency. The flexible layer compresses on a schedule everyone already knows, so a downturn finds the system already in a compressed stance.",
+        "Financial capital is what the formula moves. Cultural capital is what creators and builders grow — better music, better tools, better experiences. Material capital is what regeneration feeds. Not competing parties: the same system, seen from three sides.",
     },
     {
-      title: "Compression pays contributors",
+      title: "Contraction by design",
       description:
-        "The formula is inverse: the less the system spends on its own expansion, the more flows to creators, builders, and regeneration. Downturns reach people last, not first.",
+        "Low phases are part of the rhythm, not an emergency. Spending on expansion rests on a schedule everyone already knows — and what rests flows into culture and regeneration instead.",
     },
     {
       title: "Predictability without rigidity",

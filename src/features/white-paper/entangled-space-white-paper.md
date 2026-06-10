@@ -19,7 +19,7 @@ The music industry's carbon footprint did not disappear with digitization — it
 
 Entangled Space is an open protocol designed to address that structure. It defines a formula for distributing revenue among the three parties whose participation makes any creative economy function — creators, builders, and regeneration — modulated by a temporal cycle derived from music theory and the golden ratio. 
 
-The protocol is open, infrastructure-agnostic, and designed to be adopted by any platform. Plantasia Space is its first live deployment. This paper documents the problem, the model, the design properties that follow from it, the safeguards it recommends, and the implementation path.
+The protocol is open, infrastructure-agnostic, and designed to be adopted by any platform. Plantasia Space is its first live deployment. This paper documents the problem, the model, why it runs on a cycle, and the implementation path.
 
 > *This document describes a protocol specification. It does not constitute a financial product, investment offer, or legal commitment of any kind. Implementations must define their own legal and governance frameworks.*
 
@@ -57,7 +57,7 @@ Entangled Space draws from an existing lineage of work on this problem. Elinor O
 
 ## The Snail Factor
 
-The Snail Factor is not intended as a decorative modulation, but as a structural application of recursive proportional systems. Inspired by Benoit Mandelbrot’s observations that natural and financial systems often exhibit self-similar behavior across scales, Entangled Space adopts a cyclical distribution curve informed by the Golden Ratio ($\phi$). We use a musical derivation — the 833 Cents Scale — because music theory offers one of humanity’s longest-standing frameworks for studying proportional relationships unfolding through time. By encoding recursive ratios into the protocol, the system moves away from the binary logic of perpetual growth or collapse toward a model of oscillation, adaptation, and redistribution.
+The Snail Factor is the part of the protocol that gives the economy its rhythm. It is not decoration. Benoit Mandelbrot observed that natural and financial systems often repeat the same patterns at different scales; Entangled Space borrows that idea and uses a cyclical curve based on the Golden Ratio ($\phi$). We take the curve from music — the 833 Cents Scale — because music is one of humanity’s oldest tools for studying proportion as it unfolds in time. The result: instead of the binary of endless growth or collapse, the system oscillates — it grows, rests, redistributes, and adapts.
 
 **The 833 Cents Scale[^1]** is a musical tuning system developed by Heinz Bohlen (2012). Most music repeats at the octave — a 2:1 ratio. Bohlen's scale replaces this with the golden ratio (1.618034) as its repeating interval, producing a symmetrical seven-tone structure built on combination tones.
 
@@ -163,7 +163,7 @@ where 0.33 + 0.33 + 0.34 = 1, confirming full distribution of Dₜ.
 
 All values are computed per period, usually monthly. The formula is applied once per cycle step.
 
-**If Dₜ < 0** — costs exceed revenue plus investment in a given period — no distribution occurs for that period. Implementations must define how to handle the shortfall: common approaches are carrying the deficit forward against future surpluses, drawing from a reserve, or reducing Vₜ before the deficit reaches fixed costs. The protocol does not mandate a specific mechanism; it requires that one is defined before deployment. A recommended default — a reserve with an explicit target and a gradual build-up — is described in **Safeguards** below.
+**If Dₜ < 0** — costs exceed revenue plus investment in a given period — no distribution occurs for that period. Implementations must define how to handle the shortfall: common approaches are carrying the deficit forward against future surpluses, drawing from a reserve, or reducing Vₜ before the deficit reaches fixed costs. The protocol does not mandate a specific mechanism; it requires that one is defined before deployment. A simple default — a reserve filled gradually from surplus — is described in **Safeguards**.
 
 ---
 
@@ -311,41 +311,33 @@ D₇ = (80,000 + 25,000) − 40,000 − (30,000 × 0.83)
 
 ---
 
-## Why Oscillate? Design Properties
+## Why a Cycle?
 
-Linear economic models treat fluctuation as a problem to be corrected. The Snail Factor treats fluctuation as a condition to be designed for.
+The formula moves money. But money is only one of the capitals this system holds.
 
-Conventional budgets assume continuity: costs scale with revenue, growth is the baseline, and when revenue contracts the response is reactive — cuts decided under pressure, usually landing first on the people doing the work. The cycle replaces that assumption with a known rhythm. Six properties follow from this design.
+**Financial capital** is what the formula manages: revenue, costs, surplus. **Cultural capital** is what creators and builders grow with their shares — better music, better tools, better experiences. **Material capital** is what regeneration feeds — the land and communities the activity touches. These are not separate parties competing for a pie. They are the same system, seen from three sides.
 
-**1. Contraction is designed, not improvised.** Low phases are a native part of the system, not an emergency. The flexible layer compresses on a schedule every participant already knows, so when an external downturn arrives in a low-Snail month, the system is already operating in a compressed stance. The cycle does not eliminate risk; it makes contraction legible, expected, and structurally distributive instead of reactive and destructive.
+The cycle keeps the three in equilibrium. In high months, more goes into the system's own growth. In low months, that spending rests, and more of the surplus flows into culture and regeneration. Nothing is taken from one side and handed to another — the system is feeding the sources of its own value, in turn.
 
-**2. Compression pays contributors.** The formula creates an inverse relationship between what the system spends on itself and what it distributes: when Vₜ × Sₜ compresses, Dₜ grows. In a conventional organization, downturns hit contributors first. Here, the months in which the system spends least on its own expansion are the months in which creators, builders, and regeneration receive the most.
+This is also why the cycle is fixed and public:
 
-**3. Predictability without rigidity.** Revenue remains uncertain; behavior does not. Any participant can look twelve months ahead and know exactly how the protocol will treat flexible expenditure on a given date. Predictability comes from the fixed shape of the cycle — not from pretending to fix financial numbers a year in advance, the way annual budgets do.
+* **Low months are not emergencies.** Contraction is part of the rhythm and known in advance. Nobody has to make panic cuts.
+* **Everyone can see ahead.** Revenue is uncertain; the cycle is not. Anyone can look twelve months forward and know how the protocol will behave.
+* **Growth comes with rest.** After every expansion comes a quieter phase: maintain, repair, consolidate, before the next ascent.
+* **Regeneration is never optional.** 34% of every distribution, in every phase. It shrinks and grows with the surplus, but it cannot be cut from the structure.
+* **Nothing is arbitrary.** Every value in the cycle comes from the 833 Cents Scale — derived, not negotiated, and nobody can quietly tune it. The scale even softens the turning points: its smallest steps sit on either side of the peak, so the cycle eases in and out of its maximum instead of snapping.
 
-**4. Expansion carries its own consolidation.** High-Snail months free capital for growth: infrastructure, marketing, capital returns. The descent that follows is a built-in consolidation phase, in which what was built quickly is maintained, tested, and paid down before the next ascent. Growth and repair alternate by construction, instead of growth compounding until something breaks.
-
-**5. Regeneration is structural, not discretionary.** In most organizations, environmental and social spending is funded from residual profit and is the first line cut in a downturn. Here regeneration receives 34% of every distribution, in every phase of the cycle. Its amount breathes with the surplus, but its place in the structure cannot be deprioritized.
-
-**6. Nothing is arbitrary — including the turning points.** Distribution ratios and cycle shapes in conventional systems are negotiated, inherited, or chosen ad hoc. The Snail curve is generated by a formal constraint: the 833 Cents Scale. The claim is not that the golden ratio makes the economics superior; the claim is that the parameters are derived rather than chosen — repeatable, auditable, and immune to quiet tuning by whoever holds power in an implementation.
-
-The derivation also solves a concrete design problem. A natural objection to any mandated cycle is the reversal at the peak: does the switch from expansion to contraction create an operational shock? In the 833 Cents Scale, the smallest interval (≈99 cents) sits on either side of the peak — the steps into and out of month 7 (0.73 → 0.83 → 0.73) are the gentlest transitions in the entire cycle, while the largest movements occur mid-slope. The curve eases through its own reversal. The damping a designer would otherwise have to add is inherited from the scale's interval structure — one more reason the musical derivation is structural rather than decorative.
-
-### Resilience, honestly stated
-
-These properties make the system resilient by construction: it contracts gracefully and protects its base layer. Whether it becomes *antifragile* — stronger after each contraction — is an empirical question, not a design guarantee. A contraction phase has done its work only if it produces measurable results: a lower burn rate, a stronger reserve, less technical debt, higher creator retention, uninterrupted regeneration funding. Implementations should track and publish these indicators alongside their distributions, so the claim can be verified rather than asserted. This extends the transparency requirement already placed on regeneration to the health of the cycle itself.
+Whether this rhythm truly strengthens a system over time — lower burn, stronger reserves, healthier culture — is something each implementation should measure and publish, not assume.
 
 ---
 
 ## Safeguards
 
-Three failure modes deserve explicit treatment. The protocol keeps its core minimal — the formula, the split, the cycle — and recommends a default for each.
+A first version of a protocol does not need to solve everything. Three habits keep an implementation honest:
 
-**Deficit periods and the reserve.** If Dₜ < 0, no distribution occurs (see The Formula). The recommended default mechanism is a reserve with an explicit target — for example, six months of fixed costs plus three months of baseline flexible costs — filled from surplus before distribution and deployed automatically when a deficit occurs. Building the full reserve aggressively from day one would starve a young implementation of the liquidity it needs to exist at all, so the contribution rate should ramp: lighter in the first year, accelerating as revenue stabilizes, stopping when the target is reached. Once funded, the reserve turns a deficit month from an existential event into an absorbed one.
-
-**Classification discipline.** The cycle only modulates what is classified as flexible. An implementation that quietly reclassifies expansion spending as "fixed" bypasses the cycle entirely. Classification rules must therefore be published, audited, and stable: moving a cost between Fₜ and Vₜ is a governance event with public justification, not a management convenience. Implementations may additionally cap Fₜ as a share of revenue; capital-intensive deployments that exceed such a cap should account for the excess separately, as audited and amortized infrastructure, rather than folding it into ordinary fixed costs.
-
-**The cycle is not a management dial.** The value of the cycle depends on it never being quietly overridden. The default is that the calendar mapping is never shifted. If an implementation builds an exceptional phase-shift mechanism for extreme circumstances, it must be rare and expensive to use: supermajority approval, formal public justification, and a long cooldown before it can be used again. A cycle that management can reschedule at will is a discretionary budget with extra steps.
+* **Keep a reserve.** Set a clear target — for example, six months of fixed costs — and fill it gradually from surplus, gently at first so a young project is not starved. In a deficit month (Dₜ < 0), the reserve absorbs the shock and no distribution happens.
+* **Don't move the lines quietly.** The cycle only modulates what is declared flexible. What an implementation counts as fixed or flexible must be public, and changing it must be a public decision — not a bookkeeping trick.
+* **Don't touch the cycle.** The cycle's value is that nobody can reschedule it. If an implementation ever allows a shift, it should be rare, public, and hard to do.
 
 ---
 
@@ -403,7 +395,7 @@ To follow progress or start a conversation: [entangled.space](https://entangled.
 
 **Snail Factor (Sₜ)** — The monthly modulation coefficient, ranging from 0.10 to 0.83, derived from the 833 Cents Scale. Determines how strongly the flexible cost layer is activated in a given month.
 
-**Treasury Reserve** — The recommended default mechanism for deficit periods: a reserve with an explicit target (e.g., six months of fixed costs plus three months of baseline flexible costs), filled gradually from surplus before distribution and deployed automatically when Dₜ < 0.
+**Reserve** — A recommended habit for deficit periods: a fund with a clear target (for example, six months of fixed costs), filled gradually from surplus and used when Dₜ < 0.
 
 ---
 
