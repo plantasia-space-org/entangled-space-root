@@ -57,7 +57,7 @@ Entangled Space draws from an existing lineage of work on this problem. Elinor O
 
 ## The Snail Factor
 
-The Snail Factor is the part of the protocol that gives the economy its rhythm. It is not decoration. Benoit Mandelbrot observed that natural and financial systems often repeat the same patterns at different scales; Entangled Space borrows that idea and uses a cyclical curve based on the Golden Ratio ($\phi$). We take the curve from music — the 833 Cents Scale — because music is one of humanity’s oldest tools for studying proportion as it unfolds in time. The result: instead of the binary of endless growth or collapse, the system oscillates — it grows, rests, redistributes, and adapts.
+The Snail Factor is the part of the protocol that gives the economy its rhythm. Benoit Mandelbrot observed that natural and financial systems often repeat the same patterns at different scales; Entangled Space borrows that idea and uses a cyclical curve based on the Golden Ratio ($\phi$). We take the curve from music — the 833 Cents Scale — because music is one of humanity’s oldest tools for studying proportion as it unfolds in time. The result: instead of the binary of endless growth or collapse, the system oscillates — it grows, rests, redistributes, and adapts.
 
 **The 833 Cents Scale[^1]** is a musical tuning system developed by Heinz Bohlen (2012). Most music repeats at the octave — a 2:1 ratio. Bohlen's scale replaces this with the golden ratio (1.618034) as its repeating interval, producing a symmetrical seven-tone structure built on combination tones.
 
@@ -205,6 +205,14 @@ After fixed and flexible costs are subtracted, the remaining value is distribute
 
 Three roles, equal shares. When the split cannot be exactly equal, Dₜ is distributed with regeneration receiving the surplus step — the layer that addresses the wider human and ecological needs the system touches.
 
+**The split echoes the scale.** Read each tone of the scale as a percentage (cents ÷ 100) and one ascent through the seven tones sums to exactly one third:
+
+```text
+1.00 + 2.33 + 3.67 + 4.67 + 6.00 + 7.33 + 8.33 = 33.33
+```
+
+Played three times, the scale completes the whole: the cumulative sum passes through 33, 67, and lands on 100 — the same shape as the 33 / 33 / 34 split, rounding residual included. This is a correspondence, not a derivation — the shares are equal because no role is secondary — but it means the distribution and the cycle are the same scale, read from two different angles. The same cumulative curve can guide later decisions too, such as the pace at which a reserve is filled.
+
 Each implementation maps these roles to its own context:
 
 |  | Creators | Builders | Regeneration |
@@ -323,9 +331,10 @@ This is also why the cycle is fixed and public:
 
 * **Low months are not emergencies.** Contraction is part of the rhythm and known in advance. Nobody has to make panic cuts.
 * **Everyone can see ahead.** Revenue is uncertain; the cycle is not. Anyone can look twelve months forward and know how the protocol will behave.
+* **The unit is one year, not one month.** Participants can join in any month, but a commitment runs a full cycle — all twelve steps, ascent and descent. Nobody rides only the peak. The protocol is designed to run as code — automatic and auditable, like a contract that executes itself (with or without a blockchain) — so this cannot be timed or gamed.
 * **Growth comes with rest.** After every expansion comes a quieter phase: maintain, repair, consolidate, before the next ascent.
 * **Regeneration is never optional.** 34% of every distribution, in every phase. It shrinks and grows with the surplus, but it cannot be cut from the structure.
-* **Nothing is arbitrary.** Every value in the cycle comes from the 833 Cents Scale — derived, not negotiated, and nobody can quietly tune it. The scale even softens the turning points: its smallest steps sit on either side of the peak, so the cycle eases in and out of its maximum instead of snapping.
+* **Nothing is arbitrary.** Every value in the cycle comes from the 833 Cents Scale — derived, not negotiated. Its smallest steps sit on either side of the peak, so the cycle eases through its turning points.
 
 Whether this rhythm truly strengthens a system over time — lower burn, stronger reserves, healthier culture — is something each implementation should measure and publish, not assume.
 
