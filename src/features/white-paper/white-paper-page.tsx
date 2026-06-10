@@ -416,7 +416,7 @@ export function WhitePaperPage() {
       </header>
 
       <section className="relative overflow-hidden border-b border-border bg-background">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 print:hidden">
           <img
             src="https://herbarium.plantasia.space/image-assets/entangled-space/landing/entangled-space-formula_mid.webp"
             alt=""
@@ -425,7 +425,7 @@ export function WhitePaperPage() {
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,236,0.98)_0%,rgba(247,244,236,0.94)_46%,rgba(247,244,236,0.74)_100%)] dark:bg-[linear-gradient(90deg,rgba(18,18,18,0.92)_0%,rgba(18,18,18,0.78)_46%,rgba(18,18,18,0.52)_100%)]" />
         </div>
-        <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_18rem] lg:py-28">
+        <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_18rem] lg:py-28 print:py-8">
           <div className="max-w-4xl">
             <p className="text-[0.72rem] font-medium tracking-[0.28em] text-muted-foreground uppercase">
               White Paper
@@ -462,7 +462,7 @@ export function WhitePaperPage() {
         </div>
       </section>
 
-      <article className="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
+      <article className="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20 print:py-4">
         <MarkdownRenderer blocks={paperBlocks.slice(2)} />
       </article>
     </main>
