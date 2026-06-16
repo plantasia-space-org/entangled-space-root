@@ -78,7 +78,7 @@ export function HeroSection() {
       <div className="relative z-20 mx-auto flex min-h-[calc(100svh-4.5rem)] w-full max-w-6xl flex-col justify-between px-6 py-20 sm:px-8 sm:py-28 lg:min-h-[78vh] lg:py-24 xl:min-h-[84vh]">
         <div className="max-w-4xl lg:max-w-3xl xl:max-w-4xl">
           <h1 className="max-w-4xl text-5xl leading-[0.92] font-medium tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl xl:text-[7rem]">
-            An open protocol for regenerative economies.
+            An open protocol for regenerative music.
           </h1>
         </div>
 

@@ -40,13 +40,13 @@ export default defineConfig({
   server: {
     host: "local.plantasia.space",
     https: localHttpsConfig,
-    port: 5174,
+    port: 5180,
     strictPort: true,
   },
   preview: {
     host: "local.plantasia.space",
     https: localHttpsConfig,
-    port: 5174,
+    port: 5180,
     strictPort: true,
   },
   resolve: {

@@ -9,7 +9,7 @@ Plantasia.space
 Tenerife, Spain  
 bruna@plantasia.space
 
-**Abstract:** Entangled Space is an open protocol for regenerative economies. It defines how revenue flows between stakeholders — creators, builders, and projects regenerating the wider human and ecological context the activity inhabits — modulated by a cycle derived from music theory and the golden ratio. This paper documents the structural problem the protocol addresses, the mathematical foundation of its distribution model, and the formula that implements it. Plantasia Space will be its first live implementation.
+**Abstract:** Entangled Space is an open protocol for regenerative music — and, beneath it, for regenerative economies of any kind. It defines how revenue flows between stakeholders — creators, builders, and projects regenerating the wider human and ecological context the activity inhabits — modulated by a cycle derived from music theory and the golden ratio. This paper documents the structural problem the protocol addresses, the mathematical foundation of its distribution model, and the formula that implements it. Plantasia Space will be its first live implementation.
 
 ---
 
