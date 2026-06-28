@@ -346,7 +346,7 @@ export function SnailKeyboardSection({
                 className="min-h-11 px-3 sm:min-h-7 sm:px-2.5"
               >
                 <a
-                  href="https://artizen.fund/"
+                  href="https://artizen.fund/index/p/entangled-space--open-protocol-for-regenerative-economies?season=6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="[touch-action:manipulation]"
