@@ -30,6 +30,7 @@ import {
   whatItIs,
 } from "@/features/landing/content"
 import {
+  buildFormCheck,
   emailPattern,
   postFormJson,
   type FormStatus,
@@ -77,12 +78,14 @@ export function App() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [waitlistEmail, setWaitlistEmail] = useState("")
+  const [waitlistTrap, setWaitlistTrap] = useState("")
   const [waitlistStatus, setWaitlistStatus] = useState<FormStatus>({
     type: "idle",
   })
   const [contactName, setContactName] = useState("")
   const [contactEmail, setContactEmail] = useState("")
   const [contactMessage, setContactMessage] = useState("")
+  const [contactTrap, setContactTrap] = useState("")
   const [contactStatus, setContactStatus] = useState<FormStatus>({
     type: "idle",
   })
@@ -190,9 +193,11 @@ export function App() {
         contact: {
           email,
         },
+        check: buildFormCheck(waitlistTrap),
       })
 
       setWaitlistEmail("")
+      setWaitlistTrap("")
       setWaitlistStatus({
         type: "success",
         message: "You’re on the list.",
@@ -247,11 +252,13 @@ export function App() {
         form: {
           message,
         },
+        check: buildFormCheck(contactTrap),
       })
 
       setContactName("")
       setContactEmail("")
       setContactMessage("")
+      setContactTrap("")
       setContactStatus({
         type: "success",
         message: "Message received.",
@@ -411,6 +418,8 @@ export function App() {
         <WaitlistSection
           email={waitlistEmail}
           status={waitlistStatus}
+          trap={waitlistTrap}
+          onTrapChange={setWaitlistTrap}
           onEmailChange={(value) => {
             setWaitlistEmail(value)
             if (waitlistStatus.type !== "idle") {
@@ -427,7 +436,9 @@ export function App() {
         name={contactName}
         email={contactEmail}
         message={contactMessage}
+        trap={contactTrap}
         status={contactStatus}
+        onTrapChange={setContactTrap}
         onNameChange={(value) => {
           setContactName(value)
           if (contactStatus.type !== "idle") {

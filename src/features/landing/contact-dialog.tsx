@@ -9,6 +9,7 @@ import {
 
 import type { FormStatus } from "@/features/landing/forms"
 import { getStatusMessage } from "@/features/landing/forms"
+import { HoneypotField } from "@/features/landing/honeypot-field"
 
 type ContactDialogProps = {
   open: boolean
@@ -16,10 +17,12 @@ type ContactDialogProps = {
   name: string
   email: string
   message: string
+  trap: string
   status: FormStatus
   onNameChange: (value: string) => void
   onEmailChange: (value: string) => void
   onMessageChange: (value: string) => void
+  onTrapChange: (value: string) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
@@ -29,10 +32,12 @@ export function ContactDialog({
   name,
   email,
   message,
+  trap,
   status,
   onNameChange,
   onEmailChange,
   onMessageChange,
+  onTrapChange,
   onSubmit,
 }: ContactDialogProps) {
   const isSuccess = status.type === "success"
@@ -70,7 +75,12 @@ export function ContactDialog({
             </div>
           </div>
         ) : (
-          <form className="mt-2 space-y-5" onSubmit={onSubmit}>
+          <form className="relative mt-2 space-y-5" onSubmit={onSubmit}>
+            <HoneypotField
+              id="contact-company"
+              value={trap}
+              onChange={onTrapChange}
+            />
             <div className="space-y-2">
               <label
                 htmlFor="contact-name"

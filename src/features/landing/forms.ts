@@ -3,6 +3,30 @@ export const formsApiBaseUrl =
 
 export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Anti-spam, invisible to people and to any third party.
+//
+// `honeypotFieldName` is rendered as an off-screen input on both forms. A
+// person never sees it, so anything in it came from a script filling every
+// input it found. `elapsedMs` is the time between the page loading and the
+// submit; a bot fires within milliseconds, a person takes seconds to scroll,
+// read and type. The serverless function checks both and quietly drops the
+// submission when either looks automated.
+export const honeypotFieldName = "company"
+
+const pageLoadedAt = Date.now()
+
+export type FormCheck = {
+  company: string
+  elapsedMs: number
+}
+
+export function buildFormCheck(trapValue: string): FormCheck {
+  return {
+    company: trapValue,
+    elapsedMs: Date.now() - pageLoadedAt,
+  }
+}
+
 export type FormStatus =
   | { type: "idle" }
   | { type: "submitting" }

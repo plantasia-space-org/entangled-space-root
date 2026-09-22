@@ -2,18 +2,23 @@ import { Button } from "@/components/ui/button"
 
 import type { FormStatus } from "@/features/landing/forms"
 import { getStatusMessage } from "@/features/landing/forms"
+import { HoneypotField } from "@/features/landing/honeypot-field"
 
 type WaitlistSectionProps = {
   email: string
   status: FormStatus
+  trap: string
   onEmailChange: (value: string) => void
+  onTrapChange: (value: string) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
 export function WaitlistSection({
   email,
   status,
+  trap,
   onEmailChange,
+  onTrapChange,
   onSubmit,
 }: WaitlistSectionProps) {
   const isSuccess = status.type === "success"
@@ -39,9 +44,14 @@ export function WaitlistSection({
             </div>
           ) : (
             <form
-              className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
+              className="relative mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
               onSubmit={onSubmit}
             >
+              <HoneypotField
+                id="waitlist-company"
+                value={trap}
+                onChange={onTrapChange}
+              />
               <input
                 type="email"
                 name="email"
