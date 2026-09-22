@@ -11,18 +11,21 @@ export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 // submit; a bot fires within milliseconds, a person takes seconds to scroll,
 // read and type. The serverless function checks both and quietly drops the
 // submission when either looks automated.
-export const honeypotFieldName = "company"
+//
+// The name matters: see the note in honeypot-field.tsx about keeping it clear
+// of the browser's address-autofill vocabulary.
+export const honeypotFieldName = "subject"
 
 const pageLoadedAt = Date.now()
 
 export type FormCheck = {
-  company: string
+  subject: string
   elapsedMs: number
 }
 
 export function buildFormCheck(trapValue: string): FormCheck {
   return {
-    company: trapValue,
+    subject: trapValue,
     elapsedMs: Date.now() - pageLoadedAt,
   }
 }

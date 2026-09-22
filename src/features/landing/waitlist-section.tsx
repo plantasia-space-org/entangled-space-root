@@ -48,7 +48,7 @@ export function WaitlistSection({
               onSubmit={onSubmit}
             >
               <HoneypotField
-                id="waitlist-company"
+                id="waitlist-subject"
                 value={trap}
                 onChange={onTrapChange}
               />

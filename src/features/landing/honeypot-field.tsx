@@ -13,6 +13,13 @@ type HoneypotFieldProps = {
  * plenty of bots skip fields they can tell are hidden but happily fill this
  * one. `aria-hidden` and `tabIndex={-1}` keep it out of the way of screen
  * readers and keyboard navigation, so nobody using the site meets it.
+ *
+ * The field is called "subject" on purpose. Anything in the browser's
+ * address-autofill vocabulary, "company" and "organization" above all, gets
+ * filled from a saved address whatever the markup asks for, and a visitor
+ * accepting an autofill suggestion would have had their message thrown away.
+ * The `data-` attributes ask the common password managers to leave it alone
+ * for the same reason.
  */
 export function HoneypotField({ id, value, onChange }: HoneypotFieldProps) {
   return (
@@ -20,13 +27,16 @@ export function HoneypotField({ id, value, onChange }: HoneypotFieldProps) {
       aria-hidden="true"
       className="pointer-events-none absolute h-px w-px overflow-hidden whitespace-nowrap [clip-path:inset(50%)]"
     >
-      <label htmlFor={id}>Company</label>
+      <label htmlFor={id}>Subject</label>
       <input
         id={id}
         name={honeypotFieldName}
         type="text"
         tabIndex={-1}
         autoComplete="off"
+        data-lpignore="true"
+        data-1p-ignore=""
+        data-form-type="other"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />

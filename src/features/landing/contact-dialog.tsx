@@ -77,7 +77,7 @@ export function ContactDialog({
         ) : (
           <form className="relative mt-2 space-y-5" onSubmit={onSubmit}>
             <HoneypotField
-              id="contact-company"
+              id="contact-subject"
               value={trap}
               onChange={onTrapChange}
             />
