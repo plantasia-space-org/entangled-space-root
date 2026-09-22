@@ -7,10 +7,10 @@ export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 //
 // `honeypotFieldName` is rendered as an off-screen input on both forms. A
 // person never sees it, so anything in it came from a script filling every
-// input it found. `elapsedMs` is the time between the page loading and the
-// submit; a bot fires within milliseconds, a person takes seconds to scroll,
-// read and type. The serverless function checks both and quietly drops the
-// submission when either looks automated.
+// input it found. `interacted` says whether anyone ever focused or typed in
+// the form, which nobody filling one in can avoid. `elapsedMs` is the time
+// between the page loading and the submit. The serverless function checks all
+// three and quietly drops the submission when it looks automated.
 //
 // The name matters: see the note in honeypot-field.tsx about keeping it clear
 // of the browser's address-autofill vocabulary.
@@ -21,12 +21,19 @@ const pageLoadedAt = Date.now()
 export type FormCheck = {
   subject: string
   elapsedMs: number
+  interacted: boolean
 }
 
-export function buildFormCheck(trapValue: string): FormCheck {
+export function buildFormCheck(
+  trapValue: string,
+  interacted: boolean
+): FormCheck {
   return {
-    subject: trapValue,
+    // Computed, so renaming the constant moves the DOM attribute and the wire
+    // key together instead of quietly leaving them disagreeing.
+    [honeypotFieldName]: trapValue,
     elapsedMs: Date.now() - pageLoadedAt,
+    interacted,
   }
 }
 

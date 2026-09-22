@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import type { FormEvent } from "react"
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
 
@@ -78,14 +78,19 @@ export function App() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [waitlistEmail, setWaitlistEmail] = useState("")
-  const [waitlistTrap, setWaitlistTrap] = useState("")
+  // The honeypot is read straight off the DOM node, not held in state, so that
+  // a script setting `input.value` directly is still caught. See
+  // honeypot-field.tsx.
+  const waitlistTrapRef = useRef<HTMLInputElement>(null)
+  const waitlistInteracted = useRef(false)
   const [waitlistStatus, setWaitlistStatus] = useState<FormStatus>({
     type: "idle",
   })
   const [contactName, setContactName] = useState("")
   const [contactEmail, setContactEmail] = useState("")
   const [contactMessage, setContactMessage] = useState("")
-  const [contactTrap, setContactTrap] = useState("")
+  const contactTrapRef = useRef<HTMLInputElement>(null)
+  const contactInteracted = useRef(false)
   const [contactStatus, setContactStatus] = useState<FormStatus>({
     type: "idle",
   })
@@ -193,11 +198,14 @@ export function App() {
         contact: {
           email,
         },
-        check: buildFormCheck(waitlistTrap),
+        check: buildFormCheck(
+          waitlistTrapRef.current?.value ?? "",
+          waitlistInteracted.current
+        ),
       })
 
       setWaitlistEmail("")
-      setWaitlistTrap("")
+      if (waitlistTrapRef.current) waitlistTrapRef.current.value = ""
       setWaitlistStatus({
         type: "success",
         message: "You’re on the list.",
@@ -252,13 +260,16 @@ export function App() {
         form: {
           message,
         },
-        check: buildFormCheck(contactTrap),
+        check: buildFormCheck(
+          contactTrapRef.current?.value ?? "",
+          contactInteracted.current
+        ),
       })
 
       setContactName("")
       setContactEmail("")
       setContactMessage("")
-      setContactTrap("")
+      if (contactTrapRef.current) contactTrapRef.current.value = ""
       setContactStatus({
         type: "success",
         message: "Message received.",
@@ -418,8 +429,10 @@ export function App() {
         <WaitlistSection
           email={waitlistEmail}
           status={waitlistStatus}
-          trap={waitlistTrap}
-          onTrapChange={setWaitlistTrap}
+          trapRef={waitlistTrapRef}
+          onInteract={() => {
+            waitlistInteracted.current = true
+          }}
           onEmailChange={(value) => {
             setWaitlistEmail(value)
             if (waitlistStatus.type !== "idle") {
@@ -436,9 +449,11 @@ export function App() {
         name={contactName}
         email={contactEmail}
         message={contactMessage}
-        trap={contactTrap}
+        trapRef={contactTrapRef}
         status={contactStatus}
-        onTrapChange={setContactTrap}
+        onInteract={() => {
+          contactInteracted.current = true
+        }}
         onNameChange={(value) => {
           setContactName(value)
           if (contactStatus.type !== "idle") {

@@ -1,3 +1,5 @@
+import type { RefObject } from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -17,12 +19,12 @@ type ContactDialogProps = {
   name: string
   email: string
   message: string
-  trap: string
+  trapRef: RefObject<HTMLInputElement | null>
   status: FormStatus
   onNameChange: (value: string) => void
   onEmailChange: (value: string) => void
   onMessageChange: (value: string) => void
-  onTrapChange: (value: string) => void
+  onInteract: () => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
@@ -32,12 +34,12 @@ export function ContactDialog({
   name,
   email,
   message,
-  trap,
+  trapRef,
   status,
   onNameChange,
   onEmailChange,
   onMessageChange,
-  onTrapChange,
+  onInteract,
   onSubmit,
 }: ContactDialogProps) {
   const isSuccess = status.type === "success"
@@ -75,12 +77,12 @@ export function ContactDialog({
             </div>
           </div>
         ) : (
-          <form className="relative mt-2 space-y-5" onSubmit={onSubmit}>
-            <HoneypotField
-              id="contact-subject"
-              value={trap}
-              onChange={onTrapChange}
-            />
+          <form
+            className="relative mt-2 space-y-5"
+            onSubmit={onSubmit}
+            onFocusCapture={onInteract}
+            onInputCapture={onInteract}
+          >
             <div className="space-y-2">
               <label
                 htmlFor="contact-name"
@@ -157,6 +159,10 @@ export function ContactDialog({
                 {status.type === "submitting" ? "Sending..." : "Send"}
               </Button>
             </div>
+
+            {/* Last, so `space-y-5` never treats it as the first child and
+                pushes every visible field down by its gap. */}
+            <HoneypotField id="contact-subject" inputRef={trapRef} />
           </form>
         )}
       </DialogContent>

@@ -1,3 +1,5 @@
+import type { RefObject } from "react"
+
 import { Button } from "@/components/ui/button"
 
 import type { FormStatus } from "@/features/landing/forms"
@@ -7,18 +9,18 @@ import { HoneypotField } from "@/features/landing/honeypot-field"
 type WaitlistSectionProps = {
   email: string
   status: FormStatus
-  trap: string
+  trapRef: RefObject<HTMLInputElement | null>
   onEmailChange: (value: string) => void
-  onTrapChange: (value: string) => void
+  onInteract: () => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
 export function WaitlistSection({
   email,
   status,
-  trap,
+  trapRef,
   onEmailChange,
-  onTrapChange,
+  onInteract,
   onSubmit,
 }: WaitlistSectionProps) {
   const isSuccess = status.type === "success"
@@ -46,12 +48,9 @@ export function WaitlistSection({
             <form
               className="relative mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
               onSubmit={onSubmit}
+              onFocusCapture={onInteract}
+              onInputCapture={onInteract}
             >
-              <HoneypotField
-                id="waitlist-subject"
-                value={trap}
-                onChange={onTrapChange}
-              />
               <input
                 type="email"
                 name="email"
@@ -68,6 +67,9 @@ export function WaitlistSection({
               >
                 {status.type === "submitting" ? "Submitting..." : "Notify me"}
               </Button>
+              {/* Last, so `space-y` and `gap` rules never treat it as the
+                  first child and shift the visible fields. */}
+              <HoneypotField id="waitlist-subject" inputRef={trapRef} />
             </form>
           )}
 
