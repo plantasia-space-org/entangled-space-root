@@ -36,28 +36,6 @@ export function FooterLinksSection({
             </Button>
             <Button asChild size="lg" className="px-5 text-sm">
               <a
-                href="https://artizen.fund/index/p/entangled-space--open-protocol-for-regenerative-economies?season=6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5"
-              >
-                <span>Sponsor on Artizen</span>
-                <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
-            <Button asChild size="lg" className="px-5 text-sm">
-              <a
-                href="https://github.com/sponsors/plantasia-space-org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5"
-              >
-                <span>Sponsor on GitHub</span>
-                <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
-            <Button asChild size="lg" className="px-5 text-sm">
-              <a
                 href="?contact=1"
                 onClick={(event) => {
                   event.preventDefault()

@@ -4,10 +4,8 @@
 
 *Version 0.3 — June 2026*
 
-Bruna Guarnieri∗  
 Plantasia.space  
-Tenerife, Spain  
-bruna@plantasia.space
+Tenerife, Spain
 
 **Abstract:** Entangled Space is an open protocol for regenerative music — and, beneath it, for regenerative economies of any kind. It defines how revenue flows between stakeholders — creators, builders, and projects regenerating the wider human and ecological context the activity inhabits — modulated by a cycle derived from music theory and the golden ratio. This paper documents the structural problem the protocol addresses, the mathematical foundation of its distribution model, and the formula that implements it. Plantasia Space will be its first live implementation.
 
@@ -368,13 +366,11 @@ The protocol is infrastructure-agnostic. It can run on a blockchain, on a conven
 
 ## Get Involved
 
-Entangled Space is in active development. We are looking for three kinds of collaborators:
+Entangled Space is in active development. We welcome two kinds of collaborators:
 
 **Builders** — developers and engineers who want to implement the open-source library, build tools on top of the protocol, or integrate it into existing platforms.
 
 **Partners** — creative platforms, labels, collectives, or cooperatives in any sector who want to run the protocol as their distribution model.
-
-**Founding Sponsors** — individuals and organizations aligned with regenerative economics who want to sponsor the development phase and see the protocol's first live deployment in Plantasia Space.
 
 To follow progress or start a conversation: [entangled.space](https://entangled.space)
 

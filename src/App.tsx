@@ -13,7 +13,6 @@ import { HeroSection } from "@/features/landing/hero-section"
 import { OpeningThesisSection } from "@/features/landing/opening-thesis-section"
 import { OverviewVideoSection } from "@/features/landing/overview-video-section"
 import { ProtocolSection } from "@/features/landing/protocol-section"
-import { ResearchDevelopmentSection } from "@/features/landing/research-development-section"
 import { SnailFactorIntroSection } from "@/features/landing/snail-factor-intro-section"
 import { UseCasesSection } from "@/features/landing/use-cases-section"
 import { WaitlistSection } from "@/features/landing/waitlist-section"
@@ -22,7 +21,6 @@ import { WhitePaperPage } from "@/features/white-paper/white-paper-page"
 import {
   capitalReturnsNote,
   designHighlights,
-  founderProfile,
   formulaBreakdown,
   implementationRows,
   introduction,
@@ -425,7 +423,6 @@ export function App() {
         <DesignPropertiesSection highlights={designHighlights} />
         <UseCasesSection implementationRows={implementationRows} />
         <WhatItIsSection items={whatItIs} />
-        <ResearchDevelopmentSection founderProfile={founderProfile} />
         <WaitlistSection
           email={waitlistEmail}
           status={waitlistStatus}
