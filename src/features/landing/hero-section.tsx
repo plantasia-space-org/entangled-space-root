@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react"
 import { useTheme } from "@/components/theme-provider"
 
 const LIGHT_VIDEO_SRC =
-  "https://plantasia-prod-public.fra1.digitaloceanspaces.com/entangled-space/videos/entangled-space-preview-light.mp4"
+  "https://herbarium.plantasia.space/entangled-space/videos/entangled-space-preview-light.mp4"
 const DARK_VIDEO_SRC =
-  "https://plantasia-prod-public.fra1.digitaloceanspaces.com/entangled-space/videos/entangled-space-preview-dark.mp4"
+  "https://herbarium.plantasia.space/entangled-space/videos/entangled-space-preview-dark.mp4"
 const PLANTASIA_SPACE_DARK_LOGO_SRC =
-  "https://plantasia-prod-public.fra1.digitaloceanspaces.com/assets/logos/current/plantasia-space-white-transparent-background-512.svg"
+  "https://herbarium.plantasia.space/assets/logos/current/plantasia-space-white-transparent-background-512.svg"
 const PLANTASIA_SPACE_LIGHT_LOGO_SRC =
-  "https://plantasia-prod-public.fra1.digitaloceanspaces.com/assets/logos/current/plantasia-space-logo-black-transparent-background-512.svg"
+  "https://herbarium.plantasia.space/assets/logos/current/plantasia-space-logo-black-transparent-background-512.svg"
 
 export function HeroSection() {
   const { resolvedTheme } = useTheme()
